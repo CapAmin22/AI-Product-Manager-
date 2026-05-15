@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>22POULTRY - Case Study</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#474832",
+                        "inverse-surface": "#303221",
+                        "inverse-primary": "#c0d100",
+                        "highlight-neon": "#EBFF00",
+                        "primary": "#5b6400",
+                        "surface-bright": "#fbfbe2",
+                        "surface-container-highest": "#e4e4cc",
+                        "secondary": "#5e5e5e",
+                        "on-background": "#1b1d0e",
+                        "surface": "#fbfbe2",
+                        "on-primary-fixed": "#1a1d00",
+                        "surface-cream": "#F5F5DC",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e4e4cc",
+                        "tertiary-fixed-dim": "#aacdd2",
+                        "on-primary-fixed-variant": "#444b00",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dbdcc3",
+                        "tertiary-container": "#d6f9ff",
+                        "on-secondary-container": "#646464",
+                        "on-primary-container": "#6b7400",
+                        "outline-variant": "#c8c8ab",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f2d9",
+                        "primary-container": "#ebff00",
+                        "surface-container": "#efefd7",
+                        "primary-fixed-dim": "#c0d100",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1d0e",
+                        "tertiary": "#436469",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "outline": "#77795f",
+                        "surface-tint": "#5b6400",
+                        "primary-fixed": "#dbee00",
+                        "on-tertiary-fixed-variant": "#2b4c51",
+                        "tertiary-fixed": "#c6e9ef",
+                        "surface-container-high": "#eaead1",
+                        "secondary-container": "#e2e2e2",
+                        "background": "#fbfbe2",
+                        "structural-line": "#000000",
+                        "surface-container-low": "#f5f5dc",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-tertiary-container": "#537479",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1b1b1b"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "none": "0px"
+                    },
+                    spacing: {
+                        "margin-mobile": "24px",
+                        "unit": "4px",
+                        "gutter": "0px",
+                        "margin-desktop": "48px",
+                        "container-max": "1440px"
+                    },
+                    fontFamily: {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': 'linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .bg-grid {
+                background-image: theme('backgroundImage.grid-pattern');
+                background-size: 24px 24px;
+            }
+            .brutalist-border {
+                @apply border border-structural-line;
+            }
+            .brutalist-button {
+                @apply bg-highlight-neon border border-structural-line text-on-background font-label-mono text-label-mono px-6 py-3 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)];
+            }
+            .brutalist-card {
+                @apply bg-surface border border-structural-line p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200;
+            }
+            .timeline-dot {
+                @apply absolute left-[-9px] top-0 w-4 h-4 bg-highlight-neon border-2 border-structural-line;
+            }
+            .timeline-line {
+                @apply absolute left-[-2px] top-0 bottom-0 w-[3px] bg-structural-line;
+            }
+            .nav-link {
+                @apply font-label-mono uppercase tracking-widest text-sm hover:bg-highlight-neon hover:text-on-background px-3 py-2 border border-transparent hover:border-structural-line transition-colors;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-background bg-grid min-h-screen antialiased selection:bg-highlight-neon selection:text-on-background">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface border-b-2 border-structural-line shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] w-full">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+<a class="font-headline-md text-2xl uppercase tracking-tighter flex items-center gap-2" href="index.html">
+<span class="bg-highlight-neon w-6 h-6 border border-structural-line shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] inline-block"></span>
+            22POULTRY</a>
+<nav class="flex flex-wrap justify-center gap-2 md:gap-4">
+<a class="nav-link" href="#thesis">Thesis</a>
+<a class="nav-link" href="#discovery">Discovery</a>
+<a class="nav-link" href="#economics">Economics</a>
+<a class="nav-link" href="#execution">Execution</a>
+<a class="nav-link" href="#artifacts">Artifacts</a>
+<a class="nav-link" href="#prd">PRD</a>
+<a class="nav-link" href="#validation">Validation</a>
+<a class="nav-link" href="#retrospective">Retrospective</a>
+</nav>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24">
+<!-- 22POULTRY Full Case Study Integration -->
+<div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden space-y-24">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+<!-- Header Section -->
+<div class="space-y-8 z-10">
+<div class="flex gap-2">
+</div>
+<div class="space-y-4">
+<h1 class="font-display-lg-mobile md:text-5xl lg:text-7xl text-headline-lg uppercase leading-none tracking-tight tracking-tighter">22POULTRY: Transforming India's Small-Scale Poultry Industry</h1>
+<p class="font-headline-md text-xl md:text-2xl text-on-surface-variant max-w-4xl">Solving Market Access Isolation for 6M+ Small-Scale Farmers through direct B2B market linkage.</p>
+<div class="inline-block border-2 border-structural-line bg-surface-variant px-4 py-2 font-label-mono text-sm mt-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold">Role: Founder & CPO</div>
+</div>
+</div>
+<!-- The Thesis -->
+<div class="border-t border-structural-line pt-24" id="thesis">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">01</span>The Thesis</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="border-2 border-structural-line bg-inverse-surface text-inverse-on-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-highlight-neon mb-2 uppercase tracking-widest text-sm">Market Gap</p>
+<p class="font-display-lg-mobile text-5xl mb-4">₹2.6T</p>
+<p class="font-body-lg">The agricultural supply chain in India is deeply fragmented, leading to massive value destruction at the base. Traditional distribution funnels 45-55% of value away from primary producers.</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-primary mb-2 uppercase tracking-widest text-sm">Strategic Pivot</p>
+<p class="font-headline-md text-3xl mb-4 uppercase">Direct to B2B</p>
+<p class="font-body-lg">By disintermediating layers of middlemen, we drastically increase the net margin for primary producers while ensuring better, more consistent prices for institutional buyers.</p>
+</div>
+</div>
+</div>
+<!-- Market Discovery & JTBD -->
+<div class="border-t border-structural-line pt-24" id="discovery">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">02</span>Two-Sided Market Discovery</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Supply Side -->
+<div class="border-2 border-structural-line p-8 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-2xl uppercase mb-4 border-b border-structural-line pb-4 flex justify-between items-center"><span class="">Supply Side (Rajesh)</span> <span class="material-symbols-outlined text-3xl">agriculture</span></h3>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Pains</p>
+<ul class="list-disc pl-5 mb-8 font-body-lg space-y-1">
+<li class="">Receives only 45-55% of actual mandi price</li>
+<li class="">Trapped by middleman dominance and credit traps</li>
+<li class="">No predictability in daily off-take</li>
+</ul>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Core JTBD</p>
+<ul class="space-y-3 font-body-lg">
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span class="">Secure reliable off-take agreements</span></li>
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span class="">Achieve baseline price transparency</span></li>
+</ul>
+</div>
+<!-- Demand Side -->
+<div class="border-2 border-structural-line p-8 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-2xl uppercase mb-4 border-b border-structural-line pb-4 flex justify-between items-center"><span class="">Demand Side (Priya)</span> <span class="material-symbols-outlined text-3xl">storefront</span></h3>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Pains</p>
+<ul class="list-disc pl-5 mb-8 font-body-lg space-y-1">
+<li class="">Inconsistent quality of daily produce</li>
+<li class="">Opaque and highly volatile pricing models</li>
+<li class="">High overhead dealing with multiple vendors</li>
+</ul>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Core JTBD</p>
+<ul class="space-y-3 font-body-lg">
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span class="">Source consistent, high-quality inventory</span></li>
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span class="">Minimize transportation & procurement friction</span></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Unit Economics -->
+<div class="border-t border-structural-line pt-24" id="economics">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">03</span>The "Aha!" Moment: Unit Economics</h2>
+<div class="overflow-x-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-structural-line">
+<table class="w-full text-left border-collapse font-body-lg bg-surface">
+<thead>
+<tr class="bg-surface-variant border-b-2 border-structural-line font-label-mono uppercase text-sm tracking-widest">
+<th class="p-4 md:p-6 border-r-2 border-structural-line">Metric</th>
+<th class="p-4 md:p-6 border-r-2 border-structural-line">Traditional Middlemen</th>
+<th class="p-4 md:p-6 bg-highlight-neon text-on-background font-bold text-base shadow-[inset_0px_0px_0px_2px_#000] bg-highlight-neon text-on-background font-bold text-base shadow-[inset_0px_0px_0px_2px_#000] border-2 border-structural-line">22POULTRY (Direct B2B)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b-2 border-structural-line hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold border-2 border-structural-line">Farmer Revenue Share</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line border-2 border-structural-line">45-55%</td>
+<td class="p-4 md:p-6 bg-highlight-neon/20 font-bold border-l-2 border-r-2 border-structural-line border-2 border-structural-line">&gt; 75%</td>
+</tr>
+<tr class="border-b-2 border-structural-line hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold border-2 border-structural-line">Buyer Cost</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line border-2 border-structural-line">High (multiple markups)</td>
+<td class="p-4 md:p-6 bg-highlight-neon/20 font-bold border-l-2 border-r-2 border-structural-line border-2 border-structural-line">Optimized (-10% market rate)</td>
+</tr>
+<tr class="hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold border-2 border-structural-line">Net Profit Impact</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line text-on-surface-variant border-2 border-structural-line">Baseline</td>
+<td class="p-4 md:p-6 bg-highlight-neon text-on-background font-headline-md text-2xl border-2 border-structural-line shadow-[inset_0px_0px_0px_2px_#000] border-2 border-structural-line">+25-30% Profit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Execution & Architecture -->
+<div class="border-t border-structural-line pt-24" id="execution">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">04</span>0-1 Execution & Architecture</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 border-2 border-structural-line bg-surface-cream p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<img alt="B2B Agritech Supply Chain Architecture" class="w-full h-auto border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]" src="https://lh3.googleusercontent.com/aida/ADBb0ujPF38yX822xiC4HHP0vIrpMA_LZsMWbLhdJvKyI8Fw4-zWkwNlZ0I_kFr8YqZth0Dfi_aMCtg0Ya8CH2W4h5CQjHinaXLRa_IGw3Fr4TGuvwrO1JpjUu2IxVeOJppTMyLqKARUB97wbZHtGoVtC0QMX5bGV0rRX9DwM7SjWtv_6S1-H1xBuuu_k63kkjwPZGYXkZKClK0j2ZKNoHK1BaaoK0cAJNODRnw7sdC_X9MhtvIVjI0XSgg8tyE"/>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-center space-y-6">
+<h3 class="font-headline-md text-2xl uppercase border-b border-structural-line pb-4 flex items-center gap-2"><span class="material-symbols-outlined">rocket_launch</span> Scrappy Build</h3>
+<p class="font-body-lg">Built on a lean stack prioritized for speed and zero-cost scaling. The architecture ensures low latency for real-time pricing updates even on poor network connections in rural areas.</p>
+<div class="space-y-4 font-label-mono text-sm tracking-widest">
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Frontend Layer</span>
+<strong class="text-base">Next.js / Vercel</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Backend / Database Layer</span>
+<strong class="text-base">Supabase / PostgreSQL</strong>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Artifacts (Flows & Journeys) -->
+<div class="border-t border-structural-line pt-24" id="artifacts">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">05</span>Product Artifacts & Flows</h2>
+<div class="space-y-12">
+<!-- User Journey Map Placeholder -->
+<div class="border-2 border-structural-line bg-surface-variant p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-2xl uppercase border-b border-structural-line pb-4 mb-6">Farmer Onboarding Journey</h3>
+<div class="aspect-video w-full bg-surface border-2 border-structural-line flex flex-col items-center justify-center border-dashed relative overflow-hidden group">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0ibm9uZSI+PC9yZWN0Pgo8Y2lyY2xlIGN4PSIyIiBjeT0iMiIgcj0iMiIgZmlsbD0iIzAwMCIgb3BhY2l0eT0iMC4xIj48L2NpcmNsZT4KPC9zdmc+')] opacity-50"></div>
+<span class="material-symbols-outlined text-6xl text-structural-line mb-4 z-10">map</span>
+<p class="font-label-mono uppercase tracking-widest text-on-surface-variant z-10 font-bold bg-surface px-4 py-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">User Journey Map Placeholder</p>
+<div class="absolute bottom-4 right-4 z-10">
+<button class="bg-highlight-neon border border-structural-line px-3 py-1 font-label-mono text-xs uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-y-0.5 hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] transition-all font-bold">Expand View <span class="material-symbols-outlined text-xs align-middle ml-1">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<!-- System User Flow Placeholder -->
+<div class="border-2 border-structural-line bg-surface-variant p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-2xl uppercase border-b border-structural-line pb-4 mb-6">B2B Order & Fulfillment Flow</h3>
+<div class="aspect-video w-full bg-surface border-2 border-structural-line flex flex-col items-center justify-center border-dashed relative overflow-hidden group">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0ibm9uZSI+PC9yZWN0Pgo8Y2lyY2xlIGN4PSIyIiBjeT0iMiIgcj0iMiIgZmlsbD0iIzAwMCIgb3BhY2l0eT0iMC4xIj48L2NpcmNsZT4KPC9zdmc+')] opacity-50"></div>
+<span class="material-symbols-outlined text-6xl text-structural-line mb-4 z-10">account_tree</span>
+<p class="font-label-mono uppercase tracking-widest text-on-surface-variant z-10 font-bold bg-surface px-4 py-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">System User Flow Placeholder</p>
+<div class="absolute bottom-4 right-4 z-10">
+<button class="bg-highlight-neon border border-structural-line px-3 py-1 font-label-mono text-xs uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-y-0.5 hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] transition-all font-bold">Expand View <span class="material-symbols-outlined text-xs align-middle ml-1">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Requirements Document (PRD) -->
+<div class="border-t border-structural-line pt-24" id="prd">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">06</span>Product Requirements Document (PRD)</h2>
+<div class="border-4 border-structural-line text-inverse-on-surface p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] max-h-[800px] overflow-y-auto scrollbar-thin scrollbar-thumb-highlight-neon scrollbar-track-structural-line bg-[#1b1d0e] p-12 md:p-20" style="box-shadow: 12px 12px 0px 0px rgba(0,0,0,1);">
+<div class="flex justify-between items-start border-b border-outline pb-6 mb-8">
+<div>
+<p class="font-label-mono text-highlight-neon uppercase tracking-widest mb-2">Internal Document v1.2</p>
+<h3 class="font-headline-lg text-4xl text-surface">B2B Poultry Procurement Platform</h3>
+</div>
+<div class="bg-surface text-on-background font-label-mono px-3 py-1 border border-structural-line text-sm">
+                Status: APPROVED
+            </div>
+</div>
+<div class="space-y-12 font-body-lg text-surface-variant">
+<section>
+<h4 class="font-headline-md text-2xl text-highlight-neon uppercase mb-4">1. Overview & Objectives</h4>
+<p class="mb-4">The B2B Poultry Procurement Platform connects primary poultry farmers directly with institutional buyers (restaurants, cloud kitchens), eliminating 2-3 layers of middlemen. This guarantees a higher net margin for farmers while securing consistent pricing and supply for buyers.</p>
+<ul class="list-disc pl-6 space-y-2">
+<li class=""><strong>Goal 1:</strong> Onboard 500 verified farmers within Q1.</li>
+<li class=""><strong>Goal 2:</strong> Achieve a daily transaction volume of 5 tons.</li>
+<li class=""><strong>Goal 3:</strong> Maintain a &lt; 5% order failure/rejection rate.</li>
+</ul>
+</section>
+<section>
+<h4 class="font-headline-md text-2xl text-highlight-neon uppercase mb-4">2. Target Audience & Personas</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="border border-outline p-6 bg-[#2a2c1d]">
+<p class="font-label-mono text-surface font-bold uppercase mb-2">Persona A: The Primary Producer</p>
+<ul class="list-disc pl-5 space-y-1 text-sm">
+<li class="">Needs quick liquidity (max D+1 settlement).</li>
+<li class="">Low tech literacy; prefers voice/WhatsApp over complex UI.</li>
+<li class="">Highly sensitive to daily market price fluctuations.</li>
+</ul>
+</div>
+<div class="border border-outline p-6 bg-[#2a2c1d]">
+<p class="font-label-mono text-surface font-bold uppercase mb-2">Persona B: The Institutional Buyer</p>
+<ul class="list-disc pl-5 space-y-1 text-sm">
+<li class="">Needs predictable supply for daily operations.</li>
+<li class="">Requires standard quality grading (weight, cut type).</li>
+<li class="">Prefers weekly/monthly invoicing over daily payments.</li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<h4 class="font-headline-md text-2xl text-highlight-neon uppercase mb-4">3. Core Functional Requirements</h4>
+<div class="space-y-6">
+<div class="border-l-4 border-highlight-neon pl-4">
+<p class="font-bold text-surface mb-1">REQ-01: Dynamic Pricing Engine</p>
+<p class="text-sm">System must ingest daily Mandi (wholesale market) rates and automatically calculate the platform buy/sell spread based on a dynamic margin logic (targeting 10-15%). Must push SMS alerts to supply side.</p>
+</div>
+<div class="border-l-4 border-highlight-neon pl-4">
+<p class="font-bold text-surface mb-1">REQ-02: Escrow-lite Payment Flow</p>
+<p class="text-sm">Buyer funds must be verified/held before dispatch. Farmer payout must be triggered automatically via API upon digital proof of delivery (POD) from the logistics partner.</p>
+</div>
+<div class="border-l-4 border-highlight-neon pl-4">
+<p class="font-bold text-surface mb-1">REQ-03: Quality Assurance Matrix</p>
+<p class="text-sm">App must require photos of the batch at loading. Implement a standardized dispute resolution flow if the buyer rejects the batch upon delivery.</p>
+</div>
+</div>
+</section>
+<section>
+<h4 class="font-headline-md text-2xl text-highlight-neon uppercase mb-4">4. Success Metrics (KPIs)</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="border border-outline p-4 text-center">
+<p class="font-display-lg-mobile text-3xl text-surface mb-1">GMV</p>
+<p class="font-label-mono text-xs uppercase tracking-widest">MoM Growth</p>
+</div>
+<div class="border border-outline p-4 text-center">
+<p class="font-display-lg-mobile text-3xl text-surface mb-1">CAC</p>
+<p class="font-label-mono text-xs uppercase tracking-widest">Farmer Side</p>
+</div>
+<div class="border border-outline p-4 text-center">
+<p class="font-display-lg-mobile text-3xl text-surface mb-1">LTV</p>
+<p class="font-label-mono text-xs uppercase tracking-widest">Buyer Side</p>
+</div>
+<div class="border border-outline p-4 text-center">
+<p class="font-display-lg-mobile text-3xl text-surface mb-1">&gt;80%</p>
+<p class="font-label-mono text-xs uppercase tracking-widest">Retention</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- De-Risking & Retrospective -->
+<div class="border-t border-structural-line pt-24" id="validation">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">07</span>Validation & De-Risking</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="border-2 border-structural-line bg-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-6xl text-primary mb-2">&gt;50%</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-surface-variant mt-4">Supply Willingness</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-6xl text-primary mb-2">&gt;60%</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-surface-variant mt-4">Demand Interest</p>
+</div>
+<div class="border-2 border-structural-line bg-highlight-neon p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-6xl text-on-background mb-2">&gt;90%</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-background mt-4">Fulfillment Rate</p>
+</div>
+</div>
+<h2 class="font-headline-md text-3xl uppercase mb-6 mt-16 flex items-center tracking-tight" id="retrospective"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">08</span>Retrospective & Learnings</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="border-l-4 border-structural-line pl-6 py-2">
+<h3 class="font-label-mono text-on-background bg-highlight-neon border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] inline-block px-3 py-1 mb-4 uppercase text-sm font-bold tracking-widest">The Hardest Pivot</h3>
+<p class="font-body-lg">Initial MVP focused too much on data feeds. Pivoting to direct transactional capabilities proved to be the core value driver for adoption. We quickly realized farmers needed cash flow more than they needed dashboards.</p>
+</div>
+<div class="border-l-4 border-structural-line pl-6 py-2">
+<h3 class="font-label-mono text-on-background bg-highlight-neon border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] inline-block px-3 py-1 mb-4 uppercase text-sm font-bold tracking-widest">First Principles</h3>
+<p class="font-body-lg">To mitigate operational risks, we partnered with local logistics aggregators rather than owning fleet assets. Trust was built via escrow-like payment structures, ensuring operational transparency and zero asset liability.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface border-t-4 border-structural-line mt-24">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="font-display-lg-mobile text-inverse-on-surface mb-4">Let's Build Something.</h2>
+<p class="font-body-lg text-surface-variant max-w-md mb-8">Looking for a Product Manager who executes on first principles and isn't afraid to get their hands dirty.</p>
+<a class="inline-block bg-highlight-neon text-on-background font-label-mono uppercase tracking-widest font-bold px-8 py-4 border-2 border-structural-line shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all" href="mailto:aminshaikhone@gmail.com">Get in Touch</a>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="flex gap-6 mb-8">
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://www.linkedin.com/in/22amin/" target="_blank">
+<span class="material-symbols-outlined">link</span> LinkedIn
+                    </a>
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://github.com/CapAmin22" target="_blank">
+<span class="material-symbols-outlined">code</span> GitHub
+                    </a>
+</div>
+<p class="font-label-mono text-sm text-surface-variant">© 2026 Amin Shaikh. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
