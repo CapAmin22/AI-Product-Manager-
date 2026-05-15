@@ -10,7 +10,7 @@
 </head>
 <body class="bg-surface font-body-md text-on-background bg-grid min-h-screen antialiased selection:bg-highlight-neon selection:text-on-background">
 <!-- TopNavBar -->
-<nav class="sticky top-0 z-50 bg-surface dark:bg-on-background border-b border-structural-line w-full px-margin-desktop h-20 max-w-container-max mx-auto flex justify-between items-center">
+<nav class="sticky top-0 z-50 bg-surface dark:bg-on-background border-b border-structural-line w-full px-margin-mobile md:px-margin-desktop h-16 md:h-20 max-w-container-max mx-auto flex justify-between items-center">
 <div class="flex-1">
 <a class="text-headline-md font-headline-md font-bold text-on-background dark:text-surface-bright inline-flex items-center gap-2" href="#">
 <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">change_history</span>
@@ -41,11 +41,24 @@
             Resume
             <span class="material-symbols-outlined">download</span>
 </a>
-<button class="md:hidden flex items-center justify-center p-2 border border-structural-line bg-surface">
+<button id="mobile-menu-btn" class="md:hidden flex items-center justify-center p-2 border border-structural-line bg-surface hover:bg-highlight-neon transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
 <span class="material-symbols-outlined">menu</span>
 </button>
 </div>
 </nav>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-surface border-b-2 border-structural-line px-margin-mobile py-4 space-y-2 sticky top-16 z-40">
+<a class="block px-3 py-2 font-label-mono text-label-mono hover:bg-highlight-neon transition-colors" href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+<a class="block px-3 py-2 font-label-mono text-label-mono hover:bg-highlight-neon transition-colors" href="#work" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Work</a>
+<a class="block px-3 py-2 font-label-mono text-label-mono hover:bg-highlight-neon transition-colors" href="#skills" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Skills</a>
+<a class="block px-3 py-2 font-label-mono text-label-mono hover:bg-highlight-neon transition-colors" href="#projects" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
+<a class="block px-3 py-2 font-label-mono text-label-mono hover:bg-highlight-neon transition-colors" href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+<hr class="border-structural-line my-2">
+<a class="block px-3 py-2 font-label-mono text-label-mono hover:bg-highlight-neon transition-colors" href="https://drive.google.com/drive/folders/1OnO868nDK4A8Bmm9jXFbOz0ZIpFAipGD?usp=sharing" target="_blank">Deck's ↗</a>
+<a class="block px-3 py-2 font-label-mono text-label-mono hover:bg-highlight-neon transition-colors" href="https://drive.google.com/drive/folders/16S_KESnce1VfmqDnvQBP8-ovjl1QrTpj?usp=sharing" target="_blank">TearDowns ↗</a>
+<a class="block px-3 py-2 font-label-mono text-label-mono hover:bg-highlight-neon transition-colors" href="https://drive.google.com/drive/folders/1AUVXQtPpx3j2rgpramaLGIZK-OuXqwnI?usp=sharing" target="_blank">PRD's ↗</a>
+<a class="block w-full text-center bg-highlight-neon border border-structural-line px-4 py-2 font-label-mono font-medium shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]" href="https://drive.google.com/drive/folders/1S2TWnRn8ai1uL9pyi8XbLJaANWdro8z5?usp=sharing" target="_blank">Resume ↓</a>
+</div>
 <!-- Main Content Canvas -->
 <main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 space-y-32">
 <!-- Hero Section -->
@@ -78,7 +91,7 @@
 <span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">location_on</span> Bangalore, India</span>
 </div>
 <!-- Social Actions -->
-<div class="flex gap-4 mt-4"><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://www.linkedin.com/in/22amin/" target="_blank"><span class="font-label-mono font-medium">LinkedIn</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://github.com/CapAmin22" target="_blank"><span class="font-label-mono font-medium">GitHub</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://x.com/aminshaikh22" target="_blank"><span class="font-label-mono font-medium">X / Twitter</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://productsceo.substack.com/" target="_blank"><span class="font-label-mono font-medium">Substack</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://medium.com/@productsceo" target="_blank"><span class="font-label-mono font-medium">Medium</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a></div>
+<div class="flex flex-wrap justify-center gap-3 mt-4"><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://www.linkedin.com/in/22amin/" target="_blank"><span class="font-label-mono font-medium">LinkedIn</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://github.com/CapAmin22" target="_blank"><span class="font-label-mono font-medium">GitHub</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://x.com/aminshaikh22" target="_blank"><span class="font-label-mono font-medium">X / Twitter</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://productsceo.substack.com/" target="_blank"><span class="font-label-mono font-medium">Substack</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://medium.com/@productsceo" target="_blank"><span class="font-label-mono font-medium">Medium</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a></div>
 </div>
 </section>
 <!-- divider -->
@@ -347,35 +360,35 @@
 <div class="md:col-span-8 flex flex-col">
 <div class="flex-grow">
 <div class="grid grid-cols-1 divide-y divide-structural-line/30">
-<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
-<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">01 RESEARCH</span>
-<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">RS</span>
-<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">User Interviews, Focus Group, Surveys, Primary &amp; Secondary Research</p>
+<div class="flex items-center gap-3 px-4 py-4 md:px-10 md:grid md:grid-cols-[120px_60px_1fr]">
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex-shrink-0 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">RS</span>
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant md:order-first w-20 flex-shrink-0">01 RESEARCH</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface">User Interviews, Focus Group, Surveys, Primary &amp; Secondary Research</p>
 </div>
-<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
-<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">02 STRATEGY</span>
-<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">PM</span>
-<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">PRD Authoring, Product Vision, Roadmap Prioritization, GTM Strategy</p>
+<div class="flex items-center gap-3 px-4 py-4 md:px-10 md:grid md:grid-cols-[120px_60px_1fr]">
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex-shrink-0 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">PM</span>
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant md:order-first w-20 flex-shrink-0">02 STRATEGY</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface">PRD Authoring, Product Vision, Roadmap Prioritization, GTM Strategy</p>
 </div>
-<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
-<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">03 DESIGN</span>
-<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">UX</span>
-<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">Figma, Wireframing, Rapid Prototyping, UX/UI Collaboration</p>
+<div class="flex items-center gap-3 px-4 py-4 md:px-10 md:grid md:grid-cols-[120px_60px_1fr]">
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex-shrink-0 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">UX</span>
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant md:order-first w-20 flex-shrink-0">03 DESIGN</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface">Figma, Wireframing, Rapid Prototyping, UX/UI Collaboration</p>
 </div>
-<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
-<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">04 TECH/AI</span>
-<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">AI</span>
-<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">LLMs, Agentic Workflows, AI Prototyping, Technical Scoping</p>
+<div class="flex items-center gap-3 px-4 py-4 md:px-10 md:grid md:grid-cols-[120px_60px_1fr]">
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex-shrink-0 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">AI</span>
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant md:order-first w-20 flex-shrink-0">04 TECH/AI</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface">LLMs, Agentic Workflows, AI Prototyping, Technical Scoping</p>
 </div>
-<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
-<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">05 DATA</span>
-<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">DA</span>
-<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">SQL, Python, Mixpanel, Google Analytics, A/B Testing</p>
+<div class="flex items-center gap-3 px-4 py-4 md:px-10 md:grid md:grid-cols-[120px_60px_1fr]">
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex-shrink-0 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">DA</span>
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant md:order-first w-20 flex-shrink-0">05 DATA</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface">SQL, Python, Mixpanel, Google Analytics, A/B Testing</p>
 </div>
-<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
-<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">06 DELIVERY</span>
-<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">AG</span>
-<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">Agile/Scrum, CI/CD, Stakeholder Alignment, KPI Monitoring, Vibe Coding, API Testing</p>
+<div class="flex items-center gap-3 px-4 py-4 md:px-10 md:grid md:grid-cols-[120px_60px_1fr]">
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex-shrink-0 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">AG</span>
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant md:order-first w-20 flex-shrink-0">06 DELIVERY</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface">Agile/Scrum, CI/CD, Stakeholder Alignment, KPI Monitoring, API Testing</p>
 </div>
 </div>
 </div>
@@ -521,7 +534,7 @@
 </section></main><footer class="border-t border-structural-line bg-surface">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col md:flex-row justify-between items-center gap-8">
 <div class="font-label-mono text-label-mono">© 2026 Amin Shaikh</div>
-<div class="font-body-md text-on-surface-variant italic text-center md:text-right flex-grow max-w-xl md:px-12 whitespace-nowrap">
+<div class="font-body-md text-on-surface-variant italic text-center md:text-right flex-grow max-w-xl md:px-12">
             - Great products are built on deep empathy and data-driven conviction.
         </div>
 <a class="w-12 h-12 rounded-full border border-structural-line flex items-center justify-center bg-highlight-neon shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-transform duration-200" href="#">
