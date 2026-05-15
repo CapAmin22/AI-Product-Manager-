@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TrueSignall - PRD Case Study</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#474832",
+                        "inverse-surface": "#303221",
+                        "inverse-primary": "#c0d100",
+                        "highlight-neon": "#EBFF00",
+                        "primary": "#5b6400",
+                        "surface-bright": "#fbfbe2",
+                        "surface-container-highest": "#e4e4cc",
+                        "secondary": "#5e5e5e",
+                        "on-background": "#1b1d0e",
+                        "surface": "#fbfbe2",
+                        "on-primary-fixed": "#1a1d00",
+                        "surface-cream": "#F5F5DC",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e4e4cc",
+                        "tertiary-fixed-dim": "#aacdd2",
+                        "on-primary-fixed-variant": "#444b00",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dbdcc3",
+                        "tertiary-container": "#d6f9ff",
+                        "on-secondary-container": "#646464",
+                        "on-primary-container": "#6b7400",
+                        "outline-variant": "#c8c8ab",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f2d9",
+                        "primary-container": "#ebff00",
+                        "surface-container": "#efefd7",
+                        "primary-fixed-dim": "#c0d100",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1d0e",
+                        "tertiary": "#436469",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "outline": "#77795f",
+                        "surface-tint": "#5b6400",
+                        "primary-fixed": "#dbee00",
+                        "on-tertiary-fixed-variant": "#2b4c51",
+                        "tertiary-fixed": "#c6e9ef",
+                        "surface-container-high": "#eaead1",
+                        "secondary-container": "#e2e2e2",
+                        "background": "#fbfbe2",
+                        "structural-line": "#000000",
+                        "surface-container-low": "#f5f5dc",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-tertiary-container": "#537479",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1b1b1b"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "none": "0px"
+                    },
+                    spacing: {
+                        "margin-mobile": "24px",
+                        "unit": "4px",
+                        "gutter": "0px",
+                        "margin-desktop": "48px",
+                        "container-max": "1440px"
+                    },
+                    fontFamily: {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': 'linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .bg-grid {
+                background-image: theme('backgroundImage.grid-pattern');
+                background-size: 24px 24px;
+            }
+            .brutalist-border {
+                @apply border border-structural-line;
+            }
+            .brutalist-button {
+                @apply bg-highlight-neon border border-structural-line text-on-background font-label-mono text-label-mono px-6 py-3 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)];
+            }
+            .brutalist-card {
+                @apply bg-surface border border-structural-line p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200;
+            }
+            .timeline-dot {
+                @apply absolute left-[-9px] top-0 w-4 h-4 bg-highlight-neon border-2 border-structural-line;
+            }
+            .timeline-line {
+                @apply absolute left-[-2px] top-0 bottom-0 w-[3px] bg-structural-line;
+            }
+            .nav-link {
+                @apply font-label-mono uppercase tracking-widest text-sm hover:bg-highlight-neon hover:text-on-background px-3 py-2 border border-transparent hover:border-structural-line transition-colors;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-background bg-grid min-h-screen antialiased selection:bg-highlight-neon selection:text-on-background">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface border-b-2 border-structural-line shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] w-full">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+<a class="font-headline-md text-2xl uppercase tracking-tighter flex items-center gap-2" href="index.html">
+<span class="bg-highlight-neon w-6 h-6 border border-structural-line shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] inline-block"></span>
+            SIGNAL AI</a>
+<nav class="flex flex-wrap justify-center gap-2 md:gap-4">
+<a class="nav-link" href="#summary">Summary</a>
+<a class="nav-link" href="#problems">Problems</a>
+<a class="nav-link" href="#personas">Personas</a>
+<a class="nav-link" href="#market">Market</a>
+<a class="nav-link" href="#jtbd">JTBD</a>
+<a class="nav-link" href="#metrics">Metrics</a>
+</nav>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24">
+<div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden space-y-24">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+
+<!-- Hero Section -->
+<div class="space-y-8 z-10">
+<div class="space-y-4">
+<h1 class="font-display-lg-mobile md:text-5xl lg:text-7xl text-headline-lg uppercase leading-none tracking-tight tracking-tighter">TrueSignall: Product Requirements Document</h1>
+<p class="font-headline-md text-xl md:text-2xl text-on-surface-variant max-w-4xl">Reclaiming the Founder-Led GTM Advantage by fixing structural outbound failure.</p>
+<div class="flex gap-4 mt-4 flex-wrap">
+<div class="inline-block border-2 border-structural-line bg-highlight-neon px-4 py-2 font-label-mono text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold">Owner: CPO — Amin</div>
+<div class="inline-block border-2 border-structural-line bg-surface-variant px-4 py-2 font-label-mono text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold">Scope: Problem Space Only</div>
+</div>
+<div class="mt-8 border-l-4 border-highlight-neon pl-4 py-2">
+<p class="font-label-mono text-sm text-on-surface-variant uppercase tracking-widest font-bold">Scope Boundary</p>
+<p class="font-body-lg italic mt-2">This document defines the problem space, market opportunity, and user pain points only. It intentionally contains no feature specifications, solution designs, or roadmap items. Those live in the Solution PRD.</p>
+</div>
+</div>
+</div>
+
+<!-- Executive Summary -->
+<div class="border-t border-structural-line pt-24" id="summary">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">01</span>Executive Summary</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="border-2 border-structural-line bg-inverse-surface text-inverse-on-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-highlight-neon mb-2 uppercase tracking-widest text-sm">The One-Line Thesis</p>
+<p class="font-headline-md text-3xl mb-4 leading-tight">Founders spend more time researching who to contact than actually selling — and when they do reach out, it is at the wrong moment. Signal AI exists to fix both problems at once.</p>
+</div>
+<div class="space-y-4 font-body-lg">
+<p>Founder-led GTM is the highest-leverage sales motion in B2B. A founder's brand, credibility, and authentic voice converts at 3–5× the rate of any hired rep. Yet founders are losing this advantage to an invisible tax: hours of manual research, fragmented tools, and zero signal infrastructure to tell them when a prospect is actually ready to buy.</p>
+<p>The result is painfully predictable. Cold outreach reply rates have collapsed to 3.4% industry-wide. Founders spend only 30% of their time selling. And the signals that would tell them the perfect moment to reach out are buried across dozens of platforms they cannot monitor simultaneously.</p>
+</div>
+</div>
+</div>
+
+<!-- Problem Statement -->
+<div class="border-t border-structural-line pt-24" id="problems">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">02</span>Problem Statement</h2>
+<p class="font-body-lg max-w-4xl mb-12">The B2B outbound market is in structural crisis. Buyers have deployed AI-powered spam filters. Sellers have responded with AI volume. The result is a race to the bottom. For founders doing their own GTM, this creates three compounding failures:</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Tax 1 -->
+<div class="border-2 border-structural-line p-8 bg-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<span class="material-symbols-outlined text-4xl mb-4 text-primary">search</span>
+<h3 class="font-headline-md text-2xl uppercase mb-4">The Research Tax</h3>
+<p class="font-body-lg mb-4">Founders spend 40–70% of their potential selling time doing manual research: LinkedIn stalking, Crunchbase scanning, Google alerts. This is intelligence gathering that a well-designed system could automate.</p>
+<div class="bg-surface-variant p-4 border border-structural-line mt-auto">
+<p class="font-label-mono text-sm uppercase tracking-widest font-bold mb-2">Validated Pain</p>
+<p class="text-sm">Founders are stitching 17 tools together manually, losing 10–15 hours per week to data normalization.</p>
+</div>
+</div>
+
+<!-- Tax 2 -->
+<div class="border-2 border-structural-line p-8 bg-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<span class="material-symbols-outlined text-4xl mb-4 text-primary">schedule</span>
+<h3 class="font-headline-md text-2xl uppercase mb-4">The Timing Blind Spot</h3>
+<p class="font-body-lg mb-4">A prospect who just received a promotion is 14× more likely to respond. A company that just raised a Series B will finalize vendors within 90 days. Founders miss these windows because they have no monitoring infrastructure.</p>
+<div class="bg-surface-variant p-4 border border-structural-line mt-auto">
+<p class="font-label-mono text-sm uppercase tracking-widest font-bold mb-2">Core Timing Problem</p>
+<p class="text-sm">99% of companies fail to respond within 5 mins of a buying signal. Being 5 mins faster yields 9× higher conversion.</p>
+</div>
+</div>
+
+<!-- Tax 3 -->
+<div class="border-2 border-structural-line p-8 bg-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<span class="material-symbols-outlined text-4xl mb-4 text-primary">psychology</span>
+<h3 class="font-headline-md text-2xl uppercase mb-4">The Personalization Illusion</h3>
+<p class="font-body-lg mb-4">Generic AI tools can reference a job title, but cannot tell the founder <em>why</em> this specific person is likely to care right now. Without signal context, even well-written outreach reads as noise.</p>
+<div class="bg-surface-variant p-4 border border-structural-line mt-auto">
+<p class="font-label-mono text-sm uppercase tracking-widest font-bold mb-2">The Context Collapse</p>
+<p class="text-sm">When a founder books a meeting, they lack the specific recent news or internal politics the prospect is prioritizing.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Target User Personas -->
+<div class="border-t border-structural-line pt-24" id="personas">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">03</span>Target User & Personas</h2>
+
+<div class="border-2 border-structural-line bg-surface-variant p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+<h3 class="font-headline-md text-2xl uppercase mb-4 border-b border-structural-line pb-4">Primary Persona — The Founder-Seller</h3>
+<p class="font-body-lg mb-6">A B2B SaaS or professional services founder at Seed to Series B stage ($0–15M ARR) who is personally responsible for GTM. They are time-constrained: they carry the full weight of product, team, and sales simultaneously.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 font-label-mono text-sm">
+<div class="bg-surface p-4 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Company Stage</span>
+<strong>Seed → Series B</strong>
+</div>
+<div class="bg-surface p-4 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Team Size</span>
+<strong>1–50 employees</strong>
+</div>
+<div class="bg-surface p-4 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Deal Size</span>
+<strong>$5K–$500K ACV</strong>
+</div>
+<div class="bg-surface p-4 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Budget</span>
+<strong>$100–$500/mo</strong>
+</div>
+</div>
+<p class="font-headline-md text-xl mt-6">Core Job-To-Be-Done: <span class="bg-highlight-neon px-2">"Tell me the right person, the right moment, and the right thing to say — then get out of my way."</span></p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="border-2 border-structural-line bg-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-xl uppercase mb-4">Secondary Persona</h3>
+<p class="font-body-lg"><strong>The Early GTM Hire:</strong> The first sales or growth hire at a founder-led company. They need the same signal intelligence but lack the founder's network authority, relying heavily on structured signals and AI-drafted context.</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-l-8 border-l-error">
+<h3 class="font-headline-md text-xl uppercase mb-4">Anti-ICP (Who this is NOT for)</h3>
+<p class="font-body-lg">High-volume outbound agencies, enterprise SDR teams, or any team depending on sending 10,000+ emails per week. <strong>This is not a blast tool.</strong></p>
+</div>
+</div>
+</div>
+
+<!-- Market Opportunity -->
+<div class="border-t border-structural-line pt-24" id="market">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">04</span>Market Opportunity</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="border-2 border-structural-line p-6 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center">
+<p class="font-display-lg-mobile text-5xl text-primary font-bold mb-2">$90B</p>
+<p class="font-label-mono text-sm uppercase text-on-surface-variant">TAM by 2034</p>
+<p class="font-body-md mt-2 text-sm">Sales Intelligence Market</p>
+</div>
+<div class="border-2 border-structural-line p-6 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center">
+<p class="font-display-lg-mobile text-5xl text-primary font-bold mb-2">$243B</p>
+<p class="font-label-mono text-sm uppercase text-on-surface-variant">TAM by 2034</p>
+<p class="font-body-md mt-2 text-sm">AI SDR Market</p>
+</div>
+<div class="border-2 border-structural-line p-6 bg-highlight-neon shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center">
+<p class="font-display-lg-mobile text-5xl text-on-background font-bold mb-2">$12B</p>
+<p class="font-label-mono text-sm uppercase text-on-background">SAM (2026)</p>
+<p class="font-body-md mt-2 text-sm font-medium">Founder-led GTM Segment</p>
+</div>
+</div>
+<p class="font-body-lg mb-8">The founder-led GTM segment represents ~220,000 companies in NA and Europe alone. At a $99–499/month price point, the SAM is approximately $12–26 billion annually. <strong>This is a market that currently has no purpose-built tool serving it.</strong></p>
+
+<!-- Gaps Table -->
+<div class="overflow-x-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-structural-line">
+<table class="w-full text-left border-collapse font-body-lg bg-surface">
+<thead>
+<tr class="bg-surface-variant border-b-2 border-structural-line font-label-mono uppercase text-sm tracking-widest">
+<th class="p-4 border-r-2 border-structural-line">Capability</th>
+<th class="p-4 border-r-2 border-structural-line text-sm">Clay</th>
+<th class="p-4 border-r-2 border-structural-line text-sm">Common Room</th>
+<th class="p-4 bg-highlight-neon border-2 border-structural-line shadow-[inset_0px_0px_0px_2px_#000] font-bold">Signal AI Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-structural-line hover:bg-surface-cream">
+<td class="p-4 border-r border-structural-line font-medium">Personal signals (LinkedIn, talks)</td>
+<td class="p-4 border-r border-structural-line text-on-surface-variant">No</td>
+<td class="p-4 border-r border-structural-line text-on-surface-variant">Partial</td>
+<td class="p-4 bg-highlight-neon/20 font-bold border-l-2 border-r-2 border-structural-line">Opportunity</td>
+</tr>
+<tr class="border-b border-structural-line hover:bg-surface-cream">
+<td class="p-4 border-r border-structural-line font-medium">Signal → Outreach in one workflow</td>
+<td class="p-4 border-r border-structural-line text-on-surface-variant">No</td>
+<td class="p-4 border-r border-structural-line text-on-surface-variant">No</td>
+<td class="p-4 bg-highlight-neon/20 font-bold border-l-2 border-r-2 border-structural-line">Opportunity</td>
+</tr>
+<tr class="hover:bg-surface-cream">
+<td class="p-4 border-r border-structural-line font-medium">Founder-priced ($99–499/mo)</td>
+<td class="p-4 border-r border-structural-line text-on-surface-variant">Yes</td>
+<td class="p-4 border-r border-structural-line text-on-surface-variant">No</td>
+<td class="p-4 bg-highlight-neon font-bold border-2 border-structural-line shadow-[inset_0px_0px_0px_2px_#000]">✓ Opportunity</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- JTBD -->
+<div class="border-t border-structural-line pt-24" id="jtbd">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">05</span>Jobs To Be Done</h2>
+<div class="grid grid-cols-1 gap-6">
+
+<div class="border-2 border-structural-line bg-surface p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-highlight-neon border-2 border-structural-line flex items-center justify-center font-headline-md text-xl">1</div>
+<div>
+<h4 class="font-body-lg font-bold mb-2">When managing 80+ target accounts, I want to be notified the moment a genuine connection opportunity arises so I can reach out first and authentically.</h4>
+<p class="font-label-mono text-sm text-on-surface-variant mt-2"><span class="uppercase tracking-widest font-bold text-primary">Current Gap:</span> No tool does real-time signal monitoring at founder price.</p>
+</div>
+</div>
+
+<div class="border-2 border-structural-line bg-surface p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-highlight-neon border-2 border-structural-line flex items-center justify-center font-headline-md text-xl">2</div>
+<div>
+<h4 class="font-body-lg font-bold mb-2">When preparing outreach, I want the AI to tell me exactly why this person is worth reaching out to right now, so I can write a message that feels personal.</h4>
+<p class="font-label-mono text-sm text-on-surface-variant mt-2"><span class="uppercase tracking-widest font-bold text-primary">Current Gap:</span> Signal and outreach tools are separate products.</p>
+</div>
+</div>
+
+<div class="border-2 border-structural-line bg-surface p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-highlight-neon border-2 border-structural-line flex items-center justify-center font-headline-md text-xl">3</div>
+<div>
+<h4 class="font-body-lg font-bold mb-2">When I prepare for a first call, I want a 2-minute brief that tells me everything relevant about this person and company right now.</h4>
+<p class="font-label-mono text-sm text-on-surface-variant mt-2"><span class="uppercase tracking-widest font-bold text-primary">Current Gap:</span> Relies on manual research or expensive Copilot tools.</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Success Metrics -->
+<div class="border-t border-structural-line pt-24" id="metrics">
+<h2 class="font-headline-md text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">06</span>Success Metrics</h2>
+<p class="font-body-lg mb-8 max-w-3xl">These metrics define what success looks like from the user's perspective — measurements of whether the core problem is actually being resolved.</p>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="border-2 border-structural-line bg-surface p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center">
+<p class="font-display-lg-mobile text-4xl text-primary font-bold mb-2">&lt; 1 hr</p>
+<p class="font-label-mono text-xs uppercase text-on-surface-variant tracking-widest font-bold">Research Time/Wk</p>
+<p class="text-sm mt-2">Down from 10-15 hrs</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center">
+<p class="font-display-lg-mobile text-4xl text-primary font-bold mb-2">&lt; 30m</p>
+<p class="font-label-mono text-xs uppercase text-on-surface-variant tracking-widest font-bold">Signal-to-Outreach Latency</p>
+<p class="text-sm mt-2">Down from 4+ hours</p>
+</div>
+<div class="border-2 border-structural-line bg-highlight-neon p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center">
+<p class="font-display-lg-mobile text-4xl text-on-background font-bold mb-2">&gt; 15%</p>
+<p class="font-label-mono text-xs uppercase text-on-background tracking-widest font-bold">Signal-Triggered Reply Rate</p>
+<p class="text-sm mt-2">Up from 3.4% average</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center">
+<p class="font-display-lg-mobile text-4xl text-primary font-bold mb-2">&gt; 90%</p>
+<p class="font-label-mono text-xs uppercase text-on-surface-variant tracking-widest font-bold">Live Signal Coverage</p>
+<p class="text-sm mt-2">Within 48h of account add</p>
+</div>
+</div>
+</div>
+
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface border-t-4 border-structural-line mt-24">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="font-display-lg-mobile text-inverse-on-surface mb-4">Let's Build Something.</h2>
+<p class="font-body-lg text-surface-variant max-w-md mb-8">Looking for a Product Manager who executes on first principles and isn't afraid to get their hands dirty.</p>
+<a class="inline-block bg-highlight-neon text-on-background font-label-mono uppercase tracking-widest font-bold px-8 py-4 border-2 border-structural-line shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all" href="mailto:aminshaikhone@gmail.com">Get in Touch</a>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="flex gap-6 mb-8">
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://www.linkedin.com/in/22amin/" target="_blank">
+<span class="material-symbols-outlined">link</span> LinkedIn
+                    </a>
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://github.com/CapAmin22" target="_blank">
+<span class="material-symbols-outlined">code</span> GitHub
+                    </a>
+</div>
+<p class="font-label-mono text-sm text-surface-variant">© 2026 Amin Shaikh. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
