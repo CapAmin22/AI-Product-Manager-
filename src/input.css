@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-grid {
+    background-image: theme('backgroundImage.grid-pattern');
+    background-size: 24px 24px;
+  }
+}
+
+@layer components {
+  .brutalist-border {
+    @apply border border-structural-line;
+  }
+
+  .brutalist-button {
+    @apply bg-highlight-neon border border-structural-line text-on-background font-label-mono text-label-mono px-6 py-3 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)];
+  }
+
+  .brutalist-card {
+    @apply bg-surface border border-structural-line p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200;
+  }
+
+  .timeline-dot {
+    @apply absolute left-[-9px] top-0 w-4 h-4 bg-highlight-neon border-2 border-structural-line;
+  }
+
+  .timeline-line {
+    @apply absolute left-[-2px] top-0 bottom-0 w-[3px] bg-structural-line;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    cursor: crosshair;
+  }
+}

@@ -1,0 +1,645 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head><style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style><style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style><style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style><style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head><body class="bg-surface font-body-md text-on-background bg-grid min-h-screen antialiased selection:bg-highlight-neon selection:text-on-background">```html
+<style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Amin Shaikh - Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#474832",
+                        "inverse-surface": "#303221",
+                        "inverse-primary": "#c0d100",
+                        "highlight-neon": "#EBFF00",
+                        "primary": "#5b6400",
+                        "surface-bright": "#fbfbe2",
+                        "surface-container-highest": "#e4e4cc",
+                        "secondary": "#5e5e5e",
+                        "on-background": "#1b1d0e",
+                        "surface": "#fbfbe2",
+                        "on-primary-fixed": "#1a1d00",
+                        "surface-cream": "#F5F5DC",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e4e4cc",
+                        "tertiary-fixed-dim": "#aacdd2",
+                        "on-primary-fixed-variant": "#444b00",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dbdcc3",
+                        "tertiary-container": "#d6f9ff",
+                        "on-secondary-container": "#646464",
+                        "on-primary-container": "#6b7400",
+                        "outline-variant": "#c8c8ab",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f2d9",
+                        "primary-container": "#ebff00",
+                        "surface-container": "#efefd7",
+                        "primary-fixed-dim": "#c0d100",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1d0e",
+                        "tertiary": "#436469",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "outline": "#77795f",
+                        "surface-tint": "#5b6400",
+                        "primary-fixed": "#dbee00",
+                        "on-tertiary-fixed-variant": "#2b4c51",
+                        "tertiary-fixed": "#c6e9ef",
+                        "surface-container-high": "#eaead1",
+                        "secondary-container": "#e2e2e2",
+                        "background": "#fbfbe2",
+                        "structural-line": "#000000",
+                        "surface-container-low": "#f5f5dc",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-tertiary-container": "#537479",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1b1b1b"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "none": "0px"
+                    },
+                    spacing: {
+                        "margin-mobile": "24px",
+                        "unit": "4px",
+                        "gutter": "0px",
+                        "margin-desktop": "48px",
+                        "container-max": "1440px"
+                    },
+                    fontFamily: {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': 'linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .bg-grid {
+                background-image: theme('backgroundImage.grid-pattern');
+                background-size: 24px 24px;
+            }
+            .brutalist-border {
+                @apply border border-structural-line;
+            }
+            .brutalist-button {
+                @apply bg-highlight-neon border border-structural-line text-on-background font-label-mono text-label-mono px-6 py-3 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)];
+            }
+            .brutalist-card {
+                @apply bg-surface border border-structural-line p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200;
+            }
+            .timeline-dot {
+                @apply absolute left-[-9px] top-0 w-4 h-4 bg-highlight-neon border-2 border-structural-line;
+            }
+            .timeline-line {
+                @apply absolute left-[-2px] top-0 bottom-0 w-[3px] bg-structural-line;
+            }
+        }
+    </style>
+<style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style>
+<!-- TopNavBar -->
+<nav class="sticky top-0 z-50 bg-surface dark:bg-on-background border-b border-structural-line w-full px-margin-desktop h-20 max-w-container-max mx-auto flex justify-between items-center">
+<a class="text-headline-md font-headline-md font-bold text-on-background dark:text-surface-bright flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">change_history</span>
+            Amin Shaikh
+        </a>
+<div class="hidden md:flex items-center gap-8 border-l border-r border-structural-line px-8 h-full">
+<a class="text-on-background dark:text-surface-bright px-4 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#work">Work</a>
+<a class="text-on-background dark:text-surface-bright px-4 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#about">About</a>
+<a class="text-on-background dark:text-surface-bright px-4 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#skills">Skills</a>
+<a class="text-on-background dark:text-surface-bright px-4 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#contact">Contact</a>
+</div>
+<a class="hidden md:flex bg-highlight-neon text-on-background px-4 py-2 border border-structural-line font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150 items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-medium" href="#">
+            Download Resume
+            <span class="material-symbols-outlined">download</span>
+</a>
+<button class="md:hidden flex items-center justify-center p-2 border border-structural-line bg-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 space-y-32">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter relative">
+<div class="md:col-span-12 flex flex-col items-center text-center space-y-8">
+<!-- Profile Image with Badge -->
+<div class="relative inline-block group">
+<div class="w-48 h-48 md:w-64 md:h-64 border-2 border-structural-line shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden bg-surface-variant">
+<img alt="Amin Shaikh" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ugTGwT_G0EuRIicelwzjf6oxN9XeGa6LKSdJoR-cQW1STtljbWj7zifB-RReGX0iYGhBwOHlVGHMrM3I6RrfEa7NJQxGwTSUIlmLuYq0WzoOYN_E3WNL43D2Zme70qoIKXYxz94xdo9vJodGqdg0s6F5DZg4xse8tj8ZWUFJOC7IBams_FUJb818zYfoo92sgkT3-8hl2HFRVAGMM-k4LIev0-Q2gvtYq9VMunRNY9bDvi3ZuZpOuvTytYffYeqUzJhj2eRFe-A">
+</div>
+
+</div>
+<!-- Name and Headline -->
+<div class="space-y-4">
+<p class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-on-surface-variant">Nice to meet you, I am</p>
+<div class="inline-block bg-highlight-neon border-2 border-structural-line px-8 py-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+<h1 class="font-display-lg text-4xl md:text-7xl uppercase leading-none">Amin Shaikh</h1>
+</div>
+<h2 class="font-headline-md text-2xl md:text-3xl mt-6 uppercase tracking-tight">AI Product Management</h2>
+</div><div class="max-w-3xl mx-auto mb-8">
+<p class="font-body-lg text-body-lg md:text-xl text-on-surface leading-relaxed font-medium">A passionate Product Professional solving real-world user problems and amplifying business growth by utilizing cutting-edge technology. With a foundation in computer science and over three years of experience in AI-driven product strategy, I transform ambiguous problems into high-impact, scalable digital products that serve millions.</p>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mt-8">
+</div>
+<!-- Contact Info -->
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-2 font-label-mono text-on-surface-variant text-body-lg">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">mail</span> aminshaikhone@gmail.com</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">call</span> +91 8329556730</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">location_on</span> Bangalore, India</span>
+</div>
+<!-- Social Actions -->
+<div class="flex gap-4 mt-4"><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://www.linkedin.com/in/22amin/" target="_blank"><span class="font-label-mono font-medium">LinkedIn</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://github.com/CapAmin22" target="_blank"><span class="font-label-mono font-medium">GitHub</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://x.com/aminshaikh22" target="_blank"><span class="font-label-mono font-medium">X / Twitter</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="#" target="_blank"><span class="font-label-mono font-medium">Substack</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="#" target="_blank"><span class="font-label-mono font-medium">Medium</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a></div>
+</div>
+</section>
+<!-- divider -->
+<div class="w-full h-12 flex items-center justify-center overflow-hidden opacity-30">
+<div class="flex gap-4">
+<span class="material-symbols-outlined">emergency</span>
+<span class="material-symbols-outlined">emergency</span>
+<span class="material-symbols-outlined">emergency</span>
+<span class="material-symbols-outlined">emergency</span>
+<span class="material-symbols-outlined">emergency</span>
+<span class="material-symbols-outlined">emergency</span>
+<span class="material-symbols-outlined">emergency</span>
+</div>
+</div>
+<!-- Experience Section (Updated to Timeline) -->
+<section class="space-y-12" id="work">
+<div class="flex items-center gap-8">
+<h3 class="font-headline-lg text-headline-lg">Professional Experience</h3>
+<div class="flex-grow h-px bg-structural-line"></div>
+</div>
+<div class="relative pl-8 md:pl-12 space-y-16">
+<div class="timeline-line"></div>
+<!-- Role 1 -->
+<div class="relative">
+<div class="timeline-dot"></div>
+<div class="brutalist-card">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+<div>
+<h4 class="font-headline-md text-headline-md">Associate Product Manager</h4>
+<p class="font-body-lg text-body-lg text-primary font-bold">PassionBits.io</p>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono bg-highlight-neon border border-structural-line px-2 py-1 inline-block">01/2025 - Present</p>
+<p class="font-label-mono text-label-sm text-on-surface-variant mt-1">Bangalore, India (Full-Time)</p>
+</div>
+</div>
+<ul class="space-y-4 list-none">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Led the end-to-end delivery of an AI-powered competitive intelligence feature that unified 24,000+ ads, competitor creatives, and signal feeds into a single auto-compiled library, enabling 2.4x faster search-to-shortlist workflows and reducing time to first brief by 46%.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">An insights engine that indexed 24K ads across platforms and auto-generated 2,000+ creative scripts, cutting research-to-brief time by 96% and driving significantly higher traction and GTM adoption.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Drove product analytics initiatives using MS Clarity, including funnel analysis and A/B testing, to identify drop-offs, optimize conversion, and communicate insights through clear storytelling to align cross-functional stakeholders.</p>
+</li>
+</ul>
+<div class="flex flex-wrap gap-2 mt-8">
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">AI Implementation</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">NIST-based framework</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">GDPR/CCPA</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Data Driven Iteration</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Success Metrics</span>
+</div>
+</div>
+</div>
+<!-- Role 2 -->
+<div class="relative">
+<div class="timeline-dot"></div>
+<div class="brutalist-card">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+<div>
+<h4 class="font-headline-md text-headline-md">Jr. Product Manager</h4>
+<p class="font-body-lg text-body-lg text-primary font-bold">Product Initium</p>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono border border-structural-line px-2 py-1 inline-block">08/2023 - 10/2023</p>
+<p class="font-label-mono text-label-sm text-on-surface-variant mt-1">Bangalore, India (Part-Time)</p>
+</div>
+</div>
+<ul class="space-y-4 list-none">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Spearheaded 0→1 product development; conducted 35+ user interviews using the Mom Test.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">To validate problem hypotheses; authored the PRD, defined product vision &amp; success criteria, scoped roadmap, and prioritized the MVP, and managed execution via Trello.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Led AI prototyping and rapid-validation cycles to identify high-impact features for launch.</p>
+</li>
+</ul>
+<div class="flex flex-wrap gap-2 mt-8">
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">0→1 Product</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">User Research</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">PRD Authoring</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">AI Prototyping</span>
+</div>
+</div>
+</div>
+<!-- Role 3 -->
+<div class="relative">
+<div class="timeline-dot"></div>
+<div class="brutalist-card">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+<div>
+<h4 class="font-headline-md text-headline-md">Founder</h4>
+<p class="font-body-lg text-body-lg text-primary font-bold">22Poultry</p>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono border border-structural-line px-2 py-1 inline-block">12/2022 - Present</p>
+<p class="font-label-mono text-label-sm text-on-surface-variant mt-1">Bangalore, India (Full-Time)</p>
+</div>
+</div>
+<ul class="space-y-4 list-none">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Founded and launched a B2B platform providing real-time statistics and financial networking to stakeholders in the poultry industry.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Architected a highly efficient, zero-cost cloud infrastructure (using Vercel, Oracle VM, and Supabase) to deliver weather impact analysis and industry news feeds.</p>
+</li>
+</ul>
+<div class="flex flex-wrap gap-2 mt-8">
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">B2B Platform</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Cloud Architecture</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Supabase</span>
+</div>
+</div>
+</div>
+<!-- Role 4 -->
+<div class="relative">
+<div class="timeline-dot"></div>
+<div class="brutalist-card">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+<div>
+<h4 class="font-headline-md text-headline-md">Product Analyst Intern</h4>
+<p class="font-body-lg text-body-lg text-primary font-bold">Shop Online New York</p>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono border border-structural-line px-2 py-1 inline-block">09/2022 - 02/2023</p>
+<p class="font-label-mono text-label-sm text-on-surface-variant mt-1">New York, US (Internship)</p>
+</div>
+</div>
+<ul class="space-y-4 list-none">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Developed and monitored KPIs with tools like Google Analytics, Mixpanel, and Looker to optimize website performance.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Collaborated with cross-functional teams to implement data-driven A/B testing and used Hotjar to enhance user engagement and conversion rates.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Conducted in-depth customer journey and funnel analyses that boosted retention by 15% and reduced churn by 10%.</p>
+</li>
+</ul>
+<div class="flex flex-wrap gap-2 mt-8">
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Mixpanel</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Looker</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Funnel Analysis</span>
+</div>
+</div>
+</div>
+<!-- Role 5 -->
+<div class="relative">
+<div class="timeline-dot"></div>
+<div class="brutalist-card">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+<div>
+<h4 class="font-headline-md text-headline-md">Product Management Intern</h4>
+<p class="font-body-lg text-body-lg text-primary font-bold">TheEndorse</p>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono border border-structural-line px-2 py-1 inline-block">06/2022 - 09/2022</p>
+<p class="font-label-mono text-label-sm text-on-surface-variant mt-1">Delhi, India (Internship)</p>
+</div>
+</div>
+<ul class="space-y-4 list-none">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Performed market and user research, created different use cases, and designed intuitive wireframes and prototypes with Figma, ensuring rapid iteration and user-centric improvements.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Maintained the PRDs and research Documents. Integrated Azure AI Vision-utilizing OCR for general images/SS and Document Intelligence for text-heavy documents—to enhance profile matching, sorting, filtering, and prioritization.</p>
+</li>
+</ul>
+<div class="flex flex-wrap gap-2 mt-8">
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Azure AI Vision</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">OCR</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Figma Prototyping</span>
+</div>
+</div>
+</div>
+<!-- Role 6 -->
+<div class="relative">
+<div class="timeline-dot"></div>
+<div class="brutalist-card">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+<div>
+<h4 class="font-headline-md text-headline-md">Associate Business Analyst</h4>
+<p class="font-body-lg text-body-lg text-primary font-bold">Banao Technologies</p>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono border border-structural-line px-2 py-1 inline-block">04/2021 - 03/2022</p>
+<p class="font-label-mono text-label-sm text-on-surface-variant mt-1">Bangalore, India (Full-Time)</p>
+</div>
+</div>
+<ul class="space-y-4 list-none">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Worked on innovative MSME web applications and Smartphone Application projects by gathering requirements, creating wireframes, and managing clients.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Managed and maintained BRD and other docs, worked on Excel, Python, and MySQL for basic analysis, and worked on process and workflow designing.</p>
+</li>
+</ul>
+<div class="flex flex-wrap gap-2 mt-8">
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">BRD Management</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Python/SQL</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Requirement Gathering</span>
+</div>
+</div>
+</div>
+<!-- Role 7 -->
+<div class="relative">
+<div class="timeline-dot"></div>
+<div class="brutalist-card">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+<div>
+<h4 class="font-headline-md text-headline-md">Product Integration Specialist</h4>
+<p class="font-body-lg text-body-lg text-primary font-bold">Helpy Moto</p>
+</div>
+<div class="text-right">
+<p class="font-label-mono text-label-mono border border-structural-line px-2 py-1 inline-block">09/2020 - 02/2021</p>
+<p class="font-label-mono text-label-sm text-on-surface-variant mt-1">Delhi, India (Full-Time)</p>
+</div>
+</div>
+<ul class="space-y-4 list-none">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Built CI/CD pipelines with Jenkins and Git, and automated API testing using Postman for seamless data flow and rapid feature deployment.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
+<p class="font-body-md">Integrated third-party services (Razorpay, G Maps API, G analytics) using Docker/Kubernetes and secure protocols (OAuth 2.0, JWT) to enhance efficiency and user experience.</p>
+</li>
+</ul>
+<div class="flex flex-wrap gap-2 mt-8">
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">CI/CD</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">API Integration</span>
+<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Postman</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Projects -->
+<section class="space-y-12" id="competencies"><div class="flex items-center gap-8"><h3 class="font-headline-lg text-headline-lg">Core Competencies</h3><div class="flex-grow h-px bg-structural-line"></div></div><div class="brutalist-card grid grid-cols-1 md:grid-cols-12 gap-0 overflow-hidden !p-0 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] bg-surface">
+<div class="md:col-span-4 p-8 md:p-12 flex flex-col justify-start border-r border-structural-line">
+<div class="mb-6">
+<p class="font-label-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-on-surface-variant font-bold mb-2">CORE COMPETENCIES</p>
+<div class="w-14 h-[1px] bg-on-surface-variant/40"></div>
+</div>
+<h4 class="font-display uppercase leading-[1.05] tracking-tight text-on-background text-2xl md:text-3xl lg:text-4xl">Learning How AI Actually Fits Into Product Strategy</h4>
+</div>
+<div class="md:col-span-8 flex flex-col">
+<div class="flex-grow">
+<div class="grid grid-cols-1 divide-y divide-structural-line/30">
+<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">01 RESEARCH</span>
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">RS</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">User Interviews, Focus Group, Surveys, Primary &amp; Secondary Research</p>
+</div>
+<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">02 STRATEGY</span>
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">PM</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">PRD Authoring, Product Vision, Roadmap Prioritization, GTM Strategy</p>
+</div>
+<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">03 DESIGN</span>
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">UX</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">Figma, Wireframing, Rapid Prototyping, UX/UI Collaboration</p>
+</div>
+<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">04 TECH/AI</span>
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">AI</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">LLMs, Agentic Workflows, AI Prototyping, Technical Scoping</p>
+</div>
+<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">05 DATA</span>
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">DA</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">SQL, Python, Mixpanel, Google Analytics, A/B Testing</p>
+</div>
+<div class="grid grid-cols-[120px_60px_1fr] items-center px-6 py-5 md:px-10">
+<span class="font-label-mono text-[10px] md:text-xs font-bold text-on-surface-variant">06 DELIVERY</span>
+<span class="bg-highlight-neon border border-structural-line w-8 h-8 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">AG</span>
+<p class="font-label-mono text-xs md:text-sm text-on-surface ml-4">Agile/Scrum, CI/CD, Stakeholder Alignment, KPI Monitoring, Vibe Coding, API Testing</p>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 md:px-10 border-t border-structural-line/30 flex items-center gap-2">
+<span class="text-on-surface-variant">—</span>
+<p class="font-label-mono text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">COMPETENCIES VERIFIED</p>
+</div>
+</div>
+</div></section><section class="space-y-12">
+<div class="flex items-center gap-8">
+<div class="flex-grow h-px bg-structural-line"></div>
+<h3 class="font-headline-lg text-headline-lg">Featured Projects</h3>
+</div>
+<div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+<div class="space-y-8 z-10">
+<div class="flex gap-2"><a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-highlight-neon flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-medium" href="#">PRD &amp; Research <span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-surface-cream flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" href="#">Wireframe <span class="material-symbols-outlined text-sm">arrow_outward</span></a></div>
+<div class="space-y-4">
+<h4 class="font-display-lg-mobile md:text-5xl lg:text-6xl text-headline-lg uppercase leading-none tracking-tight">22POULTRY: Transforming India's Small-Scale Poultry Industry</h4>
+<p class="font-headline-md text-xl md:text-2xl text-on-surface-variant">Solving Market Access Isolation for 6M+ Small-Scale Farmers</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-structural-line">
+<div>
+<p class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant mb-2">The Problem</p>
+<p class="font-body-lg text-body-lg">Small-scale farmers receive only 45-55% of mandi price due to middleman dominance.</p>
+</div>
+<div>
+<p class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant mb-2">Solution Highlight</p>
+<p class="font-body-lg text-body-lg">Connecting farmers directly to B2B institutional buyers (QSRs, Hotels) to increase profit by 25-30%.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+<div class="border-2 border-structural-line p-6 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-label-sm uppercase text-on-surface-variant mb-2">Impact</p>
+<p class="font-headline-md text-2xl text-primary font-bold">+25-30% Net Income Increase</p>
+</div>
+<div class="border-2 border-structural-line p-6 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-label-sm uppercase text-on-surface-variant mb-2">Value Created</p>
+<p class="font-headline-md text-2xl text-primary font-bold">₹1.2-2.0 Lakh/Year Household Gain</p>
+</div>
+<div class="border-2 border-structural-line p-6 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-label-sm uppercase text-on-surface-variant mb-2">Opportunity</p>
+<p class="font-headline-md text-2xl text-primary font-bold">₹2.6T Market Size (2025)</p>
+</div>
+</div>
+<div class="pt-12 border-t border-structural-line mt-8">
+<h4 class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant mb-6">Project Assets</h4>
+<div class="space-y-6">
+<h5 class="font-headline-md text-2xl md:text-3xl uppercase tracking-tight">22POULTRY Strategy Deck</h5>
+<div class="relative w-full aspect-video bg-surface-variant border-2 border-structural-line group cursor-pointer overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200 flex items-center justify-center">
+<div class="absolute inset-0 bg-highlight-neon opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+<div class="bg-highlight-neon border-2 border-structural-line p-4 md:p-6 flex flex-col items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<span class="material-symbols-outlined text-4xl md:text-6xl" style="font-variation-settings: &quot;FILL&quot; 1;">play_arrow</span>
+<span class="font-label-mono text-label-mono mt-2 uppercase tracking-widest text-sm md:text-base font-medium">View Full Deck</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-structural-line">
+<p class="font-label-mono text-label-mono text-on-surface-variant">22 Pages • Investor Pitch • Market Sizing</p>
+</div>
+</div>
+</div>
+<div class="pt-8">
+<a class="brutalist-button inline-flex items-center gap-2 text-lg px-8 py-4" href="#"><span class="font-label-mono mr-2">22POULTRY</span><span class="material-symbols-outlined">arrow_outward</span></a>
+</div>
+</div>
+</div><div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+<div class="space-y-8 z-10">
+<div class="flex gap-2">
+<a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-highlight-neon flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-medium" href="#">
+                PRD &amp; Research <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+<a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-surface-cream flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" href="#">Wireframe<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+<div class="space-y-4">
+<h4 class="font-display-lg-mobile md:text-5xl lg:text-6xl text-headline-lg uppercase leading-none tracking-tight">Truesignall : RECLAIMING THE FOUNDER-LED GTM ADVANTAGE</h4>
+<p class="font-headline-md text-xl md:text-2xl text-on-surface-variant">Fixing Structural Outbound Failure for Seed-to-Series A Founders</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-structural-line">
+<div>
+<p class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant mb-2">The Problem</p>
+<p class="font-body-lg text-body-lg">Founders lose 40-70% of selling time to manual research, missing buying signals that expire in minutes.</p>
+</div>
+<div>
+<p class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant mb-2">Solution Highlight</p>
+<p class="font-body-lg text-body-lg">Real-time signal intelligence (job changes, hiring, intent, Individual signals, Mutual connection advantage) collapsed into a single, founder-priced workflow.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+<div class="border-2 border-structural-line p-6 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-label-sm uppercase text-on-surface-variant mb-2">Impact</p>
+<p class="font-headline-md text-2xl text-primary font-bold">90% Research Time Reduction</p>
+</div>
+<div class="border-2 border-structural-line p-6 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-label-sm uppercase text-on-surface-variant mb-2">Impact</p>
+<p class="font-headline-md text-2xl text-primary font-bold">15-40% Outreach Reply Rate</p>
+</div>
+<div class="border-2 border-structural-line p-6 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-label-sm uppercase text-on-surface-variant mb-2">Impact</p>
+<p class="font-headline-md text-2xl text-primary font-bold">$12B SAM (Founder GTM)</p>
+</div>
+</div>
+<div class="pt-12 border-t border-structural-line mt-8">
+<h4 class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant mb-6">Project Assets</h4>
+<div class="space-y-12">
+<!-- TrueSignall GTM Deck -->
+<div class="space-y-6">
+<h5 class="font-headline-md text-2xl md:text-3xl uppercase tracking-tight">TrueSignall GTM Strategy Deck</h5>
+<div class="relative w-full aspect-video bg-surface-variant border-2 border-structural-line group cursor-pointer overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200 flex items-center justify-center">
+<div class="absolute inset-0 bg-highlight-neon opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+<div class="bg-highlight-neon border-2 border-structural-line p-4 md:p-6 flex flex-col items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<span class="material-symbols-outlined text-4xl md:text-6xl" style="font-variation-settings: &quot;FILL&quot; 1;">play_arrow</span>
+<span class="font-label-mono text-label-mono mt-2 uppercase tracking-widest text-sm md:text-base font-medium">View Full Deck</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-structural-line">
+<p class="font-label-mono text-label-mono text-on-surface-variant">GTM Strategy • Funnel Economics</p>
+</div>
+</div>
+<!-- AI Product Teardown -->
+</div>
+</div>
+<div class="pt-8">
+<a class="brutalist-button inline-flex items-center gap-2 text-lg px-8 py-4" href="#">
+<span class="font-label-mono mr-2">TrueSignall</span>
+<span class="material-symbols-outlined">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Competencies / AI Process -->
+<section class="space-y-12" id="skills">
+</section><section class="py-24 bg-surface-cream border-t-2 border-structural-line">
+<div class="flex flex-col items-center text-center space-y-12">
+<h2 class="font-headline-lg text-4xl md:text-6xl uppercase leading-tight max-w-4xl">
+            Anyway, Thanks For Scrolling This Far
+        </h2>
+<div class="space-y-6">
+<a class="brutalist-button text-lg px-8 py-4 inline-flex items-center gap-3" href="mailto:aminshaikhone@gmail.com">
+<span class="material-symbols-outlined">mail</span>
+                aminshaikhone@gmail.com
+            </a>
+<div class="flex flex-col md:flex-row gap-4 md:gap-8 justify-center font-label-mono text-on-surface-variant">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">call</span> +91 8329556730</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Bangalore, India</span>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-4"><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="https://www.linkedin.com/in/22amin/" target="_blank"><span class="font-label-mono font-medium">LinkedIn</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="https://github.com/CapAmin22" target="_blank"><span class="font-label-mono font-medium">GitHub</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="https://x.com/aminshaikh22" target="_blank"><span class="font-label-mono font-medium">X / Twitter</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="#" target="_blank"><span class="font-label-mono font-medium">Substack</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="#" target="_blank"><span class="font-label-mono font-medium">Medium</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a></div>
+</div>
+</section></main><footer class="border-t border-structural-line bg-surface">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="font-label-mono text-label-mono">© 2026 Amin Shaikh</div>
+<div class="font-body-md text-on-surface-variant italic text-center md:text-right flex-grow max-w-xl md:px-12 whitespace-nowrap">
+            - Great products are built on deep empathy and data-driven conviction.
+        </div>
+<a class="w-12 h-12 rounded-full border border-structural-line flex items-center justify-center bg-highlight-neon shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined font-bold">arrow_upward</span>
+</a>
+</div>
+</footer>
+
+
+</body></html>
