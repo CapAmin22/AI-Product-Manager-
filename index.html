@@ -129,26 +129,39 @@
 <p class="font-label-mono text-label-sm text-on-surface-variant mt-1">Bangalore, India (Full-Time)</p>
 </div>
 </div>
-<ul class="space-y-4 list-none">
-<li class="flex gap-3 items-start">
-<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
-<p class="font-body-md">Led the end-to-end delivery of an AI-powered competitive intelligence feature that unified 24,000+ ads, competitor creatives, and signal feeds into a single auto-compiled library, enabling 2.4x faster search-to-shortlist workflows and reducing time to first brief by 46%.</p>
-</li>
-<li class="flex gap-3 items-start">
-<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
-<p class="font-body-md">An insights engine that indexed 24K ads across platforms and auto-generated 2,000+ creative scripts, cutting research-to-brief time by 96% and driving significantly higher traction and GTM adoption.</p>
-</li>
-<li class="flex gap-3 items-start">
-<span class="material-symbols-outlined mt-1 text-on-surface" style="font-variation-settings: &quot;FILL&quot; 1;">arrow_right</span>
-<p class="font-body-md">Drove product analytics initiatives using MS Clarity, including funnel analysis and A/B testing, to identify drop-offs, optimize conversion, and communicate insights through clear storytelling to align cross-functional stakeholders.</p>
-</li>
-</ul>
-<div class="flex flex-wrap gap-2 mt-8">
-<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">AI Implementation</span>
-<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">NIST-based framework</span>
-<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">GDPR/CCPA</span>
-<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Data Driven Iteration</span>
-<span class="bg-surface-variant border border-structural-line px-3 py-1 font-label-mono text-label-sm">Success Metrics</span>
+<div class="mt-4">
+<p class="font-body-md text-on-surface">At PassionBits.io, we operated in the high-growth, fast-paced world of User-Generated Content (UGC) and video advertising. The baseline landscape for creative production, however, was anchored in a highly traditional, linear waterfall model: Research → Scripting → Casting → Shooting → Editing.</p>
+
+<button onclick="document.getElementById('passionbits-story').classList.toggle('hidden'); this.innerHTML = this.innerHTML.includes('Read Full Story') ? 'Hide Story <span class=\'material-symbols-outlined text-sm\'>expand_less</span>' : 'Read Full Story <span class=\'material-symbols-outlined text-sm\'>expand_more</span>'" class="bg-surface text-on-background px-4 py-2 border border-structural-line font-label-mono text-label-mono hover:bg-highlight-neon transition-colors duration-150 flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-medium cursor-pointer mt-4">
+    Read Full Story <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+
+<div id="passionbits-story" class="hidden mt-6 space-y-4 font-body-md text-on-surface border-l-2 border-structural-line pl-4">
+    <p>Brand marketers, creative leads, and production teams faced immense operational drag. They battled severe creative blocks, missed real-time regional trends due to data overload, and routinely launched ad campaigns based on guesswork rather than validated data. The process was slow, costly, and deeply fragmented, turning what should have been an agile marketing workflow into a massive operational bottleneck.</p>
+    <p>We realized that incrementally patching this legacy workflow wouldn't suffice; we needed to structurally redefine the category. We set a bold product vision: to transition from a manual, hand-off execution process to an autonomous Agentic Intelligence Engine that converts unstructured real-time market signals into data-validated growth flywheels.</p>
+    <p>As the Product Manager, I initiated a rigorous product discovery phase to map user pain points directly to a technical solution, organizing our execution into a strict three-tiered prioritization framework:</p>
+    <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Tier 1 (P0) - Core Value Discovery:</strong> Eliminating guesswork and blank-page syndrome.</li>
+        <li><strong>Tier 2 (P1) - Production &amp; Cost Efficiency:</strong> Automating script variations and creator matching.</li>
+        <li><strong>Tier 3 (P2) - Strategic Nuance &amp; Long-Term Assets:</strong> Integrating human authenticity and institutional memory.</li>
+    </ul>
+    <p>We began building the Intelligence &amp; Multi-Modal Analysis Layer. To handle high concurrency, we utilized FastAPI to build an asynchronous API layer orchestrated via LangChain. To truly understand what makes an ad perform, we moved beyond basic keyword matching and built a pipeline to break down raw video into a multidimensional vector space:</p>
+    <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Visual Analysis:</strong> Implemented frame sampling at 0.5 Hz processed by YOLO for real-time object and structure recognition.</li>
+        <li><strong>Audio/Text Extraction:</strong> Integrated OpenAI Whisper for speech-to-text and Tesseract OCR for burned-in captions.</li>
+        <li><strong>Aesthetic Quantification:</strong> Deployed CLIP to mathematically capture the visual "vibe" and style of high-performing ads.</li>
+    </ul>
+    <p>To feed this analytical engine, we scaled up our Data Ingestion &amp; Agentic Production Pipeline. We architected a multi-source collection engine using the Meta API and Selenium to scrape trending organic formats, routing the media through an automated FFmpeg pipeline for normalization.</p>
+    <p>All extracted features were passed through the OpenAI Embedding API and stored in a Pinecone vector database. Using LangChain's agentic reasoning, the system could autonomously retrieve winning hooks and success patterns from this vector index, feeding them into GPT-4o and Claude 3.5 Sonnet to instantly generate structured, high-converting scripts. Finally, we tied this to a real-time creator marketplace matching engine powered by a geo-fenced availability algorithm, bridging the gap between automated insights and rapid human execution.</p>
+    <p>Our core metrics proved that transitioning to an agentic architecture transformed our product from an operational cost center into a dominant value driver:</p>
+    <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Velocity Optimization (L1 Metric):</strong> Achieved a 46% reduction in Time-to-First-Brief, completely neutralizing "blank page syndrome" and allowing brands to launch trend-aligned concepts in hours instead of weeks.</li>
+        <li><strong>High-Fidelity Matching (L2 Metric):</strong> Drove a 2.4x acceleration in search-to-shortlist conversion rates by using deep visual DNA analysis (CLIP + YOLO) rather than simple metadata.</li>
+        <li><strong>Defensible Scale:</strong> Created an unassailable institutional moat by synthesizing 24,000+ distinct ad signals into a searchable library and autonomously generating over 2,000+ data-backed creative scripts.</li>
+    </ul>
+    <p>Ultimately, we reclaimed the strategic capacity of creative teams—reallocating their cognitive energy away from manual technical drudgery and back toward high-leverage decision-making, positioning, and brand resonance.</p>
+    <p>And ever since then... PassionBits has operated on a self-sustaining Intelligence Flywheel. Every creative signal ingested makes the next AI-generated script more precise, and every creator interaction adds human-centric validity to our automated outputs—proving that deeply technical, agentic product design can turn standard industry bottlenecks into scalable, proprietary engines for business growth.</p>
+</div>
 </div>
 </div>
 </div>
