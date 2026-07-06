@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CreativeOS - Case Study</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#474832",
+                        "inverse-surface": "#303221",
+                        "inverse-primary": "#c0d100",
+                        "highlight-neon": "#EBFF00",
+                        "primary": "#5b6400",
+                        "surface-bright": "#fbfbe2",
+                        "surface-container-highest": "#e4e4cc",
+                        "secondary": "#5e5e5e",
+                        "on-background": "#1b1d0e",
+                        "surface": "#fbfbe2",
+                        "surface-cream": "#F5F5DC",
+                        "surface-variant": "#e4e4cc",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f2f2d9",
+                        "outline": "#77795f",
+                        "on-surface": "#1b1d0e",
+                        "background": "#fbfbe2",
+                        "structural-line": "#000000"
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px", "none": "0px" },
+                    spacing: { "margin-mobile": "24px", "unit": "4px", "gutter": "0px", "margin-desktop": "48px", "container-max": "1440px" },
+                    fontFamily: {
+                        "display-lg-mobile": ["Space Grotesk"], "body-md": ["Inter"], "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"], "display-lg": ["Space Grotesk"], "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"], "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': 'linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .bg-grid { background-image: theme('backgroundImage.grid-pattern'); background-size: 24px 24px; }
+            .brutalist-border { @apply border border-structural-line; }
+            .brutalist-button { @apply bg-highlight-neon border border-structural-line text-on-background font-label-mono text-label-mono px-6 py-3 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)]; }
+            .nav-link { @apply font-label-mono uppercase tracking-widest text-sm hover:bg-highlight-neon hover:text-on-background px-3 py-2 border border-transparent hover:border-structural-line transition-colors whitespace-nowrap flex-shrink-0; }
+            .hide-scrollbar::-webkit-scrollbar { display: none; }
+            .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-background bg-grid min-h-screen antialiased selection:bg-highlight-neon selection:text-on-background">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface border-b-2 border-structural-line shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] w-full">
+<div class="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4 overflow-hidden">
+<a class="font-headline-md text-xl md:text-2xl uppercase tracking-tighter flex items-center gap-2" href="index.html">
+<span class="bg-highlight-neon w-5 h-5 md:w-6 md:h-6 border border-structural-line shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] inline-block"></span>
+            CreativeOS</a>
+<nav class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-4 overflow-x-auto max-w-full pb-2 md:pb-0 w-full md:w-auto hide-scrollbar scroll-smooth">
+<a class="nav-link" href="#thesis">Thesis</a>
+<a class="nav-link" href="#discovery">Discovery</a>
+<a class="nav-link" href="#architecture">Architecture</a>
+<a class="nav-link" href="#evaluation">Evaluation</a>
+<a class="nav-link" href="#judgment">PM Judgment</a>
+<a class="nav-link" href="#economics">Economics</a>
+<a class="nav-link" href="#retrospective">Retrospective</a>
+</nav>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-4 md:px-margin-mobile lg:px-margin-desktop py-8 md:py-24">
+<div class="border-2 border-structural-line bg-surface p-6 md:p-16 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden space-y-12 md:space-y-24">
+<div class="absolute -right-8 -top-8 md:-right-16 md:-top-16 w-32 h-32 md:w-64 md:h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+<!-- Header Section -->
+<div class="space-y-8 z-10">
+<div class="flex flex-wrap gap-4">
+<a class="brutalist-button px-4 py-2 flex items-center gap-2 font-medium" href="#">Live Demo <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+<a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-surface-cream flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-medium" href="#">Rubric/Evals <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+<a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-surface-cream flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-medium" href="#">GitHub <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+</div>
+<div class="space-y-4">
+<h1 class="font-display-lg-mobile text-2xl sm:text-3xl md:text-5xl lg:text-7xl text-headline-lg leading-none tracking-tight">CreativeOS: The Flagship Creative-Intelligence System</h1>
+<p class="font-headline-md text-xl md:text-2xl text-on-surface-variant max-w-4xl">An orchestrated LangGraph pipeline that ingests competitor and own creative, clusters it by theme, flags fatiguing angles, generates on-brand variants, gates every output through an eval, and routes to a human for taste sign-off — instrumented with cost-per-run and a quality dashboard.</p>
+<div class="inline-block border-2 border-structural-line bg-surface-variant px-4 py-2 font-label-mono text-sm mt-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold">Role: AI PM — Amin</div>
+</div>
+</div>
+<!-- 01 The Thesis -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="thesis">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">01</span>The Thesis</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="border-2 border-structural-line bg-inverse-surface text-inverse-on-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-highlight-neon mb-2 uppercase tracking-widest text-sm">The Problem</p>
+<p class="font-display-lg-mobile text-4xl md:text-5xl mb-4">Drowning</p>
+<p class="font-body-lg">Growth teams are drowning in creative but have no system to learn from it. Which angles are working? Which are fatiguing? What should we make next? Clustering, scoring, and generation all happen manually — or not at all — and every "AI creative tool" answer generates volume without judgment.</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-primary mb-2 uppercase tracking-widest text-sm">Strategic Pivot</p>
+<p class="font-headline-md text-3xl mb-4 uppercase">A System, Not A Chatbot</p>
+<p class="font-body-lg">Orchestration + evaluation + a data flywheel — the exact shape the MarTech market pays a premium for. CreativeOS composes two independently evaluated modules (HookLens as the labeling gate, BrandGround as on-brand grounding) into one stateful graph with branches, human pauses, and recovery.</p>
+</div>
+</div>
+</div>
+<!-- 02 Discovery -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="discovery">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">02</span>Discovery</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="border-2 border-structural-line p-6 md:p-8 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase mb-4 border-b border-structural-line pb-4 flex justify-between items-center"><span>Primary: Growth / Performance Team</span> <span class="material-symbols-outlined text-3xl">person</span></h3>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Pains</p>
+<ul class="list-disc pl-5 mb-8 font-body-lg space-y-1">
+<li>Overwhelming creative library, no map of the angles in the market</li>
+<li>Fatiguing angles keep getting budget because nobody flags them</li>
+<li>Generated variants drift off-brand and reach reviewers unchecked</li>
+</ul>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Core JTBD</p>
+<ul class="space-y-3 font-body-lg">
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span>"Tell me which creative angles are working, which are dying, and give me on-brand next bets — with evidence."</span></li>
+</ul>
+</div>
+<div class="border-2 border-structural-line p-6 md:p-8 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase mb-4 border-b border-structural-line pb-4 flex justify-between items-center"><span>Secondary: Founder-Led GTM Operator</span> <span class="material-symbols-outlined text-3xl">groups</span></h3>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Pains</p>
+<ul class="list-disc pl-5 mb-8 font-body-lg space-y-1">
+<li>No studio, no strategist — but algorithmic delivery demands creative diversity</li>
+<li>Can't afford a bad batch: review time is the scarcest resource</li>
+<li>Needs the machine to pre-vet, but the taste call must stay human</li>
+</ul>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Core JTBD</p>
+<ul class="space-y-3 font-body-lg">
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span>Review only pre-vetted candidates; approve or reject in minutes, not meetings.</span></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- 03 Architecture -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="architecture">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">03</span>Architecture</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+<div class="lg:col-span-2 border-2 border-structural-line bg-surface-cream p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="w-full h-full min-h-[300px] border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-surface flex flex-col items-center justify-center p-8 text-center relative overflow-hidden">
+<span class="material-symbols-outlined text-6xl text-primary mb-4 z-10" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<h3 class="font-headline-md text-2xl uppercase mb-2 z-10">The Stateful Graph</h3>
+<p class="font-label-mono text-sm text-on-surface-variant z-10 max-w-lg mb-4">INGEST → CLUSTER/LABEL → SCORE + FATIGUE → GENERATE → EVAL GATE → HUMAN REVIEW → FEEDBACK LOOP → DASHBOARD</p>
+<p class="font-body-lg text-on-surface-variant z-10 max-w-md">A LangGraph StateGraph with conditional edges: if nothing passes the gate, loop back to regenerate; if it passes, pause for the human. Any step that errors retries with backoff, then escalates instead of crashing — with iteration caps everywhere so it can never loop forever.</p>
+</div>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-center space-y-6">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase border-b border-structural-line pb-4 flex items-center gap-2"><span class="material-symbols-outlined">build</span> Key Decisions</h3>
+<div class="space-y-4 font-label-mono text-sm tracking-widest">
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Reuse Story</span>
+<strong class="text-base">HookLens = Label Gate · BrandGround = Grounding</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Gate Rule</span>
+<strong class="text-base">Brand Voice ≥ 4 AND Quality Judge ≥ 4</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Resilience</span>
+<strong class="text-base">Retry w/ Backoff → Escalate · Caps Everywhere</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Stack</span>
+<strong class="text-base">LangGraph · FastAPI · Langfuse · Docker · CI</strong>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 04 Evaluation -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="evaluation">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">04</span>Evaluation</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="border-2 border-structural-line bg-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-5xl md:text-6xl text-primary mb-2">120+</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-surface-variant mt-4">Pipeline Golden-Set Tasks</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-5xl md:text-6xl text-primary mb-2">5</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-surface-variant mt-4">Pipeline Metrics On The Quality Dashboard</p>
+</div>
+<div class="border-2 border-structural-line bg-highlight-neon p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-5xl md:text-6xl text-on-background mb-2">Per-PR</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-background mt-4">CI Regression Gate On Every Change</p>
+</div>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-4">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase border-b border-structural-line pb-4">The Methodology</h3>
+<p class="font-body-lg"><strong>Evaluate the pipeline, not just calls:</strong> End-to-end success rate, gate pass-rate, human-approval rate, average iterations, and cost per run — because a system's failure modes live between the steps, not inside them. This is the layer ~95% of candidates skip.</p>
+<p class="font-body-lg"><strong>Validated LLM-as-judge:</strong> Cluster coherence and variant quality are subjective, so they're scored by a judge that is itself validated against human judgments on a sample. A healthy gate pass-rate sits in the 60–80% band: 100% means the gate is asleep, 5% means generation is broken.</p>
+<p class="font-body-lg"><strong>Regression tracking in CI:</strong> The golden set re-runs on every pull request, so a bad prompt change is caught automatically. Human approve/reject decisions feed back to update scores and grow the golden set — the data flywheel turning.</p>
+</div>
+</div>
+<!-- 05 PM Judgment -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="judgment">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">05</span>PM Judgment</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="border-2 border-structural-line bg-inverse-surface text-inverse-on-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-highlight-neon mb-2 uppercase tracking-widest text-sm">The Hard Decision</p>
+<p class="font-headline-md text-2xl mb-4 uppercase text-surface-bright">The Fatigue Proxy — Named, Not Hidden</p>
+<p class="font-body-lg">With no live performance data (the cold start), fatigue is detected via saturation + recency proxies: an angle is fatigue-risk if enough competitors run it AND it's been circulating for weeks. The limitation is stated in the README: "This is a saturation proxy; with real ROAS data I'd replace it with measured decay." Presenting a proxy as measured truth is the failure; naming it is the signal.</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-primary mb-2 uppercase tracking-widest text-sm">The Rejected Alternative</p>
+<p class="font-headline-md text-2xl mb-4 uppercase">Multi-Agent Theater</p>
+<p class="font-body-lg">The tempting build was a multi-agent "crew" — it demos flashier. Rejected: a well-built single orchestrated graph beats a sloppy crew, and complexity has to be earned by a measured need, not fashion. Same discipline scoped the ambitious "Creative Intelligence Engine" vision down to the buildable, eval-led slice — with the honest gap documented.</p>
+</div>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mt-8">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase border-b border-structural-line pb-4 mb-6">The Human-In-The-Loop Boundary</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-body-lg">
+<div><p class="font-label-mono text-sm uppercase tracking-widest text-on-surface-variant mb-2">Human Checkpoint 1</p><p>Final variant approval — the taste/brand sign-off a model can't own.</p></div>
+<div><p class="font-label-mono text-sm uppercase tracking-widest text-on-surface-variant mb-2">Human Checkpoint 2</p><p>The "spend money on this" call — never automated, ever.</p></div>
+<div><p class="font-label-mono text-sm uppercase tracking-widest text-on-surface-variant mb-2">Human Checkpoint 3</p><p>Tuning the fatigue threshold — a judgment about risk appetite. Everything else is automated.</p></div>
+</div>
+</div>
+</div>
+<!-- 06 Economics -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="economics">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">06</span>Economics</h2>
+<div class="overflow-x-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-structural-line mb-8">
+<table class="w-full text-left border-collapse font-body-lg bg-surface">
+<thead>
+<tr class="bg-surface-variant border-b-2 border-structural-line font-label-mono uppercase text-sm tracking-widest">
+<th class="p-4 md:p-6 border-r-2 border-structural-line">Pipeline Step</th>
+<th class="p-4 md:p-6 border-r-2 border-structural-line">Model Tier</th>
+<th class="p-4 md:p-6 border-r-2 border-structural-line">Why This Tier</th>
+<th class="p-4 md:p-6">Lever</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b-2 border-structural-line hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold">Cluster / label</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Cheap</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">High volume, low difficulty</td>
+<td class="p-4 md:p-6">Cache embeddings</td>
+</tr>
+<tr class="border-b-2 border-structural-line hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold">Score + fatigue</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Cheap → mid</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Rubric scoring is patterned</td>
+<td class="p-4 md:p-6">Cache repeated creatives</td>
+</tr>
+<tr class="border-b-2 border-structural-line hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold bg-highlight-neon/20">Generate variants</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold bg-highlight-neon/20">Frontier</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line bg-highlight-neon/20">Quality directly visible to the user</td>
+<td class="p-4 md:p-6 bg-highlight-neon/20">Only on winning angles</td>
+</tr>
+<tr class="hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold">Eval gate</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Cheap</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Reuses the HookLens classifier</td>
+<td class="p-4 md:p-6">Batch where possible</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="border-2 border-structural-line bg-highlight-neon p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-sm uppercase tracking-widest font-bold mb-2">The Kill / Scale Call</p>
+<p class="font-body-lg font-medium">Cost-per-run is measured with Langfuse traces, not estimated — broken down by step on a live dashboard. The framing: "If this pipeline improves hook selection enough to lift ROAS by Y% on a $Z monthly spend, it pays back in N runs." With token prices down ~80% year-over-year, cost is rarely the blocker — quality and trust are, so the frontier model touches only where quality is visible.</p>
+</div>
+</div>
+<!-- 07 Retrospective -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="retrospective">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">07</span>Retrospective</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="border-l-4 border-structural-line pl-6 py-2">
+<h3 class="font-label-mono text-on-background bg-highlight-neon border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] inline-block px-3 py-1 mb-4 uppercase text-sm font-bold tracking-widest">Gates Beat Models</h3>
+<p class="font-body-lg">Chained workflows multiply both cost and error — so validation gates and iteration caps matter more than model choice. One bad output with no gate between steps poisons the entire chain; the eval gate is the antidote to error compounding.</p>
+</div>
+<div class="border-l-4 border-structural-line pl-6 py-2">
+<h3 class="font-label-mono text-on-background bg-highlight-neon border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] inline-block px-3 py-1 mb-4 uppercase text-sm font-bold tracking-widest">Spine Before Cathedral</h3>
+<p class="font-body-lg">A rough end-to-end spine shipped in week one beats an unfinished cathedral in week eight. Intelligence and evals were layered onto a running skeleton — and the next honest step is replacing the fatigue proxy with measured ROAS decay once real performance data exists.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface border-t-4 border-structural-line mt-16 md:mt-24">
+<div class="max-w-container-max mx-auto px-4 md:px-margin-mobile lg:px-margin-desktop py-12 md:py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="font-display-lg-mobile text-inverse-on-surface mb-4">Let's Build Something.</h2>
+<p class="font-body-lg text-surface-variant max-w-md mb-8">Looking for an AI Product Manager who ships evaluated systems, not demos.</p>
+<a class="inline-block bg-highlight-neon text-on-background font-label-mono uppercase tracking-widest font-bold px-8 py-4 border-2 border-structural-line shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all" href="mailto:aminshaikhone@gmail.com">Get in Touch</a>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="flex gap-6 mb-8">
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://www.linkedin.com/in/22amin/" target="_blank">
+<span class="material-symbols-outlined">link</span> LinkedIn
+                    </a>
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://github.com/CapAmin22" target="_blank">
+<span class="material-symbols-outlined">code</span> GitHub
+                    </a>
+</div>
+<p class="font-label-mono text-sm text-surface-variant">© 2026 Amin Shaikh. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

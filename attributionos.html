@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AttributionOS - Case Study</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#474832",
+                        "inverse-surface": "#303221",
+                        "inverse-primary": "#c0d100",
+                        "highlight-neon": "#EBFF00",
+                        "primary": "#5b6400",
+                        "surface-bright": "#fbfbe2",
+                        "surface-container-highest": "#e4e4cc",
+                        "secondary": "#5e5e5e",
+                        "on-background": "#1b1d0e",
+                        "surface": "#fbfbe2",
+                        "surface-cream": "#F5F5DC",
+                        "surface-variant": "#e4e4cc",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f2f2d9",
+                        "outline": "#77795f",
+                        "on-surface": "#1b1d0e",
+                        "background": "#fbfbe2",
+                        "structural-line": "#000000"
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px", "none": "0px" },
+                    spacing: { "margin-mobile": "24px", "unit": "4px", "gutter": "0px", "margin-desktop": "48px", "container-max": "1440px" },
+                    fontFamily: {
+                        "display-lg-mobile": ["Space Grotesk"], "body-md": ["Inter"], "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"], "display-lg": ["Space Grotesk"], "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"], "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': 'linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .bg-grid { background-image: theme('backgroundImage.grid-pattern'); background-size: 24px 24px; }
+            .brutalist-border { @apply border border-structural-line; }
+            .brutalist-button { @apply bg-highlight-neon border border-structural-line text-on-background font-label-mono text-label-mono px-6 py-3 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)]; }
+            .nav-link { @apply font-label-mono uppercase tracking-widest text-sm hover:bg-highlight-neon hover:text-on-background px-3 py-2 border border-transparent hover:border-structural-line transition-colors whitespace-nowrap flex-shrink-0; }
+            .hide-scrollbar::-webkit-scrollbar { display: none; }
+            .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-background bg-grid min-h-screen antialiased selection:bg-highlight-neon selection:text-on-background">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface border-b-2 border-structural-line shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] w-full">
+<div class="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4 overflow-hidden">
+<a class="font-headline-md text-xl md:text-2xl uppercase tracking-tighter flex items-center gap-2" href="index.html">
+<span class="bg-highlight-neon w-5 h-5 md:w-6 md:h-6 border border-structural-line shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] inline-block"></span>
+            AttributionOS</a>
+<nav class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-4 overflow-x-auto max-w-full pb-2 md:pb-0 w-full md:w-auto hide-scrollbar scroll-smooth">
+<a class="nav-link" href="#thesis">Thesis</a>
+<a class="nav-link" href="#discovery">Discovery</a>
+<a class="nav-link" href="#architecture">Architecture</a>
+<a class="nav-link" href="#evaluation">Evaluation</a>
+<a class="nav-link" href="#judgment">PM Judgment</a>
+<a class="nav-link" href="#economics">Economics</a>
+<a class="nav-link" href="#retrospective">Retrospective</a>
+</nav>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-4 md:px-margin-mobile lg:px-margin-desktop py-8 md:py-24">
+<div class="border-2 border-structural-line bg-surface p-6 md:p-16 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden space-y-12 md:space-y-24">
+<div class="absolute -right-8 -top-8 md:-right-16 md:-top-16 w-32 h-32 md:w-64 md:h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+<!-- Header Section -->
+<div class="space-y-8 z-10">
+<div class="flex flex-wrap gap-4">
+<a class="brutalist-button px-4 py-2 flex items-center gap-2 font-medium" href="#">Live Demo <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+<a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-surface-cream flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-medium" href="#">Rubric/Evals <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+<a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-surface-cream flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-medium" href="#">GitHub <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+</div>
+<div class="space-y-4">
+<h1 class="font-display-lg-mobile text-2xl sm:text-3xl md:text-5xl lg:text-7xl text-headline-lg leading-none tracking-tight">AttributionOS: The Attribution &amp; Budget-Intelligence Swarm</h1>
+<p class="font-headline-md text-xl md:text-2xl text-on-surface-variant max-w-4xl">The reconciliation layer between what the platforms claim and what Finance actually banked: a supervised multi-agent system that computes blended truth, runs MMM-lite with confidence intervals, and proposes budget reallocations — every recommendation eval-gated and human-approved, never auto-executed.</p>
+<div class="inline-block border-2 border-structural-line bg-surface-variant px-4 py-2 font-label-mono text-sm mt-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold">Role: AI PM — Amin</div>
+</div>
+</div>
+<!-- 01 The Thesis -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="thesis">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">01</span>The Thesis</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="border-2 border-structural-line bg-inverse-surface text-inverse-on-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-highlight-neon mb-2 uppercase tracking-widest text-sm">The Problem</p>
+<p class="font-display-lg-mobile text-4xl md:text-5xl mb-4">All Wrong, Differently</p>
+<p class="font-body-lg">Every platform claims credit for the same overlapping conversions, so summed platform-reported revenue routinely exceeds what Finance actually banked. Up to ~20% of purchases are influenced by creators, PR, and dark social no pixel sees. Quarterly budget allocation becomes a negotiation between dashboards that are all wrong — differently.</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-primary mb-2 uppercase tracking-widest text-sm">Strategic Pivot</p>
+<p class="font-headline-md text-3xl mb-4 uppercase">Blended Truth + Trust Scores</p>
+<p class="font-body-lg">No single pixel suffices. The credible fix is blended metrics (MER, blended CAC), MMM-lite with confidence intervals, and incrementality testing — reconciled nightly against Finance actuals, with a published per-channel trust score and every budget recommendation carrying its evidence.</p>
+</div>
+</div>
+</div>
+<!-- 02 Discovery -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="discovery">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">02</span>Discovery</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="border-2 border-structural-line p-6 md:p-8 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase mb-4 border-b border-structural-line pb-4 flex justify-between items-center"><span>Primary: Founder / Head of Growth</span> <span class="material-symbols-outlined text-3xl">person</span></h3>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Pains</p>
+<ul class="list-disc pl-5 mb-8 font-body-lg space-y-1">
+<li>Allocating $50k–$1M/quarter across 3+ channels on inflated optics</li>
+<li>Over-funds retargeting's last-click theater; under-funds real incremental lift</li>
+<li>No time to reconcile three dashboards against Finance weekly, let alone run MMM</li>
+</ul>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Core JTBD</p>
+<ul class="space-y-3 font-body-lg">
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span>"Every week, tell me — with stated confidence — where my next dollar has the highest true incremental return, show me the evidence, and let me approve or override in one sitting."</span></li>
+</ul>
+</div>
+<div class="border-2 border-structural-line p-6 md:p-8 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase mb-4 border-b border-structural-line pb-4 flex justify-between items-center"><span>Secondary: RevOps / Finance</span> <span class="material-symbols-outlined text-3xl">groups</span></h3>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Pains</p>
+<ul class="list-disc pl-5 mb-8 font-body-lg space-y-1">
+<li>Closed-won never reconciles with the ad dashboards</li>
+<li>Platform "ROAS" is unauditable and self-graded</li>
+<li>Needs accountability: who approved which budget move, on what evidence?</li>
+</ul>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Core JTBD</p>
+<ul class="space-y-3 font-body-lg">
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span>A weekly, auditable record: recommendation → evidence → gate verdict → named human decision → realized outcome.</span></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- 03 Architecture -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="architecture">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">03</span>Architecture</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+<div class="lg:col-span-2 border-2 border-structural-line bg-surface-cream p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="w-full h-full min-h-[300px] border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-surface flex flex-col items-center justify-center p-8 text-center relative overflow-hidden">
+<span class="material-symbols-outlined text-6xl text-primary mb-4 z-10" style="font-variation-settings: 'FILL' 1;">hub</span>
+<h3 class="font-headline-md text-2xl uppercase mb-2 z-10">The Supervised Swarm (Nightly)</h3>
+<p class="font-label-mono text-sm text-on-surface-variant z-10 max-w-lg mb-4">ORCHESTRATOR → INGESTION AGENTS (×N, parallel) → MEASUREMENT ANALYST (MMM + CIs) → RECONCILIATION (trust scores) → RECOMMENDATION → EVAL GATE → HUMAN AUDIT → MEMORY</p>
+<p class="font-body-lg text-on-surface-variant z-10 max-w-md">Multi-agent for isolation, not fashion: a broken Meta ingester flags and continues instead of killing the run. Agents pass typed state (Pydantic models), never prose — prose between agents is where errors compound. Approved decisions and realized outcomes feed back as memory.</p>
+</div>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-center space-y-6">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase border-b border-structural-line pb-4 flex items-center gap-2"><span class="material-symbols-outlined">build</span> Key Decisions</h3>
+<div class="space-y-4 font-label-mono text-sm tracking-widest">
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Trust Score</span>
+<strong class="text-base">Published Formula · &lt;0.4 = "Advisory Only"</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">MMM-Lite</span>
+<strong class="text-base">Adstock + Saturation + Seasonality · Bootstrap CIs</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">LLM Usage</span>
+<strong class="text-base">Sparingly — Only Where Language Is The Job</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Stack</span>
+<strong class="text-base">LangGraph · DuckDB · Supabase · Langfuse · Docker</strong>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 04 Evaluation -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="evaluation">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">04</span>Evaluation</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="border-2 border-structural-line bg-highlight-neon p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-5xl md:text-6xl text-on-background mb-2">4/4</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-background mt-4">Seeded Bad Recommendations Blocked</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-5xl md:text-6xl text-primary mb-2">Recovery</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-surface-variant mt-4">MMM Scored Against Known Ground Truth</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-5xl md:text-6xl text-primary mb-2">Realized</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-surface-variant mt-4">vs. Predicted Lift — The Learning Scorecard</p>
+</div>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-4">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase border-b border-structural-line pb-4">The Methodology</h3>
+<p class="font-body-lg"><strong>The MMM eval no real-data project can run:</strong> The synthetic dataset (labeled synthetic everywhere) has known ground truth — true incremental contribution per channel, with channel-specific inflation factors baked into the "platform dashboards." The MMM is scored on how closely it recovers the known truth, and the recovery table is published.</p>
+<p class="font-body-lg"><strong>Test the tester:</strong> The gate faces seeded bad recommendations — one based on a single outlier day, one exceeding the 20% policy cap, one contradicting the incrementality test, one favoring a low-trust channel on its self-reported ROAS alone. All four must be blocked with the correct reason, and a legitimate rec must pass.</p>
+<p class="font-body-lg"><strong>Close the loop:</strong> Every approved recommendation stores its predicted lift; the next cycle joins realized outcomes. The realized-vs-predicted scorecard is what tells the human whether to trust the system more or less over time — and it's what separates this from every dashboard project.</p>
+</div>
+</div>
+<!-- 05 PM Judgment -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="judgment">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">05</span>PM Judgment</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="border-2 border-structural-line bg-inverse-surface text-inverse-on-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-highlight-neon mb-2 uppercase tracking-widest text-sm">The Hard Decision</p>
+<p class="font-headline-md text-2xl mb-4 uppercase text-surface-bright">Rejecting Auto-Execution</p>
+<p class="font-body-lg">The tempting design was auto-execution — the demo is flashier and "autonomous" sells. Rejected: budget moves are irreversible within a cycle, accountability must sit with a named human, and an evaluator not yet stress-tested guarding real money is the textbook unsafe loop. Recommend-plus-approve, with a 20% per-cycle shift cap — and the saved effort spent making the human's 15 minutes count.</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-primary mb-2 uppercase tracking-widest text-sm">The Statistical Honesty Call</p>
+<p class="font-headline-md text-2xl mb-4 uppercase">CIs, Never Point Estimates</p>
+<p class="font-body-lg">A credible MMM wants 18–24 months of history; 90 days is directional. So every contribution ships as a confidence interval ("Meta ≈ 35% of incremental revenue, ±8%"), never a precise causal ROAS. Wide honest CIs beat narrow false ones — torturing the model until it looks precise is the hallucination this project exists to avoid.</p>
+</div>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mt-8">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase border-b border-structural-line pb-4 mb-6">The Trust Boundary</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-body-lg">
+<div><p class="font-label-mono text-sm uppercase tracking-widest text-on-surface-variant mb-2">Agents Own</p><p>Ingestion &amp; schema-drift handling, MMM + incrementality analysis, reconciliation math, drafting recommendations with evidence.</p></div>
+<div><p class="font-label-mono text-sm uppercase tracking-widest text-on-surface-variant mb-2">Human Owns</p><p>Choosing the source of truth (Finance wins), judging data sufficiency for MMM, approving every budget move, auditing the evaluator.</p></div>
+<div><p class="font-label-mono text-sm uppercase tracking-widest text-on-surface-variant mb-2">Anti-Rubber-Stamp</p><p>Overrides require a one-line reason — friction by design. Evidence shown before the ask; the gate's reasoning is never hidden.</p></div>
+</div>
+</div>
+</div>
+<!-- 06 Economics -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="economics">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">06</span>Economics</h2>
+<div class="overflow-x-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-structural-line mb-8">
+<table class="w-full text-left border-collapse font-body-lg bg-surface">
+<thead>
+<tr class="bg-surface-variant border-b-2 border-structural-line font-label-mono uppercase text-sm tracking-widest">
+<th class="p-4 md:p-6 border-r-2 border-structural-line">Work Type</th>
+<th class="p-4 md:p-6 border-r-2 border-structural-line">Runs On</th>
+<th class="p-4 md:p-6">Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b-2 border-structural-line hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold">Reconciliation math, MMM, trust scores</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Deterministic code</td>
+<td class="p-4 md:p-6">Everything numerical stays in code — knowing where NOT to use an LLM is the judgment</td>
+</tr>
+<tr class="border-b-2 border-structural-line hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold">Narrative summaries, evidence explanations, drift interpretation</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">LLM (cheap tier)</td>
+<td class="p-4 md:p-6">Only where language is the job — keeps cost creep out of a nightly run</td>
+</tr>
+<tr class="hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold">Cost per run</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Langfuse, per agent</td>
+<td class="p-4 md:p-6">Tokens/run by agent, latency by step, per-agent error rate, guardrail wrong-fires — on a dashboard</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="border-2 border-structural-line bg-highlight-neon p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-sm uppercase tracking-widest font-bold mb-2">The CFO Number</p>
+<p class="font-body-lg font-medium">"Surfaced a $X over-attribution gap and reallocated $Y to channels with proven incremental lift." Platforms collectively claimed $A against $B actually banked — the reconciliation chart is the single view that makes a CFO lean forward, and the project's opening shot.</p>
+</div>
+</div>
+<!-- 07 Retrospective -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="retrospective">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">07</span>Retrospective</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="border-l-4 border-structural-line pl-6 py-2">
+<h3 class="font-label-mono text-on-background bg-highlight-neon border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] inline-block px-3 py-1 mb-4 uppercase text-sm font-bold tracking-widest">Test The Tester</h3>
+<p class="font-body-lg">The riskiest assumption in any loop is that your evaluator measures what you actually care about. An evaluator that agrees with everything is worse than none — seeded bad recommendations are how you prove the gate is awake before it guards anything that matters.</p>
+</div>
+<div class="border-l-4 border-structural-line pl-6 py-2">
+<h3 class="font-label-mono text-on-background bg-highlight-neon border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] inline-block px-3 py-1 mb-4 uppercase text-sm font-bold tracking-widest">Memory ≠ A Long Transcript</h3>
+<p class="font-body-lg">Context accumulation isn't memory. Memory is structured outcomes joined back into decisions — approved recs with predicted lift, matched against what actually happened next cycle. That closed loop is what lets a human calibrate their trust in the system over time.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface border-t-4 border-structural-line mt-16 md:mt-24">
+<div class="max-w-container-max mx-auto px-4 md:px-margin-mobile lg:px-margin-desktop py-12 md:py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="font-display-lg-mobile text-inverse-on-surface mb-4">Let's Build Something.</h2>
+<p class="font-body-lg text-surface-variant max-w-md mb-8">Looking for an AI Product Manager who ships evaluated systems, not demos.</p>
+<a class="inline-block bg-highlight-neon text-on-background font-label-mono uppercase tracking-widest font-bold px-8 py-4 border-2 border-structural-line shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all" href="mailto:aminshaikhone@gmail.com">Get in Touch</a>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="flex gap-6 mb-8">
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://www.linkedin.com/in/22amin/" target="_blank">
+<span class="material-symbols-outlined">link</span> LinkedIn
+                    </a>
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://github.com/CapAmin22" target="_blank">
+<span class="material-symbols-outlined">code</span> GitHub
+                    </a>
+</div>
+<p class="font-label-mono text-sm text-surface-variant">© 2026 Amin Shaikh. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HookLens - Case Study</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#474832",
+                        "inverse-surface": "#303221",
+                        "inverse-primary": "#c0d100",
+                        "highlight-neon": "#EBFF00",
+                        "primary": "#5b6400",
+                        "surface-bright": "#fbfbe2",
+                        "surface-container-highest": "#e4e4cc",
+                        "secondary": "#5e5e5e",
+                        "on-background": "#1b1d0e",
+                        "surface": "#fbfbe2",
+                        "surface-cream": "#F5F5DC",
+                        "surface-variant": "#e4e4cc",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f2f2d9",
+                        "outline": "#77795f",
+                        "on-surface": "#1b1d0e",
+                        "background": "#fbfbe2",
+                        "structural-line": "#000000"
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px", "none": "0px" },
+                    spacing: { "margin-mobile": "24px", "unit": "4px", "gutter": "0px", "margin-desktop": "48px", "container-max": "1440px" },
+                    fontFamily: {
+                        "display-lg-mobile": ["Space Grotesk"], "body-md": ["Inter"], "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"], "display-lg": ["Space Grotesk"], "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"], "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': 'linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px)'
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .bg-grid { background-image: theme('backgroundImage.grid-pattern'); background-size: 24px 24px; }
+            .brutalist-border { @apply border border-structural-line; }
+            .brutalist-button { @apply bg-highlight-neon border border-structural-line text-on-background font-label-mono text-label-mono px-6 py-3 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)]; }
+            .nav-link { @apply font-label-mono uppercase tracking-widest text-sm hover:bg-highlight-neon hover:text-on-background px-3 py-2 border border-transparent hover:border-structural-line transition-colors whitespace-nowrap flex-shrink-0; }
+            .hide-scrollbar::-webkit-scrollbar { display: none; }
+            .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-background bg-grid min-h-screen antialiased selection:bg-highlight-neon selection:text-on-background">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface border-b-2 border-structural-line shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] w-full">
+<div class="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop py-3 md:py-4 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4 overflow-hidden">
+<a class="font-headline-md text-xl md:text-2xl uppercase tracking-tighter flex items-center gap-2" href="index.html">
+<span class="bg-highlight-neon w-5 h-5 md:w-6 md:h-6 border border-structural-line shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] inline-block"></span>
+            HookLens</a>
+<nav class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-4 overflow-x-auto max-w-full pb-2 md:pb-0 w-full md:w-auto hide-scrollbar scroll-smooth">
+<a class="nav-link" href="#thesis">Thesis</a>
+<a class="nav-link" href="#discovery">Discovery</a>
+<a class="nav-link" href="#architecture">Architecture</a>
+<a class="nav-link" href="#evaluation">Evaluation</a>
+<a class="nav-link" href="#judgment">PM Judgment</a>
+<a class="nav-link" href="#economics">Economics</a>
+<a class="nav-link" href="#retrospective">Retrospective</a>
+</nav>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-4 md:px-margin-mobile lg:px-margin-desktop py-8 md:py-24">
+<div class="border-2 border-structural-line bg-surface p-6 md:p-16 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden space-y-12 md:space-y-24">
+<div class="absolute -right-8 -top-8 md:-right-16 md:-top-16 w-32 h-32 md:w-64 md:h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+<!-- Header Section -->
+<div class="space-y-8 z-10">
+<div class="flex flex-wrap gap-4">
+<a class="brutalist-button px-4 py-2 flex items-center gap-2 font-medium" href="#">Live Demo <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+<a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-surface-cream flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-medium" href="https://docs.google.com/document/d/1Rif6sSbJyYihV-UeyeWlPhJZ8JQDx7b6nEfM33T1lK8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Rubric/Evals <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+<a class="border border-structural-line px-4 py-2 font-label-mono text-label-mono bg-surface-cream flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform duration-200 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-medium" href="https://github.com/CapAmin22/HOOKLENS" target="_blank" rel="noopener noreferrer">GitHub <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+</div>
+<div class="space-y-4">
+<h1 class="font-display-lg-mobile text-2xl sm:text-3xl md:text-5xl lg:text-7xl text-headline-lg leading-none tracking-tight">HookLens: The Ad-Creative Classifier + Eval Harness</h1>
+<p class="font-headline-md text-xl md:text-2xl text-on-surface-variant max-w-4xl">A structured-output service that classifies &amp; scores marketing hooks — wrapped in a real evaluation harness with a labeled golden set, confidence calibration, and an explicit human-in-the-loop trust threshold.</p>
+<div class="inline-block border-2 border-structural-line bg-surface-variant px-4 py-2 font-label-mono text-sm mt-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold">Role: AI PM — Amin</div>
+</div>
+</div>
+<!-- 01 The Thesis -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="thesis">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">01</span>The Thesis</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="border-2 border-structural-line bg-inverse-surface text-inverse-on-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-highlight-neon mb-2 uppercase tracking-widest text-sm">The Problem</p>
+<p class="font-display-lg-mobile text-4xl md:text-5xl mb-4">~95%</p>
+<p class="font-body-lg">Of AI-PM candidates ship classifiers with no eval harness. Performance teams generate hundreds of hooks, but nobody can say — at scale — what kind each one is, which funnel stage it serves, or whether the label can be trusted. Manual tagging doesn't scale; gut-feel tagging is inconsistent.</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-primary mb-2 uppercase tracking-widest text-sm">Strategic Pivot</p>
+<p class="font-headline-md text-3xl mb-4 uppercase">Measured, Not Demoed</p>
+<p class="font-body-lg">A typed classifier is a commodity. The product is the evidence around it: a hand-labeled golden set, macro-F1 with a confusion matrix, confidence calibration, and a written trust boundary that says exactly when a human must stay in the loop. I don't ship AI I haven't measured.</p>
+</div>
+</div>
+</div>
+<!-- 02 Discovery -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="discovery">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">02</span>Discovery</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="border-2 border-structural-line p-6 md:p-8 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase mb-4 border-b border-structural-line pb-4 flex justify-between items-center"><span>Primary: Performance Marketer</span> <span class="material-symbols-outlined text-3xl">person</span></h3>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Pains</p>
+<ul class="list-disc pl-5 mb-8 font-body-lg space-y-1">
+<li>Hundreds of hooks, no consistent classification at scale</li>
+<li>Gut-feel tagging varies by person and by day</li>
+<li>No way to know which labels are trustworthy enough for a spend decision</li>
+</ul>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Core JTBD</p>
+<ul class="space-y-3 font-body-lg">
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span>"Tell me what kind of hook this is, which funnel stage it serves, whether it's on-brand — and whether I can trust the label."</span></li>
+</ul>
+</div>
+<div class="border-2 border-structural-line p-6 md:p-8 bg-surface-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase mb-4 border-b border-structural-line pb-4 flex justify-between items-center"><span>Secondary: Creative Strategist</span> <span class="material-symbols-outlined text-3xl">groups</span></h3>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Pains</p>
+<ul class="list-disc pl-5 mb-8 font-body-lg space-y-1">
+<li>Can't audit a creative library to decide what to make more of</li>
+<li>Ambiguous hooks (curiosity vs. FOMO) break every homegrown taxonomy</li>
+<li>Off-taxonomy AI labels ("vibe-shift hook!") are unusable as data</li>
+</ul>
+<p class="font-label-mono text-sm text-on-surface-variant mb-2 uppercase tracking-widest">Core JTBD</p>
+<ul class="space-y-3 font-body-lg">
+<li class="flex items-start gap-3"><span class="text-highlight-neon bg-structural-line p-1 rounded-sm shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] font-bold material-symbols-outlined text-sm">check_box</span> <span>Turn a pile of creative into structured, countable, chartable data — with a fixed taxonomy that encodes a point of view.</span></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- 03 Architecture -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="architecture">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">03</span>Architecture</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+<div class="lg:col-span-2 border-2 border-structural-line bg-surface-cream p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="w-full h-full min-h-[300px] border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-surface flex flex-col items-center justify-center p-8 text-center relative overflow-hidden">
+<span class="material-symbols-outlined text-6xl text-primary mb-4 z-10" style="font-variation-settings: 'FILL' 1;">schema</span>
+<h3 class="font-headline-md text-2xl uppercase mb-2 z-10">The Confidence Gate Flow</h3>
+<p class="font-label-mono text-sm text-on-surface-variant z-10 max-w-lg mb-4">hook → [LLM · structured-output schema] → typed analysis → confidence gate → auto-accept / route to human</p>
+<p class="font-body-lg text-on-surface-variant z-10 max-w-md">A Pydantic schema with Literal enums makes off-taxonomy hallucination impossible: archetype, funnel stage, emotional angle, brand-voice score (1–5), confidence, and a one-sentence rationale — every time, in exactly the same shape.</p>
+</div>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-center space-y-6">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase border-b border-structural-line pb-4 flex items-center gap-2"><span class="material-symbols-outlined">build</span> Key Decisions</h3>
+<div class="space-y-4 font-label-mono text-sm tracking-widest">
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Output Contract</span>
+<strong class="text-base">Pydantic Structured Output</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Consistency Dial</span>
+<strong class="text-base">Temperature 0, Cheap Model</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Subjective Scoring</span>
+<strong class="text-base">Validated LLM-as-Judge</strong>
+</div>
+<div class="border-2 border-structural-line p-4 bg-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="text-on-surface-variant uppercase text-xs block mb-1">Delivery</span>
+<strong class="text-base">Streamlit + Reproducible Eval Script</strong>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 04 Evaluation -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="evaluation">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">04</span>Evaluation</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="border-2 border-structural-line bg-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-5xl md:text-6xl text-primary mb-2">100+</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-surface-variant mt-4">Hand-Labeled Golden Set</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-5xl md:text-6xl text-primary mb-2">Macro-F1</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-surface-variant mt-4">+ Per-Class Confusion Matrix</p>
+</div>
+<div class="border-2 border-structural-line bg-highlight-neon p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center hover:-translate-y-1 transition-transform">
+<p class="font-display-lg-mobile text-5xl md:text-6xl text-on-background mb-2">≥0.85</p>
+<p class="font-label-mono uppercase text-sm font-bold tracking-widest text-on-background mt-4">Confidence Auto-Accept Threshold</p>
+</div>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-4">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase border-b border-structural-line pb-4">The Methodology</h3>
+<p class="font-body-lg"><strong>Golden set over volume:</strong> ~100 real hooks pulled from the Meta Ad Library, hand-labeled with a written rubric — deliberately over-sampling the hard, ambiguous cases (hooks that are both curiosity AND FOMO), because that's where the model breaks and the eval earns its keep.</p>
+<p class="font-body-lg"><strong>Split ground truth from judgment:</strong> Archetype and funnel stage are graded against my labels (F1 + confusion matrix). Brand-voice is subjective, so it's scored by a separate rubric-driven LLM-as-judge — validated against my human scores on a sample. An unvalidated judge is just a vibe.</p>
+<p class="font-body-lg"><strong>Calibration is the ship rule:</strong> If answers marked "0.9 confident" aren't right ~90% of the time, the confidence number is lying and can't drive automation. Accuracy is banded by confidence, and the auto-accept threshold sits where the error rate stays under 5%.</p>
+</div>
+</div>
+<!-- 05 PM Judgment -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="judgment">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">05</span>PM Judgment</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+<div class="border-2 border-structural-line bg-inverse-surface text-inverse-on-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-highlight-neon mb-2 uppercase tracking-widest text-sm">The Hard Decision</p>
+<p class="font-headline-md text-2xl mb-4 uppercase text-surface-bright">Setting the Auto-Accept Threshold</p>
+<p class="font-body-lg">At ≥0.7 confidence I'd automate ~85% of volume but ship ~12% mislabels; at ≥0.85 I'd cover only ~55% but hold errors under 5%. Because the downstream use is a spend decision, I chose ≥0.85 and routed the rest to review — I'd rather under-automate than feed a wrong label into a budget call.</p>
+</div>
+<div class="border-2 border-structural-line bg-surface p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-primary mb-2 uppercase tracking-widest text-sm">The Rejected Alternative</p>
+<p class="font-headline-md text-2xl mb-4 uppercase">One Threshold For Everything</p>
+<p class="font-body-lg">A single fixed threshold across all fields ignored that brand-voice scoring is noisier than archetype classification — so thresholds are set per-field instead. Same call on single-label vs. multi-label: forced a primary label (what teams actually want), documented the ambiguity rather than hiding it.</p>
+</div>
+</div>
+<div class="border-2 border-structural-line bg-surface-variant p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mt-8">
+<h3 class="font-headline-md text-xl md:text-2xl uppercase border-b border-structural-line pb-4 mb-6">The Trust Boundary</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-body-lg">
+<div><p class="font-label-mono text-sm uppercase tracking-widest text-on-surface-variant mb-2">AI Owns</p><p>First-pass archetype / angle / funnel classification at scale; consistent triage a human can act on.</p></div>
+<div><p class="font-label-mono text-sm uppercase tracking-widest text-on-surface-variant mb-2">Human Owns</p><p>Final brand-safety sign-off, legal / claims review, and any "kill this campaign" spend decision.</p></div>
+<div><p class="font-label-mono text-sm uppercase tracking-widest text-on-surface-variant mb-2">The Rule</p><p>Below the confidence threshold → route to a human. Above → auto-accept, spot-checked.</p></div>
+</div>
+</div>
+</div>
+<!-- 06 Economics -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="economics">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">06</span>Economics</h2>
+<div class="overflow-x-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-structural-line mb-8">
+<table class="w-full text-left border-collapse font-body-lg bg-surface">
+<thead>
+<tr class="bg-surface-variant border-b-2 border-structural-line font-label-mono uppercase text-sm tracking-widest">
+<th class="p-4 md:p-6 border-r-2 border-structural-line">Task</th>
+<th class="p-4 md:p-6 border-r-2 border-structural-line">Model Tier</th>
+<th class="p-4 md:p-6">The Lever</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b-2 border-structural-line hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold">Classification (archetype, funnel)</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Cheap, temperature 0</td>
+<td class="p-4 md:p-6">Fractions of a cent per hook — the eval proves the cheap model holds up</td>
+</tr>
+<tr class="border-b-2 border-structural-line hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold">Brand-voice judging</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Cheap, rubric-driven</td>
+<td class="p-4 md:p-6">Schema constrains output to exactly the fields needed — no wasted tokens</td>
+</tr>
+<tr class="hover:bg-surface-cream transition-colors">
+<td class="p-4 md:p-6 border-r-2 border-structural-line font-bold">Whole-library scoring</td>
+<td class="p-4 md:p-6 border-r-2 border-structural-line">Batch API</td>
+<td class="p-4 md:p-6">Offline jobs run at ~half price</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="border-2 border-structural-line bg-highlight-neon p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<p class="font-label-mono text-sm uppercase tracking-widest font-bold mb-2">The Kill / Scale Call</p>
+<p class="font-body-lg font-medium">A cheap model at cents per thousand hooks is defensible; the frontier model's marginal F1 gain didn't justify ~10× the cost. Model routing is the decision — the eval harness is what makes it defensible instead of a guess.</p>
+</div>
+</div>
+<!-- 07 Retrospective -->
+<div class="border-t border-structural-line pt-12 md:pt-24" id="retrospective">
+<h2 class="font-headline-md text-2xl md:text-3xl uppercase mb-6 flex items-center tracking-tight"><span class="bg-highlight-neon px-2 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mr-4">07</span>Retrospective</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="border-l-4 border-structural-line pl-6 py-2">
+<h3 class="font-label-mono text-on-background bg-highlight-neon border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] inline-block px-3 py-1 mb-4 uppercase text-sm font-bold tracking-widest">Confidence Lies</h3>
+<p class="font-body-lg">Models over-trust their own confidence on ambiguous hooks — which is exactly why calibration, not raw confidence scores, drives the ship rule. The threshold is a business decision tied to the cost of a wrong label, not a technical default.</p>
+</div>
+<div class="border-l-4 border-structural-line pl-6 py-2">
+<h3 class="font-label-mono text-on-background bg-highlight-neon border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] inline-block px-3 py-1 mb-4 uppercase text-sm font-bold tracking-widest">The Golden Set Is The Asset</h3>
+<p class="font-body-lg">The single most valuable artifact isn't the code — it's the labeled golden set. It encodes taste and a point of view on creative, and it's what turns every future prompt change or model swap from a guess into a measured before/after.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface border-t-4 border-structural-line mt-16 md:mt-24">
+<div class="max-w-container-max mx-auto px-4 md:px-margin-mobile lg:px-margin-desktop py-12 md:py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="font-display-lg-mobile text-inverse-on-surface mb-4">Let's Build Something.</h2>
+<p class="font-body-lg text-surface-variant max-w-md mb-8">Looking for an AI Product Manager who ships evaluated systems, not demos.</p>
+<a class="inline-block bg-highlight-neon text-on-background font-label-mono uppercase tracking-widest font-bold px-8 py-4 border-2 border-structural-line shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all" href="mailto:aminshaikhone@gmail.com">Get in Touch</a>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="flex gap-6 mb-8">
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://www.linkedin.com/in/22amin/" target="_blank">
+<span class="material-symbols-outlined">link</span> LinkedIn
+                    </a>
+<a class="text-surface hover:text-highlight-neon transition-colors flex items-center gap-2 font-label-mono uppercase tracking-widest" href="https://github.com/CapAmin22" target="_blank">
+<span class="material-symbols-outlined">code</span> GitHub
+                    </a>
+</div>
+<p class="font-label-mono text-sm text-surface-variant">© 2026 Amin Shaikh. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
