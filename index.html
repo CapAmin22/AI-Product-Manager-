@@ -19,6 +19,67 @@
     display: none;
 }
 
+/* Day / Night Mode Display Separation */
+.night-only {
+    display: none !important;
+}
+html.starry-night .night-only {
+    display: block !important;
+}
+html.starry-night .night-only-flex {
+    display: flex !important;
+}
+html.starry-night .day-only {
+    display: none !important;
+}
+
+/* Admin Visibility & Media Upload Controls */
+.admin-only {
+    display: none !important;
+}
+body.is-admin .admin-only {
+    display: inline-flex !important;
+}
+body.is-admin .admin-only-block {
+    display: block !important;
+}
+body.is-admin .admin-only-flex {
+    display: flex !important;
+}
+body.is-admin .visitor-only {
+    display: none !important;
+}
+
+/* Floating Portal Button */
+#floating-portal-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 45;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#floating-portal-btn:hover {
+    transform: translateY(-2px) translateX(-2px);
+}
+
+/* Admin Status Pill */
+#admin-status-pill {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 45;
+}
+
+/* Toast */
+#portfolio-toast {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 60;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Starry Night Mode Theme */
 html.starry-night {
     color-scheme: dark;
@@ -174,19 +235,43 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 <span class="truncate">Amin Shaikh</span>
 </a>
 </div>
-<div class="hidden md:flex items-center justify-center gap-6 lg:gap-8 h-full whitespace-nowrap">
+<!-- Day Navigation Links -->
+<div class="day-only hidden md:flex items-center justify-center gap-6 lg:gap-8 h-full whitespace-nowrap">
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#about">About</a>
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#work">Work</a>
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#skills">Skills</a>
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#projects">Projects</a>
-<a id="nav-ai-lab-link" class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150 flex items-center gap-1 font-bold" href="#ai-lab" onclick="ensureStarryNightForAiLab()">
+<a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150 flex items-center gap-1 font-bold" href="#ai-lab" onclick="ensureStarryNightForAiLab(); return false;">
     <span>AI Lab</span>
     <span class="text-xs text-primary font-bold">✦</span>
 </a>
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#contact">Contact</a>
 </div>
+
+<!-- Starry Night Dedicated Navigation Links -->
+<div class="night-only-flex hidden md:flex items-center justify-center gap-6 lg:gap-8 h-full whitespace-nowrap">
+<a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150 font-bold" href="#ai-lab-hero">✦ AI Lab Masthead</a>
+<a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#hooklens">6 Shipped Systems</a>
+<a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#contact">Contact</a>
+<button onclick="toggleStarryNight(); window.scrollTo({top:0, behavior:'smooth'});" class="px-2.5 py-1 font-label-mono text-xs border border-structural-line bg-surface hover:bg-highlight-neon transition-colors duration-150 flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] cursor-pointer">
+    <span class="material-symbols-outlined text-sm">light_mode</span>
+    <span>Day Portfolio</span>
+</button>
+</div>
 <div class="flex-1 flex justify-end items-center gap-3 lg:gap-4">
-<!-- Starry Night Toggle Button -->
+<!-- High-Visibility Discovery Beacon (Day Mode) -->
+<button onclick="toggleStarryNight(); const aiHero = document.getElementById('ai-lab-hero'); if(aiHero) aiHero.scrollIntoView({behavior:'smooth'});" class="day-only brutalist-button px-3.5 py-2 font-label-mono text-xs font-bold bg-highlight-neon flex items-center gap-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all cursor-pointer" title="Enter Starry Night AI Lab">
+    <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+    <span>✦ AI LAB [6 SHIPPED]</span>
+</button>
+
+<!-- Return to Day Beacon (Night Mode) -->
+<button onclick="toggleStarryNight(); window.scrollTo({top:0, behavior:'smooth'});" class="night-only-flex brutalist-button px-3.5 py-2 font-label-mono text-xs font-bold bg-surface text-on-background flex items-center gap-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all cursor-pointer" title="Return to PM Portfolio">
+    <span class="material-symbols-outlined text-sm">light_mode</span>
+    <span>☀️ PM PORTFOLIO</span>
+</button>
+
+<!-- Standard Theme Toggle Icon Button -->
 <button id="theme-toggle-btn" onclick="toggleStarryNight()" class="border border-structural-line px-3 py-2 font-label-mono text-label-mono bg-surface hover:bg-highlight-neon transition-colors duration-150 flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-medium cursor-pointer" title="Toggle Starry Night Mode">
     <span id="theme-icon" class="material-symbols-outlined text-base">bedtime</span>
     <span id="theme-text" class="hidden xl:inline text-xs font-bold tracking-wider">Starry Night</span>
@@ -239,8 +324,8 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 <!-- Main Content Canvas -->
 <main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 space-y-32">
-<!-- Hero Section -->
-<section class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter relative" id="about">
+<!-- Hero Section (Day View: PM Executive Profile) -->
+<section class="day-only grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter relative" id="about">
 <div class="md:col-span-12 flex flex-col items-center text-center space-y-8">
 <!-- Hero Visuals: Avatar + 9:16 Video Resume -->
 <div class="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10">
@@ -269,27 +354,44 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
             <!-- Native HTML5 Video Element (plays when video file is loaded) -->
             <video id="hero-video-player" class="hidden absolute inset-0 w-full h-full object-cover z-10" playsinline controls loop></video>
 
-            <!-- Interactive Placeholder & Dropzone State -->
-            <div id="video-placeholder-state" class="relative z-10 flex-grow flex flex-col items-center justify-center p-3 text-center bg-grid" onclick="document.getElementById('video-resume-input').click()">
-                <div class="w-12 h-12 rounded-full border-2 border-structural-line bg-highlight-neon shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+            <!-- VISITOR STATE (When no video uploaded yet) -->
+            <div id="video-visitor-state" class="visitor-only relative z-10 flex-grow flex flex-col items-center justify-center p-3 text-center bg-grid">
+                <div class="w-14 h-14 rounded-full border-2 border-structural-line bg-highlight-neon shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
                 </div>
                 <p class="font-headline-md text-xs sm:text-sm uppercase font-bold tracking-tight">Video Resume</p>
                 <p class="font-label-mono text-[10px] text-on-surface-variant mt-1 leading-tight">Founder Pitch &amp; Walkthrough</p>
-                <div class="mt-3 inline-flex items-center gap-1 bg-surface border border-structural-line px-2 py-1 text-[9px] font-label-mono font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:bg-highlight-neon transition-colors">
+                <div class="mt-3 inline-flex items-center gap-1 bg-surface border border-structural-line px-2 py-1 text-[9px] font-label-mono font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <span class="material-symbols-outlined text-xs text-primary">verified</span>
+                    <span>Executive Reel</span>
+                </div>
+            </div>
+
+            <!-- ADMIN UPLOAD STATE (Visible ONLY to Admin) -->
+            <div id="video-admin-state" class="admin-only relative z-10 flex-grow flex-col items-center justify-center p-3 text-center bg-grid cursor-pointer" onclick="document.getElementById('video-resume-input').click()">
+                <div class="w-12 h-12 rounded-full border-2 border-structural-line bg-highlight-neon shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-2xl font-bold">cloud_upload</span>
+                </div>
+                <p class="font-headline-md text-xs sm:text-sm uppercase font-bold tracking-tight">Upload Reel</p>
+                <p class="font-label-mono text-[9px] text-on-surface-variant mt-1 leading-tight">Admin Controls Active</p>
+                <div class="mt-2 inline-flex items-center gap-1 bg-surface border border-structural-line px-2 py-1 text-[9px] font-label-mono font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:bg-highlight-neon transition-colors">
                     <span class="material-symbols-outlined text-xs">upload_file</span>
-                    <span>Upload .mp4</span>
+                    <span>Select MP4</span>
                 </div>
                 <input type="file" id="video-resume-input" accept="video/mp4,video/quicktime,video/webm" class="hidden" onchange="handleVideoUpload(event)">
             </div>
 
             <!-- Bottom Control / Status -->
             <div id="video-bottom-status" class="z-20 bg-surface/95 backdrop-blur-sm border-t-2 border-structural-line px-2 py-1 text-center font-label-mono text-[9px] text-on-surface-variant truncate">
-                <span>Drop .mp4 or click to upload</span>
+                <span class="visitor-only">Amin Shaikh · 90s Overview</span>
+                <span class="admin-only">Admin: Click or Drop MP4</span>
             </div>
         </div>
-        <div class="mt-3">
+        <div class="mt-3 flex items-center gap-2">
             <span class="font-label-mono text-xs uppercase tracking-wider text-on-surface-variant font-bold bg-surface px-3 py-1 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Video Resume · 9:16</span>
+            <button id="admin-clear-video-btn" onclick="clearStoredVideo()" class="admin-only p-1 text-[10px] font-label-mono border border-structural-line bg-surface hover:bg-red-500 hover:text-white transition-colors cursor-pointer" title="Remove Video">
+                <span class="material-symbols-outlined text-xs">delete</span>
+            </button>
         </div>
     </div>
 </div>
@@ -325,10 +427,94 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 <!-- Social Actions -->
 <div class="flex flex-wrap justify-center gap-3 mt-4"><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://www.linkedin.com/in/22amin/" target="_blank"><span class="font-label-mono font-medium">LinkedIn</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://github.com/CapAmin22" target="_blank"><span class="font-label-mono font-medium">GitHub</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://x.com/aminshaikh22" target="_blank"><span class="font-label-mono font-medium">X / Twitter</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://productsceo.substack.com/" target="_blank"><span class="font-label-mono font-medium">Substack</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-4 py-2 flex items-center gap-2" href="https://medium.com/@productsceo" target="_blank"><span class="font-label-mono font-medium">Medium</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a></div>
+
+<!-- High-Converting Hero Discovery Portal to Starry Night AI Lab -->
+<div class="w-full max-w-4xl mx-auto mt-10 border-2 border-structural-line bg-surface p-6 sm:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden text-left group">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-highlight-neon border border-structural-line text-[11px] font-label-mono font-bold uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                <span>Starry Night Interactive Experience</span>
+            </div>
+            <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight">
+                Explore the AI Systems Lab
+            </h3>
+            <p class="font-body-md text-xs sm:text-sm text-on-surface-variant max-w-xl">
+                Step into Starry Night mode to inspect 6 real-world LLM products, evaluation harnesses, cost models, and slide deck teardowns built and shipped by Amin.
+            </p>
+        </div>
+        <button onclick="toggleStarryNight(); const aiHero = document.getElementById('ai-lab-hero'); if(aiHero) aiHero.scrollIntoView({behavior:'smooth'});" class="brutalist-button px-6 py-3.5 font-label-mono text-xs md:text-sm font-bold uppercase flex items-center gap-2 whitespace-nowrap bg-highlight-neon shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 cursor-pointer hover:-translate-y-0.5 hover:translate-x-0.5 transition-all">
+            <span>Enter AI Lab</span>
+            <span class="text-base">✦</span>
+        </button>
+    </div>
+</div>
 </div>
 </section>
+
+<!-- Dedicated AI Systems Lab Masthead / Hero (Starry Night Mode Only) -->
+<section id="ai-lab-hero" class="night-only w-full max-w-container-max mx-auto py-4 md:py-8 space-y-8">
+    <div class="border-4 border-structural-line bg-surface p-8 md:p-14 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b-2 border-structural-line pb-6">
+            <div class="flex items-center gap-3">
+                <span class="p-2.5 border-2 border-structural-line bg-highlight-neon shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
+                    <span class="material-symbols-outlined text-2xl font-bold">auto_awesome</span>
+                </span>
+                <div>
+                    <span class="font-label-mono text-xs uppercase tracking-widest text-primary font-bold">Dedicated Night Mode Showcase</span>
+                    <h2 class="font-headline-lg text-2xl sm:text-3xl md:text-4xl uppercase tracking-tight font-bold">Amin's AI Systems Lab</h2>
+                </div>
+            </div>
+            <button onclick="toggleStarryNight(); window.scrollTo({top:0, behavior:'smooth'});" class="brutalist-button px-4 py-2.5 font-label-mono text-xs font-bold uppercase flex items-center gap-2 bg-surface text-on-background shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all cursor-pointer self-start md:self-auto">
+                <span class="material-symbols-outlined text-sm">light_mode</span>
+                <span>Return to PM Portfolio</span>
+            </button>
+        </div>
+
+        <div class="py-6 space-y-4 max-w-4xl">
+            <h1 class="font-display-lg text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight leading-none">
+                Autonomous Agents, RAG Pipelines &amp; Production Evals
+            </h1>
+            <p class="font-body-lg text-base sm:text-lg text-on-surface-variant leading-relaxed">
+                I build AI products and prove they work. Over 3+ years I've architected, benchmarked, and shipped classifiers, multi-agent pipelines, and retrieval engines — each with a ground-truth evaluation harness, cost per 1K tokens model, and human-in-the-loop guardrails. <strong>Zero unmeasured AI shipped.</strong>
+            </p>
+        </div>
+
+        <!-- AI Lab Telemetry / Proof Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t-2 border-structural-line">
+            <div class="border-2 border-structural-line p-4 bg-surface-variant shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] text-center">
+                <p class="font-display-lg-mobile text-3xl md:text-4xl text-primary font-bold">6</p>
+                <p class="font-label-mono text-[11px] uppercase tracking-wider text-on-surface-variant mt-1">Shipped Systems</p>
+            </div>
+            <div class="border-2 border-structural-line p-4 bg-surface-variant shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] text-center">
+                <p class="font-display-lg-mobile text-3xl md:text-4xl text-primary font-bold">100%</p>
+                <p class="font-label-mono text-[11px] uppercase tracking-wider text-on-surface-variant mt-1">Eval-Harnessed</p>
+            </div>
+            <div class="border-2 border-structural-line p-4 bg-surface-variant shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] text-center">
+                <p class="font-display-lg-mobile text-3xl md:text-4xl text-primary font-bold">&lt;1.2s</p>
+                <p class="font-label-mono text-[11px] uppercase tracking-wider text-on-surface-variant mt-1">Target Latency</p>
+            </div>
+            <div class="border-2 border-structural-line p-4 bg-surface-variant shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] text-center">
+                <p class="font-display-lg-mobile text-3xl md:text-4xl text-primary font-bold">0→1</p>
+                <p class="font-label-mono text-[11px] uppercase tracking-wider text-on-surface-variant mt-1">Architecture Ownership</p>
+            </div>
+        </div>
+
+        <!-- Quick Jump Navigation to 6 AI Systems -->
+        <div class="pt-6 border-t border-structural-line flex flex-wrap items-center gap-2">
+            <span class="font-label-mono text-xs uppercase text-on-surface-variant font-bold mr-2">Jump to System:</span>
+            <a href="#hooklens" class="px-2.5 py-1 text-xs font-label-mono border border-structural-line bg-surface hover:bg-highlight-neon shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">HookLens ↗</a>
+            <a href="#brandground" class="px-2.5 py-1 text-xs font-label-mono border border-structural-line bg-surface hover:bg-highlight-neon shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">BrandGround ↗</a>
+            <a href="#creativeos" class="px-2.5 py-1 text-xs font-label-mono border border-structural-line bg-surface hover:bg-highlight-neon shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">CreativeOS ↗</a>
+            <a href="#signalforge" class="px-2.5 py-1 text-xs font-label-mono border border-structural-line bg-surface hover:bg-highlight-neon shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">SignalForge ↗</a>
+            <a href="#creativesignal" class="px-2.5 py-1 text-xs font-label-mono border border-structural-line bg-surface hover:bg-highlight-neon shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">CreativeSignal ↗</a>
+            <a href="#attributionos" class="px-2.5 py-1 text-xs font-label-mono border border-structural-line bg-surface hover:bg-highlight-neon shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">AttributionOS ↗</a>
+        </div>
+    </div>
+</section>
+
 <!-- divider -->
-<div class="w-full h-12 flex items-center justify-center overflow-hidden opacity-30">
+<div class="day-only w-full h-12 flex items-center justify-center overflow-hidden opacity-30">
 <div class="flex gap-4">
 <span class="material-symbols-outlined">emergency</span>
 <span class="material-symbols-outlined">emergency</span>
@@ -340,7 +526,7 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 </div>
 <!-- Experience Section (Updated to Timeline) -->
-<section class="space-y-12" id="work">
+<section class="day-only space-y-12" id="work">
 <div class="flex items-center gap-8">
 <h3 class="font-headline-lg text-headline-lg">Professional Experience</h3>
 <div class="flex-grow h-px bg-structural-line"></div>
@@ -575,7 +761,7 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 </section>
 <!-- Featured Projects -->
-<section class="space-y-12" id="skills"><div class="flex items-center gap-8"><h3 class="font-headline-lg text-headline-lg">Skills</h3><div class="flex-grow h-px bg-structural-line"></div></div><div class="brutalist-card overflow-hidden !p-0 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] bg-surface">
+<section class="day-only space-y-12" id="skills"><div class="flex items-center gap-8"><h3 class="font-headline-lg text-headline-lg">Skills</h3><div class="flex-grow h-px bg-structural-line"></div></div><div class="brutalist-card overflow-hidden !p-0 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] bg-surface">
 <div class="grid grid-cols-1 divide-y divide-structural-line/30">
 <div class="flex items-center gap-3 px-4 py-4 md:px-10 md:grid md:grid-cols-[140px_60px_1fr]">
 <span class="bg-highlight-neon border border-structural-line w-8 h-8 flex-shrink-0 flex items-center justify-center font-label-mono text-[10px] font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">EV</span>
@@ -628,7 +814,7 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 <p class="font-label-mono text-xs md:text-sm text-on-surface">Agile/Scrum, CI/CD, Stakeholder Alignment, KPI Monitoring, API Testing</p>
 </div>
 </div>
-</div></section><section class="space-y-12" id="projects">
+</div></section><section class="day-only space-y-12" id="projects">
 <div class="flex items-center justify-between gap-8">
 <div class="flex items-center gap-4">
     <span class="p-2 border-2 border-structural-line bg-highlight-neon shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
@@ -753,8 +939,6 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 </div>
 </div>
-</div>
-</div>
 <!-- Starry Night Mode Gateway Banner (Day View) -->
 <div class="ai-day-teaser border-2 border-structural-line bg-surface p-8 md:p-12 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
     <div class="space-y-3 text-center md:text-left z-10">
@@ -794,7 +978,7 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 
 <div class="space-y-12">
 <!-- HookLens -->
-<div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
+<div id="hooklens" class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
 <div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
 <div class="space-y-8 z-10">
 <div class="flex flex-wrap gap-4">
@@ -848,7 +1032,7 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 
 <!-- BrandGround -->
-<div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
+<div id="brandground" class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
 <div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
 <div class="space-y-8 z-10">
 <div class="flex flex-wrap gap-4">
@@ -902,7 +1086,7 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 
 <!-- CreativeOS -->
-<div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
+<div id="creativeos" class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
 <div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
 <div class="space-y-8 z-10">
 <div class="flex flex-wrap gap-4">
@@ -956,7 +1140,7 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 
 <!-- SignalForge -->
-<div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
+<div id="signalforge" class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
 <div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
 <div class="space-y-8 z-10">
 <div class="flex flex-wrap gap-4">
@@ -1010,7 +1194,7 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 
 <!-- CreativeSignal -->
-<div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
+<div id="creativesignal" class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
 <div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
 <div class="space-y-8 z-10">
 <div class="flex flex-wrap gap-4">
@@ -1064,7 +1248,7 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 
 <!-- AttributionOS -->
-<div class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
+<div id="attributionos" class="border-2 border-structural-line bg-surface p-8 md:p-16 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col group relative overflow-hidden">
 <div class="absolute -right-16 -top-16 w-64 h-64 bg-highlight-neon border-2 border-structural-line rounded-full opacity-20 -z-10 group-hover:scale-110 transition-transform duration-500"></div>
 <div class="space-y-8 z-10">
 <div class="flex flex-wrap gap-4">
@@ -1117,9 +1301,69 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 </div>
 </div>
+
+<!-- Starry Night Mode Return to Day Mode Banner -->
+<div class="night-only w-full max-w-4xl mx-auto my-12 border-4 border-structural-line bg-surface p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-center space-y-4">
+    <div class="inline-flex items-center gap-2 px-3 py-1 bg-highlight-neon border border-structural-line font-label-mono text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-sm">light_mode</span>
+        <span>General Portfolio Mode</span>
+    </div>
+    <h4 class="font-headline-md text-2xl md:text-3xl uppercase font-bold tracking-tight">Finished Reviewing the AI Systems?</h4>
+    <p class="font-body-md text-sm md:text-base text-on-surface-variant max-w-xl mx-auto">
+        Switch back to Day Mode to explore Amin's Career Timeline, Product Management Skills Tree, and Case Studies.
+    </p>
+    <div class="pt-2">
+        <button onclick="toggleStarryNight(); window.scrollTo({top:0, behavior:'smooth'});" class="brutalist-button px-6 py-3 font-label-mono text-xs md:text-sm font-bold uppercase bg-highlight-neon inline-flex items-center gap-2 cursor-pointer shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all">
+            <span class="material-symbols-outlined text-sm">light_mode</span>
+            <span>Return to PM Portfolio (Day Mode)</span>
+        </button>
+    </div>
+</div>
+
 </section>
 <section class="py-24 bg-surface-cream border-t-2 border-structural-line" id="contact">
 <div class="flex flex-col items-center text-center space-y-12">
+
+<!-- Day Mode Gateway Banner in Contact Section -->
+<div class="day-only w-full max-w-4xl mx-auto border-4 border-structural-line bg-surface p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-center space-y-4 mb-4">
+    <div class="inline-flex items-center gap-2 px-3 py-1 bg-highlight-neon border border-structural-line font-label-mono text-xs font-bold uppercase">
+        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+        <span>Interactive AI Showcase</span>
+    </div>
+    <h3 class="font-headline-md text-2xl md:text-3xl font-bold uppercase tracking-tight">
+        Ready to see the AI Systems in action?
+    </h3>
+    <p class="font-body-md text-sm md:text-base text-on-surface-variant max-w-2xl mx-auto">
+        Switch to the Starry Night AI Lab to explore 6 live LLM products, evaluation harnesses, cost models, and architecture teardowns.
+    </p>
+    <div class="pt-2">
+        <button onclick="toggleStarryNight(); const aiHero = document.getElementById('ai-lab-hero'); if(aiHero) aiHero.scrollIntoView({behavior:'smooth'});" class="brutalist-button px-8 py-4 font-label-mono text-sm md:text-base font-bold uppercase bg-highlight-neon shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all cursor-pointer inline-flex items-center gap-3">
+            <span>Explore Starry Night AI Lab</span>
+            <span class="text-xl">✦</span>
+        </button>
+    </div>
+</div>
+
+<!-- Night Mode Gateway Banner in Contact Section -->
+<div class="night-only w-full max-w-4xl mx-auto border-4 border-structural-line bg-surface p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-center space-y-4 mb-4">
+    <div class="inline-flex items-center gap-2 px-3 py-1 bg-highlight-neon border border-structural-line font-label-mono text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-sm">light_mode</span>
+        <span>General Portfolio Mode</span>
+    </div>
+    <h3 class="font-headline-md text-2xl md:text-3xl font-bold uppercase tracking-tight">
+        Finished with the AI Systems?
+    </h3>
+    <p class="font-body-md text-sm md:text-base text-on-surface-variant max-w-2xl mx-auto">
+        Return to the Main PM Portfolio to review work history, 0→1 case studies, user research artifacts, and leadership experience.
+    </p>
+    <div class="pt-2">
+        <button onclick="toggleStarryNight(); window.scrollTo({top:0, behavior:'smooth'});" class="brutalist-button px-8 py-4 font-label-mono text-sm md:text-base font-bold uppercase bg-highlight-neon shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all cursor-pointer inline-flex items-center gap-3">
+            <span class="material-symbols-outlined text-lg">light_mode</span>
+            <span>Return to PM Portfolio</span>
+        </button>
+    </div>
+</div>
+
 <h2 class="font-headline-lg text-4xl md:text-6xl uppercase leading-tight max-w-4xl">
             Anyway, Thanks For Scrolling This Far
         </h2>
@@ -1135,16 +1379,95 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 <div class="flex flex-wrap justify-center gap-4"><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="https://www.linkedin.com/in/22amin/" target="_blank"><span class="font-label-mono font-medium">LinkedIn</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="https://github.com/CapAmin22" target="_blank"><span class="font-label-mono font-medium">GitHub</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="https://x.com/aminshaikh22" target="_blank"><span class="font-label-mono font-medium">X / Twitter</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="https://productsceo.substack.com/" target="_blank"><span class="font-label-mono font-medium">Substack</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a><a class="brutalist-button px-6 py-3 flex items-center gap-2" href="https://medium.com/@productsceo" target="_blank"><span class="font-label-mono font-medium">Medium</span><span class="material-symbols-outlined text-sm">arrow_outward</span></a></div>
 </div>
 </section></main><footer class="border-t border-structural-line bg-surface">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="font-label-mono text-label-mono">© 2026 Amin Shaikh</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4 font-label-mono text-label-mono">
+    <span>© 2026 Amin Shaikh</span>
+    <!-- Discreet Admin Login Link -->
+    <button id="admin-login-trigger" onclick="openAdminModal()" class="text-on-surface-variant hover:text-on-background inline-flex items-center gap-1 text-xs opacity-60 hover:opacity-100 transition-opacity cursor-pointer border-b border-dotted border-structural-line" title="Admin Access (Ctrl+Shift+A)">
+        <span class="material-symbols-outlined text-sm">lock</span>
+        <span>Admin Login</span>
+    </button>
+</div>
 <div class="text-on-surface-variant italic text-center md:text-right flex-grow max-w-xl md:px-12 whitespace-nowrap text-xs sm:text-sm md:text-base">
-            - Great products are built on deep empathy and data-driven conviction.
-        </div>
-<a class="w-12 h-12 rounded-full border border-structural-line flex items-center justify-center bg-highlight-neon shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-transform duration-200" href="#">
-<span class="material-symbols-outlined font-bold">arrow_upward</span>
-</a>
+    - Great products are built on deep empathy and data-driven conviction.
+</div>
+<div class="flex items-center gap-3">
+    <!-- Footer Mode Switcher Button -->
+    <button id="footer-theme-btn" onclick="toggleStarryNight()" class="brutalist-button px-4 py-2 text-xs font-label-mono flex items-center gap-2 cursor-pointer shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]" title="Toggle Theme">
+        <span id="footer-theme-icon" class="material-symbols-outlined text-base">bedtime</span>
+        <span id="footer-theme-text" class="font-bold">Starry Night AI Lab</span>
+    </button>
+    <a class="w-10 h-10 rounded-full border border-structural-line flex items-center justify-center bg-highlight-neon shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-transform duration-200" href="#" title="Back to top">
+        <span class="material-symbols-outlined font-bold text-sm">arrow_upward</span>
+    </a>
+</div>
 </div>
 </footer>
+
+<!-- Floating Mode Portal Pill (Always reachable) -->
+<div id="floating-portal-btn">
+    <button onclick="handleFloatingPortalClick()" class="brutalist-button px-4 py-2.5 font-label-mono text-xs font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 cursor-pointer bg-highlight-neon border-2 border-structural-line hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+        <span id="floating-icon" class="text-base font-bold">✦</span>
+        <span id="floating-text">AI Lab (6)</span>
+    </button>
+</div>
+
+<!-- Admin Active Status Pill (Visible only when logged in as Admin) -->
+<div id="admin-status-pill" class="admin-only fixed bottom-6 left-6 z-40 bg-surface border-2 border-structural-line p-2 px-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] items-center gap-3 font-label-mono text-xs">
+    <span class="flex items-center gap-1.5 text-primary font-bold">
+        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+        <span>Admin Active</span>
+    </span>
+    <span class="text-on-surface-variant text-[11px] hidden sm:inline">Uploads Unlocked</span>
+    <button onclick="logoutAdmin()" class="px-2 py-0.5 border border-structural-line bg-surface hover:bg-red-500 hover:text-white text-[10px] uppercase font-bold transition-colors cursor-pointer">
+        Logout
+    </button>
+</div>
+
+<!-- Toast Notification -->
+<div id="portfolio-toast" class="hidden font-label-mono text-xs font-bold px-4 py-2.5 bg-surface border-2 border-structural-line shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2">
+    <span id="toast-icon" class="material-symbols-outlined text-sm text-primary">check_circle</span>
+    <span id="toast-message">Notification</span>
+</div>
+
+<!-- Admin Authentication Modal -->
+<div id="admin-modal" class="hidden fixed inset-0 z-50 deck-modal-backdrop flex items-center justify-center p-4">
+    <div class="w-full max-w-sm bg-surface border-4 border-structural-line shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 space-y-4">
+        <div class="flex items-center justify-between border-b-2 border-structural-line pb-3">
+            <div class="flex items-center gap-2">
+                <span class="p-1 bg-highlight-neon border border-structural-line flex items-center justify-center">
+                    <span class="material-symbols-outlined text-sm font-bold">lock</span>
+                </span>
+                <h4 class="font-headline-md text-base uppercase font-bold">Admin Authentication</h4>
+            </div>
+            <button onclick="closeAdminModal()" class="p-1 hover:bg-red-500 hover:text-white transition-colors cursor-pointer border border-transparent hover:border-structural-line">
+                <span class="material-symbols-outlined text-base font-bold">close</span>
+            </button>
+        </div>
+        <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
+            Enter admin password to unlock video reel uploads and presentation deck attachments.
+        </p>
+        <form onsubmit="verifyAdminPassword(event)" class="space-y-4">
+            <div>
+                <label for="admin-password-input" class="block font-label-mono text-[11px] uppercase font-bold text-on-surface-variant mb-1">
+                    Admin Password
+                </label>
+                <input type="password" id="admin-password-input" placeholder="Enter password" class="w-full px-3 py-2 border-2 border-structural-line bg-surface font-label-mono text-sm focus:outline-none focus:bg-highlight-neon/10" autofocus autocomplete="current-password">
+            </div>
+            <div id="admin-error-msg" class="hidden text-red-600 font-label-mono text-xs font-bold">
+                Incorrect password. Try again.
+            </div>
+            <div class="flex items-center justify-end gap-2 pt-2">
+                <button type="button" onclick="closeAdminModal()" class="px-3 py-1.5 font-label-mono text-xs border border-structural-line bg-surface hover:bg-surface-variant cursor-pointer">
+                    Cancel
+                </button>
+                <button type="submit" class="brutalist-button px-4 py-1.5 font-label-mono text-xs font-bold uppercase bg-highlight-neon cursor-pointer">
+                    Unlock
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <!-- Universal Brutalist Presentation Deck Viewer Modal -->
 <div id="deck-viewer-modal" class="hidden fixed inset-0 z-50 deck-modal-backdrop flex items-center justify-center p-3 sm:p-6 md:p-8">
@@ -1160,7 +1483,8 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
                 </h4>
             </div>
             <div class="flex items-center gap-2 flex-shrink-0">
-                <label for="deck-modal-upload" class="brutalist-button px-3 py-1.5 text-xs font-label-mono flex items-center gap-1 cursor-pointer bg-highlight-neon" title="Upload custom PDF / PPT">
+                <!-- Admin Only Upload Button in Modal Header -->
+                <label for="deck-modal-upload" class="admin-only brutalist-button px-3 py-1.5 text-xs font-label-mono items-center gap-1 cursor-pointer bg-highlight-neon" title="Admin: Upload custom PDF / PPT">
                     <span class="material-symbols-outlined text-sm">upload_file</span>
                     <span class="hidden sm:inline">Upload PDF/PPT</span>
                 </label>
@@ -1179,17 +1503,34 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
             <!-- Active Iframe / Embedded PDF Viewer -->
             <iframe id="deck-modal-iframe" class="w-full h-full border-2 border-structural-line bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hidden" src=""></iframe>
 
-            <!-- Empty / Upload Prompt State -->
-            <div id="deck-modal-empty" class="w-full max-w-lg border-2 border-dashed border-structural-line p-8 bg-surface text-center flex flex-col items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-                <div class="w-16 h-16 rounded-full bg-highlight-neon border-2 border-structural-line shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center mb-4">
+            <!-- VISITOR EMPTY STATE: Professional Strategy Request Card -->
+            <div id="deck-modal-empty-visitor" class="visitor-only w-full max-w-lg border-2 border-structural-line p-8 bg-surface text-center flex-col items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                <div class="w-16 h-16 rounded-full bg-highlight-neon border-2 border-structural-line shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center mb-4 mx-auto">
                     <span class="material-symbols-outlined text-3xl">slideshow</span>
                 </div>
-                <h5 class="font-headline-md text-xl md:text-2xl uppercase font-bold">Presentation Deck Holder</h5>
-                <p class="font-body-md text-xs md:text-sm text-on-surface-variant max-w-md mt-2 mb-6">
-                    Ready to display your slide deck. Upload your PDF presentation file to scroll and preview directly in this window. (For PowerPoint .pptx, export as PDF for perfect fidelity).
+                <h5 class="font-headline-md text-xl md:text-2xl uppercase font-bold">Strategy &amp; Architecture Deck</h5>
+                <p class="font-body-md text-xs md:text-sm text-on-surface-variant max-w-md mt-2 mb-6 mx-auto leading-relaxed">
+                    Detailed system architecture blueprints, user journey maps, evaluation benchmark graphs, and cost models are prepared for this initiative.
                 </p>
                 <div class="flex flex-wrap items-center justify-center gap-3">
-                    <button type="button" onclick="document.getElementById('deck-modal-upload').click()" class="brutalist-button px-5 py-2.5 font-label-mono text-xs font-bold uppercase bg-highlight-neon flex items-center gap-2 cursor-pointer">
+                    <a href="mailto:aminshaikhone@gmail.com?subject=Requesting%20Product%20Strategy%20Deck" class="brutalist-button px-5 py-2.5 font-label-mono text-xs font-bold uppercase bg-highlight-neon inline-flex items-center gap-2 cursor-pointer shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                        <span class="material-symbols-outlined text-base">mail</span>
+                        <span>Request Deck via Email</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ADMIN EMPTY STATE: Upload / Dropzone -->
+            <div id="deck-modal-empty-admin" class="admin-only w-full max-w-lg border-2 border-dashed border-structural-line p-8 bg-surface text-center flex-col items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                <div class="w-16 h-16 rounded-full bg-highlight-neon border-2 border-structural-line shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center mb-4 mx-auto">
+                    <span class="material-symbols-outlined text-3xl">upload_file</span>
+                </div>
+                <h5 class="font-headline-md text-xl md:text-2xl uppercase font-bold">Admin Deck Manager</h5>
+                <p class="font-body-md text-xs md:text-sm text-on-surface-variant max-w-md mt-2 mb-6 mx-auto leading-relaxed">
+                    Upload your PDF presentation file to embed directly for this project, or drag and drop your PDF into this window.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <button type="button" onclick="document.getElementById('deck-modal-upload').click()" class="brutalist-button px-5 py-2.5 font-label-mono text-xs font-bold uppercase bg-highlight-neon inline-flex items-center gap-2 cursor-pointer">
                         <span class="material-symbols-outlined text-base">upload_file</span>
                         <span>Select PDF Deck</span>
                     </button>
@@ -1209,23 +1550,200 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 </div>
 
 <script>
-// --- Starry Night Mode Management ---
+// ==========================================
+// 1. IndexedDB Client-Side Storage Manager
+// ==========================================
+const DB_NAME = 'AminPortfolioDB';
+const DB_VERSION = 1;
+
+function getDB() {
+    return new Promise(function(resolve, reject) {
+        if (!window.indexedDB) {
+            resolve(null);
+            return;
+        }
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = function(e) {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains('media')) {
+                db.createObjectStore('media');
+            }
+        };
+        req.onsuccess = function() { resolve(req.result); };
+        req.onerror = function() { resolve(null); };
+    });
+}
+
+function saveMediaBlob(key, blob) {
+    return getDB().then(function(db) {
+        if (!db) return false;
+        return new Promise(function(resolve) {
+            try {
+                const tx = db.transaction('media', 'readwrite');
+                tx.objectStore('media').put(blob, key);
+                tx.oncomplete = function() { resolve(true); };
+                tx.onerror = function() { resolve(false); };
+            } catch(e) {
+                resolve(false);
+            }
+        });
+    });
+}
+
+function getMediaBlob(key) {
+    return getDB().then(function(db) {
+        if (!db) return null;
+        return new Promise(function(resolve) {
+            try {
+                const tx = db.transaction('media', 'readonly');
+                const req = tx.objectStore('media').get(key);
+                req.onsuccess = function() { resolve(req.result); };
+                req.onerror = function() { resolve(null); };
+            } catch(e) {
+                resolve(null);
+            }
+        });
+    });
+}
+
+function deleteMediaBlob(key) {
+    return getDB().then(function(db) {
+        if (!db) return;
+        try {
+            const tx = db.transaction('media', 'readwrite');
+            tx.objectStore('media').delete(key);
+        } catch(e) {}
+    });
+}
+
+// ==========================================
+// 2. Toast Notifications
+// ==========================================
+let toastTimer = null;
+function showToast(message, isError) {
+    const toast = document.getElementById('portfolio-toast');
+    const msgEl = document.getElementById('toast-message');
+    const iconEl = document.getElementById('toast-icon');
+    if (!toast || !msgEl) return;
+    
+    msgEl.textContent = message;
+    if (iconEl) {
+        iconEl.textContent = isError ? 'error' : 'check_circle';
+        iconEl.className = isError ? 'material-symbols-outlined text-sm text-red-600' : 'material-symbols-outlined text-sm text-primary';
+    }
+    toast.classList.remove('hidden');
+    
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() {
+        toast.classList.add('hidden');
+    }, 3500);
+}
+
+// ==========================================
+// 3. Admin Authentication & Management
+// ==========================================
+function openAdminModal() {
+    const modal = document.getElementById('admin-modal');
+    const input = document.getElementById('admin-password-input');
+    const err = document.getElementById('admin-error-msg');
+    if (err) err.classList.add('hidden');
+    if (input) {
+        input.value = '';
+        input.classList.remove('border-red-600');
+    }
+    if (modal) {
+        modal.classList.remove('hidden');
+        setTimeout(function() {
+            if (input) input.focus();
+        }, 100);
+    }
+}
+
+function closeAdminModal() {
+    const modal = document.getElementById('admin-modal');
+    if (modal) modal.classList.add('hidden');
+}
+
+function verifyAdminPassword(e) {
+    if (e) e.preventDefault();
+    const input = document.getElementById('admin-password-input');
+    const err = document.getElementById('admin-error-msg');
+    if (!input) return;
+    
+    const val = input.value.trim();
+    if (val === 'amin2026') {
+        localStorage.setItem('admin_auth', 'true');
+        document.body.classList.add('is-admin');
+        closeAdminModal();
+        showToast('Admin Mode Active: Media Uploads Unlocked');
+        updateAdminUI();
+    } else {
+        if (err) err.classList.remove('hidden');
+        input.classList.add('border-red-600');
+        input.select();
+    }
+}
+
+function logoutAdmin() {
+    localStorage.removeItem('admin_auth');
+    document.body.classList.remove('is-admin');
+    showToast('Admin Logged Out: Media Uploads Locked');
+    updateAdminUI();
+}
+
+function updateAdminUI() {
+    const isAdmin = document.body.classList.contains('is-admin');
+    const trigger = document.getElementById('admin-login-trigger');
+    if (trigger) {
+        trigger.innerHTML = isAdmin ? 
+            '<span class="material-symbols-outlined text-sm text-green-500">lock_open</span><span>Admin Active</span>' : 
+            '<span class="material-symbols-outlined text-sm">lock</span><span>Admin Login</span>';
+    }
+}
+
+// Global hotkey: Ctrl + Shift + A or Cmd + Shift + A
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        if (document.body.classList.contains('is-admin')) {
+            logoutAdmin();
+        } else {
+            openAdminModal();
+        }
+    }
+});
+
+// ==========================================
+// 4. Starry Night Mode Management
+// ==========================================
 function updateThemeUI(isNight) {
     const icon = document.getElementById('theme-icon');
     const text = document.getElementById('theme-text');
     const mobileIcon = document.getElementById('mobile-theme-icon');
     const mobileText = document.getElementById('mobile-theme-text');
+    const footerIcon = document.getElementById('footer-theme-icon');
+    const footerText = document.getElementById('footer-theme-text');
+    const floatingIcon = document.getElementById('floating-icon');
+    const floatingText = document.getElementById('floating-text');
     
     if (isNight) {
         if (icon) icon.textContent = 'light_mode';
         if (text) text.textContent = 'Day Mode';
         if (mobileIcon) mobileIcon.textContent = 'light_mode';
         if (mobileText) mobileText.textContent = 'Switch to Day Mode';
+        if (footerIcon) footerIcon.textContent = 'light_mode';
+        if (footerText) footerText.textContent = 'PM Portfolio (Day Mode)';
+        if (floatingIcon) floatingIcon.textContent = '☀️';
+        if (floatingText) floatingText.textContent = 'PM Portfolio';
     } else {
         if (icon) icon.textContent = 'bedtime';
         if (text) text.textContent = 'Starry Night';
         if (mobileIcon) mobileIcon.textContent = 'bedtime';
         if (mobileText) mobileText.textContent = 'Starry Night Mode';
+        if (footerIcon) footerIcon.textContent = 'bedtime';
+        if (footerText) footerText.textContent = 'Starry Night AI Lab';
+        if (floatingIcon) floatingIcon.textContent = '✦';
+        if (floatingText) floatingText.textContent = 'AI Lab (6)';
     }
 }
 
@@ -1239,38 +1757,90 @@ function ensureStarryNightForAiLab() {
     if (!document.documentElement.classList.contains('starry-night')) {
         toggleStarryNight();
     }
+    const aiHero = document.getElementById('ai-lab-hero');
+    if (aiHero) {
+        aiHero.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
-// --- 9:16 Video Resume Reel Handler ---
-function handleVideoUpload(event) {
-    const file = event.target.files && event.target.files[0];
-    if (!file) return;
-    loadVideoFile(file);
-}
-
-function loadVideoFile(file) {
-    const videoPlayer = document.getElementById('hero-video-player');
-    const placeholderState = document.getElementById('video-placeholder-state');
-    const bottomStatus = document.getElementById('video-bottom-status');
-    
-    if (videoPlayer && placeholderState) {
-        const url = URL.createObjectURL(file);
-        videoPlayer.src = url;
-        videoPlayer.classList.remove('hidden');
-        placeholderState.classList.add('hidden');
-        videoPlayer.play().catch(function() {
-            // Autoplay may be restricted without user interaction
-        });
-        if (bottomStatus) {
-            bottomStatus.innerHTML = '<span class="text-primary font-bold">● ' + (file.name || 'Video Playing') + '</span>';
+function handleFloatingPortalClick() {
+    const isNight = document.documentElement.classList.contains('starry-night');
+    if (isNight) {
+        toggleStarryNight();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        toggleStarryNight();
+        const aiHero = document.getElementById('ai-lab-hero');
+        if (aiHero) {
+            aiHero.scrollIntoView({ behavior: 'smooth' });
         }
     }
 }
 
-// Drag & Drop for Video Resume Card
+// ==========================================
+// 5. 9:16 Video Resume Reel Handler
+// ==========================================
+let activeVideoUrl = null;
+
+function handleVideoUpload(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+    
+    saveMediaBlob('hero_video_blob', file).then(function() {
+        loadVideoFile(file);
+        showToast('Video Reel saved successfully');
+    });
+}
+
+function loadVideoFile(fileOrBlob) {
+    const videoPlayer = document.getElementById('hero-video-player');
+    const visitorState = document.getElementById('video-visitor-state');
+    const adminState = document.getElementById('video-admin-state');
+    const bottomStatus = document.getElementById('video-bottom-status');
+    
+    if (activeVideoUrl) {
+        URL.revokeObjectURL(activeVideoUrl);
+    }
+    activeVideoUrl = URL.createObjectURL(fileOrBlob);
+    
+    if (videoPlayer) {
+        videoPlayer.src = activeVideoUrl;
+        videoPlayer.classList.remove('hidden');
+        if (visitorState) visitorState.classList.add('hidden');
+        if (adminState) adminState.classList.add('hidden');
+        videoPlayer.play().catch(function() {});
+        if (bottomStatus) {
+            bottomStatus.innerHTML = '<span class="text-primary font-bold">● Video Reel Active</span>';
+        }
+    }
+}
+
+function clearStoredVideo() {
+    deleteMediaBlob('hero_video_blob').then(function() {
+        const videoPlayer = document.getElementById('hero-video-player');
+        const visitorState = document.getElementById('video-visitor-state');
+        const adminState = document.getElementById('video-admin-state');
+        const bottomStatus = document.getElementById('video-bottom-status');
+        
+        if (videoPlayer) {
+            videoPlayer.pause();
+            videoPlayer.src = '';
+            videoPlayer.classList.add('hidden');
+        }
+        if (visitorState) visitorState.classList.remove('hidden');
+        if (adminState) adminState.classList.remove('hidden');
+        if (bottomStatus) {
+            bottomStatus.innerHTML = '<span class="visitor-only">Amin Shaikh · 90s Overview</span><span class="admin-only">Admin: Click or Drop MP4</span>';
+        }
+        showToast('Video Reel removed');
+    });
+}
+
+// Drag & Drop for Video Resume Card (Only functional in Admin Mode)
 const videoCard = document.getElementById('video-resume-card');
 if (videoCard) {
     videoCard.addEventListener('dragover', function(e) {
+        if (!document.body.classList.contains('is-admin')) return;
         e.preventDefault();
         videoCard.classList.add('ring-2', 'ring-primary');
     });
@@ -1279,41 +1849,65 @@ if (videoCard) {
         videoCard.classList.remove('ring-2', 'ring-primary');
     });
     videoCard.addEventListener('drop', function(e) {
+        if (!document.body.classList.contains('is-admin')) return;
         e.preventDefault();
         videoCard.classList.remove('ring-2', 'ring-primary');
         if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-            loadVideoFile(e.dataTransfer.files[0]);
+            handleVideoUpload({ target: { files: e.dataTransfer.files } });
         }
     });
 }
 
-// --- Universal Deck Viewer Modal ---
+// ==========================================
+// 6. Universal Deck Viewer Modal
+// ==========================================
 let activeBlobUrl = null;
+let currentDeckProjectKey = null;
 
 function openDeckModal(title, projectKey, defaultPdfUrl) {
+    currentDeckProjectKey = projectKey || 'DEFAULT';
     const modal = document.getElementById('deck-viewer-modal');
     const titleEl = document.getElementById('deck-modal-title');
     const iframe = document.getElementById('deck-modal-iframe');
-    const emptyState = document.getElementById('deck-modal-empty');
     const downloadBtn = document.getElementById('deck-modal-download');
+    const visitorEmpty = document.getElementById('deck-modal-empty-visitor');
+    const adminEmpty = document.getElementById('deck-modal-empty-admin');
     
     if (titleEl) titleEl.textContent = title || 'Project Strategy Deck';
     
-    if (defaultPdfUrl) {
-        if (iframe) {
-            iframe.src = defaultPdfUrl;
-            iframe.classList.remove('hidden');
+    // Check IndexedDB for a custom uploaded deck for this projectKey
+    getMediaBlob('deck_' + currentDeckProjectKey).then(function(customBlob) {
+        if (customBlob) {
+            if (activeBlobUrl) URL.revokeObjectURL(activeBlobUrl);
+            activeBlobUrl = URL.createObjectURL(customBlob);
+            if (iframe) {
+                iframe.src = activeBlobUrl;
+                iframe.classList.remove('hidden');
+            }
+            if (visitorEmpty) visitorEmpty.classList.add('hidden');
+            if (adminEmpty) adminEmpty.classList.add('hidden');
+            if (downloadBtn) {
+                downloadBtn.href = activeBlobUrl;
+                downloadBtn.download = (title || 'deck').replace(/\s+/g, '_') + '.pdf';
+            }
+        } else if (defaultPdfUrl) {
+            if (iframe) {
+                iframe.src = defaultPdfUrl;
+                iframe.classList.remove('hidden');
+            }
+            if (visitorEmpty) visitorEmpty.classList.add('hidden');
+            if (adminEmpty) adminEmpty.classList.add('hidden');
+            if (downloadBtn) downloadBtn.href = defaultPdfUrl;
+        } else {
+            if (iframe) {
+                iframe.src = '';
+                iframe.classList.add('hidden');
+            }
+            if (visitorEmpty) visitorEmpty.classList.remove('hidden');
+            if (adminEmpty) adminEmpty.classList.remove('hidden');
+            if (downloadBtn) downloadBtn.href = '#';
         }
-        if (emptyState) emptyState.classList.add('hidden');
-        if (downloadBtn) downloadBtn.href = defaultPdfUrl;
-    } else {
-        if (iframe) {
-            iframe.src = '';
-            iframe.classList.add('hidden');
-        }
-        if (emptyState) emptyState.classList.remove('hidden');
-        if (downloadBtn) downloadBtn.href = '#';
-    }
+    });
     
     if (modal) {
         modal.classList.remove('hidden');
@@ -1340,60 +1934,76 @@ function closeDeckModal() {
 }
 
 function handleModalDeckUpload(event) {
+    if (!document.body.classList.contains('is-admin')) {
+        showToast('Admin login required to upload decks', true);
+        return;
+    }
     const file = event.target.files && event.target.files[0];
     if (!file) return;
     
-    const iframe = document.getElementById('deck-modal-iframe');
-    const emptyState = document.getElementById('deck-modal-empty');
-    const downloadBtn = document.getElementById('deck-modal-download');
-    const titleEl = document.getElementById('deck-modal-title');
-    
-    if (activeBlobUrl) {
-        URL.revokeObjectURL(activeBlobUrl);
-    }
-    
-    activeBlobUrl = URL.createObjectURL(file);
-    if (iframe) {
-        iframe.src = activeBlobUrl;
-        iframe.classList.remove('hidden');
-    }
-    if (emptyState) emptyState.classList.add('hidden');
-    if (downloadBtn) {
-        downloadBtn.href = activeBlobUrl;
-        downloadBtn.download = file.name || 'presentation-deck.pdf';
-    }
-    if (titleEl) {
-        titleEl.textContent = (titleEl.textContent.split('·')[0].trim()) + ' · ' + file.name;
-    }
+    const key = currentDeckProjectKey || 'DEFAULT';
+    saveMediaBlob('deck_' + key, file).then(function() {
+        const iframe = document.getElementById('deck-modal-iframe');
+        const visitorEmpty = document.getElementById('deck-modal-empty-visitor');
+        const adminEmpty = document.getElementById('deck-modal-empty-admin');
+        const downloadBtn = document.getElementById('deck-modal-download');
+        const titleEl = document.getElementById('deck-modal-title');
+        
+        if (activeBlobUrl) URL.revokeObjectURL(activeBlobUrl);
+        activeBlobUrl = URL.createObjectURL(file);
+        
+        if (iframe) {
+            iframe.src = activeBlobUrl;
+            iframe.classList.remove('hidden');
+        }
+        if (visitorEmpty) visitorEmpty.classList.add('hidden');
+        if (adminEmpty) adminEmpty.classList.add('hidden');
+        if (downloadBtn) {
+            downloadBtn.href = activeBlobUrl;
+            downloadBtn.download = file.name || 'presentation-deck.pdf';
+        }
+        if (titleEl) {
+            titleEl.textContent = (titleEl.textContent.split('·')[0].trim()) + ' · ' + file.name;
+        }
+        showToast('Deck uploaded and saved for ' + key);
+    });
 }
 
-// Drag & drop into modal viewport
+// Drag & drop into modal viewport (Admin only)
 const modalViewport = document.getElementById('deck-modal-viewport');
 if (modalViewport) {
-    modalViewport.addEventListener('dragover', function(e) { e.preventDefault(); });
+    modalViewport.addEventListener('dragover', function(e) {
+        if (!document.body.classList.contains('is-admin')) return;
+        e.preventDefault();
+    });
     modalViewport.addEventListener('drop', function(e) {
+        if (!document.body.classList.contains('is-admin')) return;
         e.preventDefault();
         if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-            const input = document.getElementById('deck-modal-upload');
-            if (input) {
-                const dt = new DataTransfer();
-                dt.items.add(e.dataTransfer.files[0]);
-                input.files = dt.files;
-                handleModalDeckUpload({ target: input });
-            }
+            handleModalDeckUpload({ target: { files: e.dataTransfer.files } });
         }
     });
 }
 
-// Close modal on Escape key
+// Close modals on Escape key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeDeckModal();
+        closeAdminModal();
     }
 });
 
-// Initialize Theme on load
+// ==========================================
+// 7. Initialization on Page Load
+// ==========================================
 (function() {
+    // Check Admin Authentication
+    if (localStorage.getItem('admin_auth') === 'true') {
+        document.body.classList.add('is-admin');
+    }
+    updateAdminUI();
+    
+    // Check Theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'starry-night') {
         document.documentElement.classList.add('starry-night');
@@ -1401,6 +2011,13 @@ document.addEventListener('keydown', function(e) {
     } else {
         updateThemeUI(false);
     }
+    
+    // Check Stored Hero Video
+    getMediaBlob('hero_video_blob').then(function(blob) {
+        if (blob) {
+            loadVideoFile(blob);
+        }
+    });
 })();
 </script>
 </body></html>
