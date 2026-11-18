@@ -20,7 +20,8 @@
 }
 
 /* Day / Night Mode Display Separation */
-.night-only {
+.night-only,
+.night-only-flex {
     display: none !important;
 }
 html.starry-night .night-only {
@@ -229,13 +230,14 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 <body class="bg-surface font-body-md text-on-background bg-grid min-h-screen antialiased selection:bg-highlight-neon selection:text-on-background">
 <!-- TopNavBar -->
 <nav class="sticky top-0 z-50 bg-surface dark:bg-on-background border-b border-structural-line w-full px-margin-mobile md:px-margin-desktop h-16 md:h-20 max-w-container-max mx-auto flex justify-between items-center">
-<div class="flex-1 min-w-0">
-<a class="font-headline-md font-bold text-on-background dark:text-surface-bright inline-flex items-center gap-2 tracking-tighter text-xl sm:text-2xl md:text-[32px]" href="#">
-<img src="https://github.com/CapAmin22.png" alt="Amin Shaikh" class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
+<div class="flex-shrink-0">
+<a class="font-headline-md font-bold text-on-background dark:text-surface-bright inline-flex items-center gap-2.5 tracking-tighter text-xl sm:text-2xl" href="#">
+<img src="https://github.com/CapAmin22.png" alt="Amin Shaikh" class="w-8 h-8 md:w-9 md:h-9 rounded-full border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
 <span class="truncate">Amin Shaikh</span>
 </a>
 </div>
-<!-- Day Navigation Links -->
+
+<!-- Center Navigation Links (Day View) -->
 <div class="day-only hidden md:flex items-center justify-center gap-6 lg:gap-8 h-full whitespace-nowrap">
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#about">About</a>
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#work">Work</a>
@@ -248,53 +250,45 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#contact">Contact</a>
 </div>
 
-<!-- Starry Night Dedicated Navigation Links -->
+<!-- Center Navigation Links (Starry Night View) -->
 <div class="night-only-flex hidden md:flex items-center justify-center gap-6 lg:gap-8 h-full whitespace-nowrap">
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150 font-bold" href="#ai-lab-hero">✦ AI Lab Masthead</a>
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#hooklens">6 Shipped Systems</a>
 <a class="text-on-background dark:text-surface-bright px-2 py-2 font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150" href="#contact">Contact</a>
-<button onclick="toggleStarryNight(); window.scrollTo({top:0, behavior:'smooth'});" class="px-2.5 py-1 font-label-mono text-xs border border-structural-line bg-surface hover:bg-highlight-neon transition-colors duration-150 flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] cursor-pointer">
-    <span class="material-symbols-outlined text-sm">light_mode</span>
-    <span>Day Portfolio</span>
-</button>
 </div>
-<div class="flex-1 flex justify-end items-center gap-3 lg:gap-4">
-<!-- High-Visibility Discovery Beacon (Day Mode) -->
-<button onclick="toggleStarryNight(); const aiHero = document.getElementById('ai-lab-hero'); if(aiHero) aiHero.scrollIntoView({behavior:'smooth'});" class="day-only brutalist-button px-3.5 py-2 font-label-mono text-xs font-bold bg-highlight-neon flex items-center gap-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all cursor-pointer" title="Enter Starry Night AI Lab">
-    <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
-    <span>✦ AI LAB [6 SHIPPED]</span>
+
+<!-- Right Action Controls -->
+<div class="flex items-center gap-2.5 sm:gap-3">
+<!-- Single Clean Theme / AI Lab Mode Button -->
+<button id="theme-toggle-btn" onclick="toggleStarryNight()" class="brutalist-button px-3 sm:px-3.5 py-1.5 sm:py-2 font-label-mono text-xs font-bold bg-highlight-neon flex items-center gap-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all cursor-pointer" title="Toggle AI Lab / Day Portfolio">
+    <span id="theme-icon" class="text-sm font-bold">✦</span>
+    <span id="theme-text" class="tracking-wide">AI Lab</span>
 </button>
 
-<!-- Return to Day Beacon (Night Mode) -->
-<button onclick="toggleStarryNight(); window.scrollTo({top:0, behavior:'smooth'});" class="night-only-flex brutalist-button px-3.5 py-2 font-label-mono text-xs font-bold bg-surface text-on-background flex items-center gap-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all cursor-pointer" title="Return to PM Portfolio">
-    <span class="material-symbols-outlined text-sm">light_mode</span>
-    <span>☀️ PM PORTFOLIO</span>
-</button>
-
-<!-- Standard Theme Toggle Icon Button -->
-<button id="theme-toggle-btn" onclick="toggleStarryNight()" class="border border-structural-line px-3 py-2 font-label-mono text-label-mono bg-surface hover:bg-highlight-neon transition-colors duration-150 flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-medium cursor-pointer" title="Toggle Starry Night Mode">
-    <span id="theme-icon" class="material-symbols-outlined text-base">bedtime</span>
-    <span id="theme-text" class="hidden xl:inline text-xs font-bold tracking-wider">Starry Night</span>
-</button>
+<!-- Resources Dropdown -->
 <div class="relative group hidden md:flex items-center">
-    <button class="bg-surface text-on-background px-4 py-2 border border-structural-line font-label-mono text-label-mono hover:bg-highlight-neon transition-colors duration-150 flex items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-medium cursor-pointer">
+    <button class="bg-surface text-on-background px-3 py-2 border border-structural-line font-label-mono text-xs hover:bg-highlight-neon transition-colors duration-150 flex items-center gap-1 hover:-translate-y-0.5 hover:translate-x-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-medium cursor-pointer">
         Resources
-        <span class="material-symbols-outlined">expand_more</span>
+        <span class="material-symbols-outlined text-sm">expand_more</span>
     </button>
     <div class="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-        <div class="w-48 bg-surface border border-structural-line shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col">
-            <a class="px-4 py-3 font-label-mono text-sm border-b border-structural-line hover:bg-highlight-neon transition-colors text-on-background dark:text-surface-bright hover:text-on-background" href="https://drive.google.com/drive/folders/1OnO868nDK4A8Bmm9jXFbOz0ZIpFAipGD?usp=sharing" target="_blank">Deck's</a>
-            <a class="px-4 py-3 font-label-mono text-sm border-b border-structural-line hover:bg-highlight-neon transition-colors text-on-background dark:text-surface-bright hover:text-on-background" href="https://drive.google.com/drive/folders/16S_KESnce1VfmqDnvQBP8-ovjl1QrTpj?usp=sharing" target="_blank">TearDowns</a>
-            <a class="px-4 py-3 font-label-mono text-sm hover:bg-highlight-neon transition-colors text-on-background dark:text-surface-bright hover:text-on-background" href="https://drive.google.com/drive/folders/1AUVXQtPpx3j2rgpramaLGIZK-OuXqwnI?usp=sharing" target="_blank">PRD's</a>
+        <div class="w-44 bg-surface border border-structural-line shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col">
+            <a class="px-4 py-2.5 font-label-mono text-xs border-b border-structural-line hover:bg-highlight-neon transition-colors text-on-background dark:text-surface-bright hover:text-on-background" href="https://drive.google.com/drive/folders/1OnO868nDK4A8Bmm9jXFbOz0ZIpFAipGD?usp=sharing" target="_blank">Deck's ↗</a>
+            <a class="px-4 py-2.5 font-label-mono text-xs border-b border-structural-line hover:bg-highlight-neon transition-colors text-on-background dark:text-surface-bright hover:text-on-background" href="https://drive.google.com/drive/folders/16S_KESnce1VfmqDnvQBP8-ovjl1QrTpj?usp=sharing" target="_blank">TearDowns ↗</a>
+            <a class="px-4 py-2.5 font-label-mono text-xs hover:bg-highlight-neon transition-colors text-on-background dark:text-surface-bright hover:text-on-background" href="https://drive.google.com/drive/folders/1AUVXQtPpx3j2rgpramaLGIZK-OuXqwnI?usp=sharing" target="_blank">PRD's ↗</a>
         </div>
     </div>
 </div>
-<a class="hidden md:flex bg-highlight-neon text-on-background px-4 py-2 border border-structural-line font-label-mono text-label-mono hover:bg-highlight-neon hover:text-on-background transition-colors duration-150 items-center gap-2 hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-y-0 active:translate-x-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-medium" href="https://drive.google.com/drive/folders/1S2TWnRn8ai1uL9pyi8XbLJaANWdro8z5?usp=sharing" target="_blank">
-            Resume
-            <span class="material-symbols-outlined">download</span>
+
+<!-- Resume Download Button -->
+<a class="hidden sm:inline-flex bg-surface hover:bg-highlight-neon text-on-background px-3 py-2 border border-structural-line font-label-mono text-xs transition-colors duration-150 items-center gap-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 font-bold" href="https://drive.google.com/drive/folders/1S2TWnRn8ai1uL9pyi8XbLJaANWdro8z5?usp=sharing" target="_blank">
+    <span>Resume</span>
+    <span class="material-symbols-outlined text-sm">download</span>
 </a>
-<button id="mobile-menu-btn" class="md:hidden flex items-center justify-center p-2 border border-structural-line bg-surface hover:bg-highlight-neon transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-<span class="material-symbols-outlined">menu</span>
+
+<!-- Mobile Hamburger Button -->
+<button id="mobile-menu-btn" class="md:hidden flex items-center justify-center p-2 border border-structural-line bg-surface hover:bg-highlight-neon transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+    <span class="material-symbols-outlined text-base">menu</span>
 </button>
 </div>
 </nav>
@@ -327,72 +321,32 @@ html.starry-night .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
 <!-- Hero Section (Day View: PM Executive Profile) -->
 <section class="day-only grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter relative" id="about">
 <div class="md:col-span-12 flex flex-col items-center text-center space-y-8">
-<!-- Hero Visuals: Avatar + 9:16 Video Resume -->
-<div class="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10">
-    <!-- Profile Image with Badge -->
-    <div class="flex flex-col items-center">
-        <div class="w-44 h-44 sm:w-48 sm:h-48 md:w-56 md:h-56 border-2 border-structural-line shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] overflow-hidden bg-surface-variant relative group">
-            <img alt="Amin Shaikh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://github.com/CapAmin22.png">
-        </div>
-        <div class="mt-3">
-            <span class="font-label-mono text-xs uppercase tracking-wider text-on-surface-variant font-bold bg-surface px-3 py-1 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Avatar · Bio</span>
-        </div>
-    </div>
+<!-- Hero Visual: Minimalist Executive Video Reel Frame -->
+<div class="flex justify-center w-full">
+    <div id="video-resume-card" class="w-48 sm:w-52 md:w-56 aspect-[9/16] border-2 border-structural-line shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] bg-[#0d1326] relative overflow-hidden group cursor-pointer transition-all">
+        <!-- Native HTML5 Video Element -->
+        <video id="hero-video-player" class="hidden w-full h-full object-cover" playsinline controls loop></video>
 
-    <!-- 9:16 Video Resume (Insta Reel 1080x1920) -->
-    <div class="flex flex-col items-center">
-        <div id="video-resume-card" class="w-40 sm:w-44 md:w-48 aspect-[9/16] border-2 border-structural-line shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] bg-surface-variant relative overflow-hidden flex flex-col justify-between group cursor-pointer transition-all">
-            <!-- Top Reel Badge -->
-            <div class="z-20 bg-surface/95 backdrop-blur-sm border-b-2 border-structural-line px-2.5 py-1.5 flex items-center justify-between text-[10px] font-label-mono font-bold">
-                <span class="flex items-center gap-1.5 text-primary">
-                    <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-                    <span>REEL · 9:16</span>
-                </span>
-                <span class="text-on-surface-variant">1080×1920</span>
-            </div>
-
-            <!-- Native HTML5 Video Element (plays when video file is loaded) -->
-            <video id="hero-video-player" class="hidden absolute inset-0 w-full h-full object-cover z-10" playsinline controls loop></video>
-
-            <!-- VISITOR STATE (When no video uploaded yet) -->
-            <div id="video-visitor-state" class="visitor-only relative z-10 flex-grow flex flex-col items-center justify-center p-3 text-center bg-grid">
-                <div class="w-14 h-14 rounded-full border-2 border-structural-line bg-highlight-neon shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-                    <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-                </div>
-                <p class="font-headline-md text-xs sm:text-sm uppercase font-bold tracking-tight">Video Resume</p>
-                <p class="font-label-mono text-[10px] text-on-surface-variant mt-1 leading-tight">Founder Pitch &amp; Walkthrough</p>
-                <div class="mt-3 inline-flex items-center gap-1 bg-surface border border-structural-line px-2 py-1 text-[9px] font-label-mono font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                    <span class="material-symbols-outlined text-xs text-primary">verified</span>
-                    <span>Executive Reel</span>
-                </div>
-            </div>
-
-            <!-- ADMIN UPLOAD STATE (Visible ONLY to Admin) -->
-            <div id="video-admin-state" class="admin-only relative z-10 flex-grow flex-col items-center justify-center p-3 text-center bg-grid cursor-pointer" onclick="document.getElementById('video-resume-input').click()">
-                <div class="w-12 h-12 rounded-full border-2 border-structural-line bg-highlight-neon shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-2xl font-bold">cloud_upload</span>
-                </div>
-                <p class="font-headline-md text-xs sm:text-sm uppercase font-bold tracking-tight">Upload Reel</p>
-                <p class="font-label-mono text-[9px] text-on-surface-variant mt-1 leading-tight">Admin Controls Active</p>
-                <div class="mt-2 inline-flex items-center gap-1 bg-surface border border-structural-line px-2 py-1 text-[9px] font-label-mono font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:bg-highlight-neon transition-colors">
-                    <span class="material-symbols-outlined text-xs">upload_file</span>
-                    <span>Select MP4</span>
-                </div>
-                <input type="file" id="video-resume-input" accept="video/mp4,video/quicktime,video/webm" class="hidden" onchange="handleVideoUpload(event)">
-            </div>
-
-            <!-- Bottom Control / Status -->
-            <div id="video-bottom-status" class="z-20 bg-surface/95 backdrop-blur-sm border-t-2 border-structural-line px-2 py-1 text-center font-label-mono text-[9px] text-on-surface-variant truncate">
-                <span class="visitor-only">Amin Shaikh · 90s Overview</span>
-                <span class="admin-only">Admin: Click or Drop MP4</span>
+        <!-- Clean Video Poster State (No text, pure video frame) -->
+        <div id="video-poster-state" class="w-full h-full relative flex items-center justify-center overflow-hidden" onclick="handlePosterClick()">
+            <img src="https://github.com/CapAmin22.png" alt="Amin Shaikh" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/30 group-hover:from-black/70 transition-colors"></div>
+            <!-- Minimalist Play Button -->
+            <div class="relative z-10 w-14 h-14 rounded-full bg-highlight-neon border-2 border-structural-line shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-3xl text-on-background font-bold" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
             </div>
         </div>
-        <div class="mt-3 flex items-center gap-2">
-            <span class="font-label-mono text-xs uppercase tracking-wider text-on-surface-variant font-bold bg-surface px-3 py-1 border border-structural-line shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Video Resume · 9:16</span>
-            <button id="admin-clear-video-btn" onclick="clearStoredVideo()" class="admin-only p-1 text-[10px] font-label-mono border border-structural-line bg-surface hover:bg-red-500 hover:text-white transition-colors cursor-pointer" title="Remove Video">
+
+        <!-- Admin Only: Quick Floating Upload Controls -->
+        <div class="admin-only absolute top-2 right-2 z-30 flex items-center gap-1.5">
+            <button onclick="event.stopPropagation(); document.getElementById('video-resume-input').click();" class="p-1.5 bg-highlight-neon border border-structural-line shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:scale-105 transition-transform cursor-pointer" title="Admin: Upload Video (MP4/WebM)">
+                <span class="material-symbols-outlined text-xs font-bold text-on-background">upload_file</span>
+            </button>
+            <button id="admin-clear-video-btn" onclick="event.stopPropagation(); clearStoredVideo();" class="p-1.5 bg-surface border border-structural-line hover:bg-red-500 hover:text-white shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-colors cursor-pointer" title="Admin: Clear Video">
                 <span class="material-symbols-outlined text-xs">delete</span>
             </button>
         </div>
+        <input type="file" id="video-resume-input" accept="video/mp4,video/quicktime,video/webm" class="hidden" onchange="handleVideoUpload(event)">
     </div>
 </div>
 <!-- Name and Headline -->
@@ -1727,7 +1681,7 @@ function updateThemeUI(isNight) {
     const floatingText = document.getElementById('floating-text');
     
     if (isNight) {
-        if (icon) icon.textContent = 'light_mode';
+        if (icon) icon.textContent = '☀️';
         if (text) text.textContent = 'Day Mode';
         if (mobileIcon) mobileIcon.textContent = 'light_mode';
         if (mobileText) mobileText.textContent = 'Switch to Day Mode';
@@ -1736,8 +1690,8 @@ function updateThemeUI(isNight) {
         if (floatingIcon) floatingIcon.textContent = '☀️';
         if (floatingText) floatingText.textContent = 'PM Portfolio';
     } else {
-        if (icon) icon.textContent = 'bedtime';
-        if (text) text.textContent = 'Starry Night';
+        if (icon) icon.textContent = '✦';
+        if (text) text.textContent = 'AI Lab';
         if (mobileIcon) mobileIcon.textContent = 'bedtime';
         if (mobileText) mobileText.textContent = 'Starry Night Mode';
         if (footerIcon) footerIcon.textContent = 'bedtime';
@@ -1782,6 +1736,29 @@ function handleFloatingPortalClick() {
 // ==========================================
 let activeVideoUrl = null;
 
+function handlePosterClick() {
+    const videoPlayer = document.getElementById('hero-video-player');
+    const posterState = document.getElementById('video-poster-state');
+    
+    // If a video has been uploaded, play it
+    if (activeVideoUrl && videoPlayer) {
+        if (posterState) posterState.classList.add('hidden');
+        videoPlayer.classList.remove('hidden');
+        videoPlayer.play().catch(function() {});
+        return;
+    }
+    
+    // If Admin is logged in, trigger file selection
+    if (document.body.classList.contains('is-admin')) {
+        const input = document.getElementById('video-resume-input');
+        if (input) input.click();
+        return;
+    }
+    
+    // For public visitors without video yet
+    showToast('Video introduction coming soon · Request walkthrough via email');
+}
+
 function handleVideoUpload(event) {
     const file = event.target.files && event.target.files[0];
     if (!file) return;
@@ -1794,9 +1771,7 @@ function handleVideoUpload(event) {
 
 function loadVideoFile(fileOrBlob) {
     const videoPlayer = document.getElementById('hero-video-player');
-    const visitorState = document.getElementById('video-visitor-state');
-    const adminState = document.getElementById('video-admin-state');
-    const bottomStatus = document.getElementById('video-bottom-status');
+    const posterState = document.getElementById('video-poster-state');
     
     if (activeVideoUrl) {
         URL.revokeObjectURL(activeVideoUrl);
@@ -1806,37 +1781,33 @@ function loadVideoFile(fileOrBlob) {
     if (videoPlayer) {
         videoPlayer.src = activeVideoUrl;
         videoPlayer.classList.remove('hidden');
-        if (visitorState) visitorState.classList.add('hidden');
-        if (adminState) adminState.classList.add('hidden');
+        if (posterState) posterState.classList.add('hidden');
         videoPlayer.play().catch(function() {});
-        if (bottomStatus) {
-            bottomStatus.innerHTML = '<span class="text-primary font-bold">● Video Reel Active</span>';
-        }
     }
 }
 
 function clearStoredVideo() {
     deleteMediaBlob('hero_video_blob').then(function() {
         const videoPlayer = document.getElementById('hero-video-player');
-        const visitorState = document.getElementById('video-visitor-state');
-        const adminState = document.getElementById('video-admin-state');
-        const bottomStatus = document.getElementById('video-bottom-status');
+        const posterState = document.getElementById('video-poster-state');
         
+        if (activeVideoUrl) {
+            URL.revokeObjectURL(activeVideoUrl);
+            activeVideoUrl = null;
+        }
         if (videoPlayer) {
             videoPlayer.pause();
             videoPlayer.src = '';
             videoPlayer.classList.add('hidden');
         }
-        if (visitorState) visitorState.classList.remove('hidden');
-        if (adminState) adminState.classList.remove('hidden');
-        if (bottomStatus) {
-            bottomStatus.innerHTML = '<span class="visitor-only">Amin Shaikh · 90s Overview</span><span class="admin-only">Admin: Click or Drop MP4</span>';
+        if (posterState) {
+            posterState.classList.remove('hidden');
         }
-        showToast('Video Reel removed');
+        showToast('Video Reel cleared to default');
     });
 }
 
-// Drag & Drop for Video Resume Card (Only functional in Admin Mode)
+// Drag & Drop for Video Resume Card (Admin Only)
 const videoCard = document.getElementById('video-resume-card');
 if (videoCard) {
     videoCard.addEventListener('dragover', function(e) {
